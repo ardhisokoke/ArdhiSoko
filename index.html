@@ -70,9 +70,8 @@ h1.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,3.5vw,2
 .wc-desc{font-size:.78rem;color:rgba(255,255,255,.8);line-height:1.55;}
 .wc-tag{position:absolute;top:1rem;left:1rem;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .75rem;border-radius:2px;}
 .why-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1.5rem;}
-.why-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);border:none;padding:0;cursor:pointer;transition:all .2s;}
-.why-dot.active{background:#fff;width:22px;border-radius:4px;}
-.why-section .sec-eyebrow::before{background:rgba(255,255,255,.7);}
+.why-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;padding:0;cursor:pointer;transition:all .2s;}
+.why-dot.active{background:var(--green);width:22px;border-radius:4px;}
 @media(min-width:1101px){.wc{min-width:calc(25% - 1.2rem);max-width:none;flex:1;}}
 @media(max-width:680px){.wc{min-width:82vw;height:200px;}}
 .enquiry-sec{background:var(--green);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}.enquiry-left{padding:5.5rem 5rem;display:flex;flex-direction:column;justify-content:center;}
@@ -143,9 +142,9 @@ footer{background:var(--black);padding:4.5rem 5rem 2rem;}.f-grid{display:grid;gr
 <span class="proj-feat">Off-Plan Available</span></div><div class="proj-price-row"><div><div class="proj-price">From 3.2M</div><div class="proj-price-sub">off-plan pricing</div></div><button class="proj-cta" onclick="document.getElementById('enquiry').scrollIntoView({behavior:'smooth'})">Learn More</button></div></div></div>
   </div>
 </section>
-<section class="sec why-section" style="background:#F5921E">
-  <div class="sec-eyebrow" style="color:rgba(255,255,255,.85)">Why ArdhiSoko</div>
-  <h2 class="sec-title" style="color:#fff">Buy with <span style="color:var(--green)">total confidence</span></h2>
+<section class="sec" style="background:var(--gray-light)">
+  <div class="sec-eyebrow">Why ArdhiSoko</div>
+  <h2 class="sec-title">Buy with <span>total confidence</span></h2>
   <div class="why-carousel-wrap">
   <div class="why-grid" id="why-grid">
     <div class="wc" id="wc0"><img class="wc-img" src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" alt="Title Deed Verified"><div class="wc-overlay"></div><span class="wc-tag">Legal</span><div class="wc-body"><div class="wc-title">Title Deed Verified</div><p class="wc-desc">Every plot and unit comes with a clean, verified title deed. We handle all legal due diligence so you do not have to.</p></div></div>
