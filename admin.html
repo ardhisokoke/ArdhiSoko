@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArdhiSoko Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--o:#F5921E;--od:#D97A10;--g:#2E7D1F;--gd:#1E5A12;--bk:#1A1A1A;--gr:#666;--gl:#F5F5F5;--gm:#E0E0E0;--w:#fff;--d:#E53935;--s:#43A047;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
+#ls{position:fixed;inset:0;background:var(--bk);display:flex;align-items:center;justify-content:center;z-index:9999;}
+.lb{background:var(--w);padding:3rem 3.5rem;border-radius:8px;width:100%;max-width:420px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.ll{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.3rem;}
+.lt{width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid var(--g);}
+.ln{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:800;}
+.ln .a{color:var(--bk);}.ln .s{color:var(--o);}
+.ls2{font-size:.72rem;color:var(--gr);margin-bottom:1.6rem;letter-spacing:.08em;text-transform:uppercase;}
+.lb h2{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:700;margin-bottom:1.3rem;}
+.lb input{width:100%;padding:.82rem 1rem;border:1.5px solid var(--gm);border-radius:4px;font-size:.93rem;outline:none;margin-bottom:.85rem;font-family:'Open Sans',sans-serif;transition:border-color .2s;}
+.lb input:focus{border-color:var(--o);}
+.lbtn{width:100%;background:var(--o);color:var(--w);border:none;padding:.92rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.86rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.lbtn:hover{background:var(--od);}
+.lerr{color:var(--d);font-size:.78rem;margin-top:.45rem;display:none;}
+#app{display:none;height:100vh;overflow:hidden;flex-direction:row;}
+#app.v{display:flex;}
+.sb{width:252px;background:var(--bk);flex-shrink:0;display:flex;flex-direction:column;overflow-y:auto;}
+.sbb{padding:1.3rem 1.3rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:.55rem;}
+.sbt{width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:16px solid var(--g);}
+.sbn{font-family:'Montserrat',sans-serif;font-size:1.18rem;font-weight:800;}
+.sbn .a{color:var(--w);}.sbn .s{color:var(--o);}
+.sba{font-size:.58rem;color:rgba(255,255,255,.28);letter-spacing:.12em;text-transform:uppercase;margin-top:1px;}
+.ss{padding:.85rem .75rem .25rem;}
+.ssl{font-family:'Montserrat',sans-serif;font-size:.57rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.2);padding:0 .55rem;margin-bottom:.3rem;}
+.si{display:flex;align-items:center;gap:.68rem;padding:.62rem .75rem;border-radius:4px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:.77rem;font-weight:600;color:rgba(255,255,255,.48);transition:all .2s;margin-bottom:2px;border:none;background:none;width:100%;text-align:left;}
+.si:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.82);}
+.si.ac{background:var(--g);color:var(--w);}
+.sf{margin-top:auto;padding:.9rem 1.3rem;border-top:1px solid rgba(255,255,255,.06);font-size:.68rem;color:rgba(255,255,255,.17);}
+.mn{flex:1;display:flex;flex-direction:column;overflow:hidden;}
+.tb{background:var(--w);border-bottom:1px solid var(--gm);padding:0 1.8rem;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.tbt{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:800;}
+.tba{display:flex;gap:.65rem;align-items:center;}
+.btn{padding:.5rem 1.15rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.71rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border:none;transition:all .2s;}
+.bo{background:var(--o);color:var(--w);}.bo:hover{background:var(--od);}
+.bg{background:var(--g);color:var(--w);}
+.bx{background:none;border:1.5px solid var(--gm);color:var(--gr);}.bx:hover{border-color:var(--o);color:var(--o);}
+.ct{flex:1;overflow-y:auto;padding:1.7rem;}
+.pn{display:none;}.pn.ac{display:block;}
+.cd{background:var(--w);border-radius:6px;border:1px solid var(--gm);padding:1.7rem;margin-bottom:1.4rem;}
+.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.4rem;padding-bottom:.9rem;border-bottom:2px solid var(--o);}
+.ct2{font-family:'Montserrat',sans-serif;font-size:.86rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;}
+.cbg{font-size:.64rem;font-weight:700;padding:.2rem .65rem;border-radius:20px;}
+.cbl{background:#E8F5E4;color:var(--g);}.cba{background:#FFF3E0;color:var(--o);}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.ff{grid-column:1/-1;}
+.fd{margin-bottom:.85rem;}
+.fd label{display:block;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);margin-bottom:.36rem;}
+.fd input,.fd textarea,.fd select{width:100%;padding:.7rem .95rem;border:1.5px solid var(--gm);border-radius:4px;font-family:'Open Sans',sans-serif;font-size:.86rem;color:var(--bk);outline:none;transition:border-color .2s;background:var(--w);appearance:none;}
+.fd input:focus,.fd textarea:focus,.fd select:focus{border-color:var(--o);}
+.fd textarea{resize:vertical;min-height:86px;line-height:1.6;}
+.fh{font-size:.68rem;color:var(--gr);margin-top:.28rem;}
+.ip{width:100%;height:150px;object-fit:cover;border-radius:4px;border:2px solid var(--gm);display:block;margin-top:.45rem;background:var(--gl);}
+.fl{display:flex;flex-direction:column;gap:.42rem;margin-top:.45rem;}
+.fi{display:flex;align-items:center;gap:.42rem;}
+.fi input{flex:1;padding:.56rem .78rem;border:1.5px solid var(--gm);border-radius:4px;font-size:.83rem;outline:none;font-family:'Open Sans',sans-serif;transition:border-color .2s;}
+.fi input:focus{border-color:var(--o);}
+.fd2{background:none;border:1.5px solid var(--gm);color:var(--gr);width:28px;height:28px;border-radius:4px;cursor:pointer;font-size:.78rem;flex-shrink:0;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.fd2:hover{background:var(--d);border-color:var(--d);color:var(--w);}
+.afb{background:none;border:1.5px dashed var(--gm);color:var(--gr);padding:.46rem 1rem;border-radius:4px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;width:100%;margin-top:.38rem;transition:all .2s;}
+.afb:hover{border-color:var(--o);color:var(--o);}
+.ts{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--bk);color:var(--w);padding:.82rem 1.3rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);transform:translateY(100px);opacity:0;transition:all .3s;z-index:9999;}
+.ts.sh{transform:translateY(0);opacity:1;}
+.ts.ok{background:var(--s);}
+.ts.er{background:var(--d);}
+.sr{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.3rem;}
+.sc{background:var(--w);border-radius:6px;padding:1.3rem;border:1px solid var(--gm);border-top:3px solid var(--o);}
+.sc.gn{border-top-color:var(--g);}
+.sv2{font-family:'Montserrat',sans-serif;font-size:1.45rem;font-weight:900;}
+.sl{font-size:.68rem;color:var(--gr);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-top:.22rem;}
+.lp{display:flex;align-items:center;gap:.75rem;padding:1.3rem;background:var(--gl);border-radius:6px;margin-bottom:1.3rem;border:2px solid var(--gm);}
+.lt2{font-family:'Montserrat',sans-serif;font-size:1.45rem;font-weight:800;}
+.ltg{font-size:.6rem;color:var(--gr);letter-spacing:.05em;margin-top:2px;}
+.cr{display:flex;gap:.9rem;align-items:flex-end;}
+.cf{flex:1;}
+.csw{width:100%;height:36px;border-radius:4px;border:2px solid var(--gm);margin-top:.42rem;cursor:pointer;}
+.dv{height:1px;background:var(--gm);margin:1.3rem 0;}
+.eb{background:linear-gradient(135deg,var(--g),var(--gd));border-radius:8px;padding:2.3rem;text-align:center;color:var(--w);}
+.eb h3{font-family:'Montserrat',sans-serif;font-size:1.18rem;font-weight:900;margin-bottom:.45rem;}
+.eb p{font-size:.84rem;opacity:.7;margin-bottom:1.7rem;line-height:1.62;}
+.ebt{background:var(--o);color:var(--w);border:none;padding:.95rem 2.3rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;display:inline-flex;align-items:center;gap:.55rem;}
+.ebt:hover{background:var(--od);}
+.stps{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:1.8rem;}
+.stp{background:rgba(255,255,255,.08);padding:1.1rem;border-radius:6px;text-align:left;}
+.stn{font-family:'Montserrat',sans-serif;font-size:1.35rem;font-weight:900;color:var(--o);}
+.stt{font-family:'Montserrat',sans-serif;font-size:.76rem;font-weight:700;margin:.28rem 0;}
+.std{font-size:.71rem;opacity:.6;line-height:1.5;}
+@media(max-width:768px){.sb{width:205px;}.fg{grid-template-columns:1fr;}.sr{grid-template-columns:1fr 1fr;}.stps{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div id="ls">
+  <div class="lb">
+    <div class="ll"><div class="lt"></div><div class="ln"><span class="a">Ardhi</span><span class="s">Soko</span></div></div>
+    <div class="ls2">Admin Dashboard</div>
+    <h2>Sign in to continue</h2>
+    <input type="text" id="u" placeholder="Username" onkeydown="if(event.key==='Enter')li()">
+    <input type="password" id="p" placeholder="Password" onkeydown="if(event.key==='Enter')li()">
+    <button class="lbtn" onclick="li()">Login &rarr;</button>
+    <div class="lerr" id="le">Incorrect username or password</div>
+    <div style="margin-top:.9rem;font-size:.68rem;color:var(--gr)">Default: admin / ardhisoko2025</div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="sb">
+    <div class="sbb">
+      <div class="sbt"></div>
+      <div><div class="sbn"><span class="a">Ardhi</span><span class="s">Soko</span></div><div class="sba">Admin Panel</div></div>
+    </div>
+    <div class="ss">
+      <div class="ssl">Overview</div>
+      <button class="si ac" onclick="sp('ov',this)">&#127968; Dashboard</button>
+    </div>
+    <div class="ss">
+      <div class="ssl">Projects</div>
+      <button class="si" onclick="sp('ma',this)">&#127754; Malindi Plots</button>
+      <button class="si" onclick="sp('ko',this)">&#127759; Konza Plots</button>
+      <button class="si" onclick="sp('ka',this)">&#127970; Kamakis Apts</button>
+    </div>
+    <div class="ss">
+      <div class="ssl">Site Settings</div>
+      <button class="si" onclick="sp('co',this)">&#128222; Contact Details</button>
+      <button class="si" onclick="sp('lo',this)">&#127912; Logo &amp; Branding</button>
+      <button class="si" onclick="sp('ex',this)">&#128229; Export Website</button>
+    </div>
+    <div class="sf">ArdhiSoko Admin v1.0</div>
+  </div>
+
+  <div class="mn">
+    <div class="tb">
+      <div class="tbt" id="tbt">Dashboard</div>
+      <div class="tba">
+        <button class="btn bx" onclick="sp('ex',null)">&#128229; Export</button>
+        <button class="btn bo" onclick="sv()">&#128190; Save Changes</button>
+        <button class="btn bx" onclick="lo()" style="color:var(--d);border-color:var(--d)">Logout</button>
+      </div>
+    </div>
+
+    <div class="ct">
+
+      <!-- OVERVIEW -->
+      <div class="pn ac" id="pn-ov">
+        <div class="sr">
+          <div class="sc"><div class="sv2">3</div><div class="sl">Active Projects</div></div>
+          <div class="sc gn"><div class="sv2" id="omp">KES 1.5M</div><div class="sl">Malindi Price</div></div>
+          <div class="sc gn"><div class="sv2" id="okp">KES 450K</div><div class="sl">Konza Price</div></div>
+          <div class="sc"><div class="sv2" id="okap">From 3.2M</div><div class="sl">Kamakis Price</div></div>
+        </div>
+        <div class="cd">
+          <div class="ch"><div class="ct2">Quick Guide</div></div>
+          <p style="font-size:.86rem;color:var(--gr);line-height:1.75;margin-bottom:1.3rem">Use the sidebar to edit each project. When done, click <strong>Export Website</strong> to download your updated index.html file and upload it to GitHub.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem">
+            <div style="padding:1rem;background:var(--gl);border-radius:6px;border-left:4px solid var(--g)"><div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:.82rem;margin-bottom:.22rem">&#127754; Malindi</div><div style="font-size:.74rem;color:var(--gr)" id="omn">Malindi Ocean View Acres</div></div>
+            <div style="padding:1rem;background:var(--gl);border-radius:6px;border-left:4px solid var(--o)"><div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:.82rem;margin-bottom:.22rem">&#127759; Konza</div><div style="font-size:.74rem;color:var(--gr)" id="okn">Konza Technopolis Plots</div></div>
+            <div style="padding:1rem;background:var(--gl);border-radius:6px;border-left:4px solid var(--bk)"><div style="font-family:Montserrat,sans-serif;font-weight:800;font-size:.82rem;margin-bottom:.22rem">&#127970; Kamakis</div><div style="font-size:.74rem;color:var(--gr)" id="okan">Kamakis Urban Residences</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MALINDI -->
+      <div class="pn" id="pn-ma">
+        <div class="cd">
+          <div class="ch"><div class="ct2">&#127754; Malindi Plots</div><span class="cbg cbl">Land for Sale</span></div>
+          <div class="fg">
+            <div class="fd"><label>Project Name</label><input type="text" id="mn" value="Malindi Ocean View Acres" oninput="so()"></div>
+            <div class="fd"><label>Location</label><input type="text" id="ml" value="Malindi, Kilifi County"></div>
+            <div class="fd"><label>Price</label><input type="text" id="mp" value="KES 1.5M" oninput="so()"></div>
+            <div class="fd"><label>Price Subtitle</label><input type="text" id="mps" value="per 1-acre plot"></div>
+            <div class="fd"><label>Plot Size</label><input type="text" id="msz" value="1 Acre"></div>
+            <div class="fd"><label>Status Badge</label><input type="text" id="mst" value="Selling Fast"></div>
+            <div class="fd ff"><label>Short Description</label><textarea id="md">Spacious 1-acre plots set in the heart of Kenya's premier coastal town. Ideal for holiday homes, eco-lodges, farming, or long-term investment. Just minutes from Malindi Beach and the airport.</textarea></div>
+            <div class="fd ff"><label>Full Description</label><textarea id="md2">Own a piece of Kenya's most beautiful coastline. These 1-acre plots in Malindi are perfect for a holiday home, Airbnb retreat, small-scale farming, or a long-term land investment. Malindi's property values have grown consistently, making this a smart buy.</textarea></div>
+          </div>
+          <div class="dv"></div>
+          <div class="fd"><label>Image URL</label><input type="text" id="mi" value="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" oninput="pi('mi','mp2')"><div class="fh">Paste any image URL from Unsplash, Google, Dropbox, etc.</div></div>
+          <img id="mp2" class="ip" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="preview">
+          <div class="dv"></div>
+          <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr)">Features</label>
+          <div class="fl" id="mf">
+            <div class="fi"><input type="text" value="1 Acre per Plot"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Title Deed Ready"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Near the Coast"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Road Access"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Water Available"><button class="fd2" onclick="df(this)">x</button></div>
+          </div>
+          <button class="afb" onclick="af('mf')">+ Add Feature</button>
+        </div>
+      </div>
+
+      <!-- KONZA -->
+      <div class="pn" id="pn-ko">
+        <div class="cd">
+          <div class="ch"><div class="ct2">&#127759; Konza Plots</div><span class="cbg cbl">Land for Sale</span></div>
+          <div class="fg">
+            <div class="fd"><label>Project Name</label><input type="text" id="kn" value="Konza Technopolis Plots" oninput="so()"></div>
+            <div class="fd"><label>Location</label><input type="text" id="kl" value="Konza, Machakos County"></div>
+            <div class="fd"><label>Price</label><input type="text" id="kp" value="KES 450K" oninput="so()"></div>
+            <div class="fd"><label>Price Subtitle</label><input type="text" id="kps" value="per 1/8-acre plot"></div>
+            <div class="fd"><label>Plot Size</label><input type="text" id="ksz" value="1/8 Acre"></div>
+            <div class="fd"><label>Status Badge</label><input type="text" id="kst" value="Tech City Zone"></div>
+            <div class="fd ff"><label>Short Description</label><textarea id="kd">Strategically positioned 1/8-acre residential plots adjacent to Kenya's Silicon Savannah - Konza Technopolis. The fastest appreciating land corridor in Kenya right now.</textarea></div>
+            <div class="fd ff"><label>Full Description</label><textarea id="kd2">Position yourself in Kenya's future capital of innovation. Konza Technopolis - Kenya's Silicon Savannah - is a multi-billion dollar smart city project. These 1/8-acre plots sit right in the growth path, offering exceptional appreciation potential as the city develops.</textarea></div>
+          </div>
+          <div class="dv"></div>
+          <div class="fd"><label>Image URL</label><input type="text" id="ki" value="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" oninput="pi('ki','kp2')"><div class="fh">Paste any image URL</div></div>
+          <img id="kp2" class="ip" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="preview">
+          <div class="dv"></div>
+          <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr)">Features</label>
+          <div class="fl" id="kf">
+            <div class="fi"><input type="text" value="1/8 Acre per Plot"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Title Deed Ready"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Near Konza City"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Power and Water"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Tarmac Access"><button class="fd2" onclick="df(this)">x</button></div>
+          </div>
+          <button class="afb" onclick="af('kf')">+ Add Feature</button>
+        </div>
+      </div>
+
+      <!-- KAMAKIS -->
+      <div class="pn" id="pn-ka">
+        <div class="cd">
+          <div class="ch"><div class="ct2">&#127970; Kamakis Apartments</div><span class="cbg cba">Apartments</span></div>
+          <div class="fg">
+            <div class="fd"><label>Project Name</label><input type="text" id="kan" value="Kamakis Urban Residences" oninput="so()"></div>
+            <div class="fd"><label>Location</label><input type="text" id="kal" value="Kamakis, Ruiru - Kiambu County"></div>
+            <div class="fd"><label>Price</label><input type="text" id="kap" value="From 3.2M" oninput="so()"></div>
+            <div class="fd"><label>Price Subtitle</label><input type="text" id="kaps" value="off-plan pricing"></div>
+            <div class="fd"><label>Unit Types</label><input type="text" id="kasz" value="1-3 Bed"></div>
+            <div class="fd"><label>Status Badge</label><input type="text" id="kast" value="Coming Soon"></div>
+            <div class="fd ff"><label>Short Description</label><textarea id="kad">Modern, well-designed apartments for sale in the rapidly growing Kamakis-Ruiru corridor. Excellent connectivity to Nairobi CBD, JKIA, and the Eastern Bypass. Off-plan prices available now.</textarea></div>
+            <div class="fd ff"><label>Full Description</label><textarea id="kad2">Modern apartments designed for comfortable urban living in one of Nairobi's fastest-growing suburbs. Kamakis sits at the intersection of the Eastern Bypass and Thika Superhighway - giving residents unmatched access to the entire city. Buy off-plan today at the best prices.</textarea></div>
+          </div>
+          <div class="dv"></div>
+          <div class="fd"><label>Image URL</label><input type="text" id="kai" value="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" oninput="pi('kai','kap3')"><div class="fh">Paste any image URL</div></div>
+          <img id="kap3" class="ip" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="preview">
+          <div class="dv"></div>
+          <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr)">Features</label>
+          <div class="fl" id="kaf">
+            <div class="fi"><input type="text" value="1, 2 and 3 Bedroom Units"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Gated and Secure"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Near Eastern Bypass"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Swimming Pool and Gym"><button class="fd2" onclick="df(this)">x</button></div>
+            <div class="fi"><input type="text" value="Off-Plan Available"><button class="fd2" onclick="df(this)">x</button></div>
+          </div>
+          <button class="afb" onclick="af('kaf')">+ Add Feature</button>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="pn" id="pn-co">
+        <div class="cd">
+          <div class="ch"><div class="ct2">&#128222; Contact Details</div></div>
+          <div class="fg">
+            <div class="fd"><label>Phone / WhatsApp</label><input type="text" id="cp" value="+254 700 000 000"></div>
+            <div class="fd"><label>Email Address</label><input type="text" id="ce" value="hello@ardhisoko.co.ke"></div>
+            <div class="fd ff"><label>Office Address</label><input type="text" id="ca" value="Westlands, Nairobi, Kenya"></div>
+            <div class="fd ff"><label>WhatsApp Number (digits only, no + or spaces)</label><input type="text" id="cw" value="254700000000"><div class="fh">e.g. 254712345678</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGO -->
+      <div class="pn" id="pn-lo">
+        <div class="cd">
+          <div class="ch"><div class="ct2">&#127912; Logo and Branding</div></div>
+          <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);margin-bottom:.45rem;display:block">Live Preview</label>
+          <div class="lp">
+            <div id="lptr" style="width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:20px solid #2E7D1F;flex-shrink:0"></div>
+            <div>
+              <div class="lt2"><span id="lp1">Ardhi</span><span id="lp2" style="color:#F5921E">Soko</span></div>
+              <div class="ltg" id="lptg">Premium Living, Smart Investing</div>
+            </div>
+          </div>
+          <div class="fg">
+            <div class="fd"><label>Brand Name Part 1 (dark)</label><input type="text" id="bp1" value="Ardhi" oninput="ul()"></div>
+            <div class="fd"><label>Brand Name Part 2 (colored)</label><input type="text" id="bp2" value="Soko" oninput="ul()"></div>
+            <div class="fd ff"><label>Tagline</label><input type="text" id="btg" value="Premium Living, Smart Investing" oninput="ul()"></div>
+          </div>
+          <div class="dv"></div>
+          <div style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);margin-bottom:.9rem">Brand Colors</div>
+          <div class="cr">
+            <div class="cf fd"><label>Primary (Orange)</label><input type="text" id="co" value="#F5921E" oninput="ul()"><div class="csw" id="swo" style="background:#F5921E" onclick="document.getElementById('cpo').click()"></div><input type="color" id="cpo" value="#F5921E" style="display:none" oninput="document.getElementById('co').value=this.value;ul()"></div>
+            <div class="cf fd"><label>Secondary (Green)</label><input type="text" id="cg" value="#2E7D1F" oninput="ul()"><div class="csw" id="swg" style="background:#2E7D1F" onclick="document.getElementById('cpg').click()"></div><input type="color" id="cpg" value="#2E7D1F" style="display:none" oninput="document.getElementById('cg').value=this.value;ul()"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPORT -->
+      <div class="pn" id="pn-ex">
+        <div class="eb">
+          <h3>&#128229; Export Your Website</h3>
+          <p>Click below to generate and download your updated index.html with all your changes applied. Then upload it to GitHub to go live.</p>
+          <button class="ebt" onclick="ex()">&#11015; Download index.html</button>
+          <div class="stps">
+            <div class="stp"><div class="stn">1</div><div class="stt">Make Changes</div><div class="std">Edit projects, prices, contact details and logo using the sidebar.</div></div>
+            <div class="stp"><div class="stn">2</div><div class="stt">Download File</div><div class="std">Click the button above to download your updated index.html.</div></div>
+            <div class="stp"><div class="stn">3</div><div class="stt">Upload to GitHub</div><div class="std">Delete the old index.html in your GitHub repo and upload this new one.</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="ts" id="ts"></div>
+
+<script>
+var TNM={ov:'Dashboard',ma:'Malindi Plots',ko:'Konza Plots',ka:'Kamakis Apartments',co:'Contact Details',lo:'Logo & Branding',ex:'Export Website'};
+function li(){var u=document.getElementById('u').value.trim(),p=document.getElementById('p').value.trim();if(u==='admin'&&p==='ardhisoko2025'){document.getElementById('ls').style.display='none';document.getElementById('app').classList.add('v');}else{document.getElementById('le').style.display='block';}}
+function lo(){document.getElementById('ls').style.display='flex';document.getElementById('app').classList.remove('v');}
+function sp(n,b){document.querySelectorAll('.pn').forEach(function(x){x.classList.remove('ac');});document.querySelectorAll('.si').forEach(function(x){x.classList.remove('ac');});document.getElementById('pn-'+n).classList.add('ac');if(b)b.classList.add('ac');document.getElementById('tbt').textContent=TNM[n]||n;}
+function pi(i,p){document.getElementById(p).src=document.getElementById(i).value;}
+function af(l){var d=document.createElement('div');d.className='fi';d.innerHTML='<input type="text" placeholder="New feature"><button class="fd2" onclick="df(this)">x</button>';document.getElementById(l).appendChild(d);}
+function df(b){b.closest('.fi').remove();}
+function gv(i){var e=document.getElementById(i);return e?e.value:'';}
+function gf(l){return Array.from(document.querySelectorAll('#'+l+' input')).map(function(i){return '<span class="pf">'+i.value+'</span>';}).join('\n');}
+function so(){var m=[['omn','mn'],['omp','mp'],['okn','kn'],['okp','kp'],['okan','kan'],['okap','kap']];m.forEach(function(x){var s=document.getElementById(x[1]),o=document.getElementById(x[0]);if(s&&o)o.textContent=s.value;});}
+function ul(){var p1=gv('bp1'),p2=gv('bp2'),tg=gv('btg'),og=gv('co'),gr=gv('cg');document.getElementById('lp1').textContent=p1;document.getElementById('lp2').textContent=p2;document.getElementById('lp2').style.color=og;document.getElementById('lptg').textContent=tg;document.getElementById('swo').style.background=og;document.getElementById('swg').style.background=gr;var t=document.getElementById('lptr');t.style.borderBottom='20px solid '+gr;t.style.borderLeft='12px solid transparent';t.style.borderRight='12px solid transparent';}
+function sv(){toast('Changes saved!','ok');}
+function toast(m,t){var e=document.getElementById('ts');e.textContent=m;e.className='ts sh'+(t?' '+t:'');setTimeout(function(){e.className='ts';},3000);}
+function dk(h){var r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);r=Math.max(0,Math.round(r*.8));g=Math.max(0,Math.round(g*.8));b=Math.max(0,Math.round(b*.8));return '#'+[r,g,b].map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
+function lk(h){var r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);r=Math.min(255,Math.round(r+(255-r)*.85));g=Math.min(255,Math.round(g+(255-g)*.85));b=Math.min(255,Math.round(b+(255-b)*.85));return '#'+[r,g,b].map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
+
+function ex(){
+var og=gv('co')||'#F5921E',gr=gv('cg')||'#2E7D1F',p1=gv('bp1')||'Ardhi',p2=gv('bp2')||'Soko',tg=gv('btg')||'Premium Living, Smart Investing',ph=gv('cp')||'+254 700 000 000',em=gv('ce')||'hello@ardhisoko.co.ke',ad=gv('ca')||'Westlands, Nairobi, Kenya',wa=gv('cw')||'254700000000';
+var mf=gf('mf').replace(/class="pf"/g,'class="proj-feat"');
+var kf2=gf('kf').replace(/class="pf"/g,'class="proj-feat"');
+var kaf=gf('kaf').replace(/class="pf"/g,'class="proj-feat"');
+var html='<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>'+p1+p2+' \u2014 '+tg+'</title>\n<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">\n<style>\n:root{--orange:'+og+';--orange-dark:'+dk(og)+';--orange-light:'+lk(og)+';--green:'+gr+';--green-dark:'+dk(gr)+';--green-light:'+lk(gr)+';--black:#1A1A1A;--gray-dark:#333;--gray:#666;--gray-light:#F5F5F5;--border:#E0E0E0;--white:#fff;}\n';
+html+='*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:\'Open Sans\',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}.top-bar{background:var(--green);display:flex;justify-content:space-between;align-items:center;padding:.5rem 5rem;font-size:.78rem;color:rgba(255,255,255,.9);}.top-bar-left{display:flex;gap:2rem;align-items:center;}.top-bar-left a{color:rgba(255,255,255,.9);text-decoration:none;}nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.9rem 5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;}.logo-triangle{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid var(--green);flex-shrink:0;}.logo-text{font-family:\'Montserrat\',sans-serif;font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1;}.logo-text .ardhi{color:var(--black);}.logo-text .soko{color:var(--orange);}.logo-tagline{font-size:.62rem;color:var(--gray);letter-spacing:.04em;margin-top:2px;}.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}.nav-links a{font-family:\'Montserrat\',sans-serif;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:color .2s;}.nav-links a:hover{color:var(--orange);}.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:.6rem 1.5rem;border-radius:3px;}.hero{position:relative;overflow:hidden;min-height:520px;max-height:620px;display:flex;align-items:center;}.hero-bg{position:absolute;inset:0;background:url(\'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80\') center/cover;}.hero-bg::after{content:\'\';position:absolute;inset:0;background:linear-gradient(105deg,rgba(26,26,26,.88) 0%,rgba(26,26,26,.55) 60%,rgba(46,125,31,.4) 100%);}.hero-content{position:relative;z-index:2;padding:3rem 5rem;max-width:720px;}.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,146,30,.15);border:1px solid rgba(245,146,30,.5);padding:.4rem 1rem;margin-bottom:1.2rem;}.badge-dot{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:blink 2s infinite;}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}.hero-badge span{font-family:\'Montserrat\',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);}h1.hero-title{font-family:\'Montserrat\',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.12;color:var(--white);margin-bottom:1rem;}.hl{color:var(--orange);}.hero-sub{font-size:.92rem;color:rgba(255,255,255,.72);line-height:1.7;max-width:500px;margin-bottom:1.8rem;}.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}.btn-primary{background:var(--orange);color:var(--white);border:none;padding:1rem 2.4rem;font-family:\'Montserrat\',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:background .2s;}.btn-primary:hover{background:var(--orange-dark);}.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.6);padding:1rem 2.4rem;font-family:\'Montserrat\',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:all .2s;}.btn-outline:hover{background:var(--white);color:var(--black);}.stats-strip{background:var(--orange);display:flex;}.ss-block{flex:1;text-align:center;padding:1.5rem 1rem;border-right:1px solid rgba(255,255,255,.2);}.ss-block:last-child{border-right:none;}.ss-num{font-family:\'Montserrat\',sans-serif;font-size:1.8rem;font-weight:900;color:var(--white);line-height:1;}.ss-lbl{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:.3rem;}.sec{padding:5.5rem 5rem;}.sec-eyebrow{font-family:\'Montserrat\',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;}.sec-eyebrow::before{content:\'\';width:28px;height:3px;background:var(--orange);display:inline-block;}.sec-title{font-family:\'Montserrat\',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:900;line-height:1.18;color:var(--black);margin-bottom:1rem;}.sec-title span{color:var(--green);}.sec-desc{font-size:.95rem;color:var(--gray);line-height:1.78;max-width:560px;}.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem;}.proj-card{border-radius:8px;overflow:hidden;border:1px solid var(--border);transition:transform .35s,box-shadow .35s;cursor:pointer;display:flex;flex-direction:column;}.proj-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.14);}.proj-img{height:260px;overflow:hidden;position:relative;}.proj-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}.proj-card:hover .proj-img img{transform:scale(1.06);}.proj-tag{position:absolute;top:1rem;left:1rem;font-family:\'Montserrat\',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.32rem .85rem;color:var(--white);border-radius:2px;}.tag-land{background:var(--green);}.tag-apt{background:var(--orange);}.proj-status{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.7);color:var(--white);font-family:\'Montserrat\',sans-serif;font-size:.65rem;font-weight:700;padding:.28rem .7rem;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;}.proj-body{padding:1.8rem;flex:1;display:flex;flex-direction:column;background:var(--white);}.proj-location{font-family:\'Montserrat\',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.5rem;}.proj-name{font-family:\'Montserrat\',sans-serif;font-size:1.3rem;font-weight:900;color:var(--black);line-height:1.25;margin-bottom:.8rem;}.proj-desc{font-size:.88rem;color:var(--gray);line-height:1.72;margin-bottom:1.5rem;flex:1;}.proj-features{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}.proj-feat{display:inline-flex;align-items:center;gap:.35rem;background:var(--gray-light);padding:.3rem .8rem;font-family:\'Montserrat\',sans-serif;font-size:.72rem;font-weight:600;color:#333;border-radius:20px;}.proj-price-row{display:flex;justify-content:space-between;align-items:center;padding-top:1.2rem;border-top:1px solid var(--border);}.proj-price{font-family:\'Montserrat\',sans-serif;font-size:1.5rem;font-weight:900;color:var(--green);line-height:1;}.proj-price-sub{font-size:.72rem;color:var(--gray);font-weight:600;margin-top:.2rem;}.proj-cta{background:var(--orange);color:var(--white);border:none;padding:.7rem 1.5rem;border-radius:3px;font-family:\'Montserrat\',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;}.proj-cta:hover{background:var(--orange-dark);}.detail-strip{display:grid;grid-template-columns:1fr 1fr;overflow:hidden;min-height:480px;}.detail-strip.reverse{direction:rtl;}.detail-strip.reverse>*{direction:ltr;}.detail-img{overflow:hidden;}.detail-img img{width:100%;height:100%;object-fit:cover;}.detail-content{padding:5rem;display:flex;flex-direction:column;justify-content:center;}.strip-green{background:var(--green);}.strip-green .sec-eyebrow,.strip-green .sec-eyebrow::before{color:var(--orange);background:var(--orange);}.strip-green .sec-title{color:var(--white);}.strip-green .sec-title span{color:var(--orange);}.strip-green .sec-desc{color:rgba(255,255,255,.7);max-width:100%;}.strip-light{background:var(--gray-light);}.strip-dark{background:var(--black);}.strip-dark .sec-eyebrow{color:var(--orange);}.strip-dark .sec-eyebrow::before{background:var(--orange);}.strip-dark .sec-title{color:var(--white);}.strip-dark .sec-title span{color:var(--orange);}.strip-dark .sec-desc{color:rgba(255,255,255,.55);max-width:100%;}.detail-specs{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:2rem 0;}.dspec{padding:1rem 1.2rem;background:rgba(255,255,255,.08);border-left:3px solid var(--orange);}.strip-light .dspec{background:var(--white);}.dspec-val{font-family:\'Montserrat\',sans-serif;font-size:1.1rem;font-weight:900;color:var(--orange);line-height:1;}.dspec-key{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:.25rem;}.strip-green .dspec-key{color:rgba(255,255,255,.6);}.strip-dark .dspec-key{color:rgba(255,255,255,.5);}.strip-light .dspec-key{color:var(--gray);}.detail-btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--orange);color:var(--white);border:none;padding:1rem 2.2rem;font-family:\'Montserrat\',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:3px;width:fit-content;transition:background .2s;margin-top:.5rem;}.detail-btn:hover{background:var(--orange-dark);}.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3rem;}.wc{background:var(--white);padding:2.2rem 1.8rem;border-radius:6px;border-top:4px solid var(--green);transition:transform .25s,box-shadow .25s;}.wc:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(46,125,31,.12);}.wc-icon{font-size:2.2rem;margin-bottom:1rem;}.wc-title{font-family:\'Montserrat\',sans-serif;font-size:.9rem;font-weight:800;color:var(--black);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.03em;}.wc-desc{font-size:.83rem;color:var(--gray);line-height:1.7;}.enquiry-sec{background:var(--green);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}.enquiry-left{padding:5.5rem 5rem;display:flex;flex-direction:column;justify-content:center;}.enquiry-left .sec-eyebrow{color:var(--orange);}.enquiry-left .sec-eyebrow::before{background:var(--orange);}.enquiry-left .sec-title{color:var(--white);}.enquiry-left .sec-title span{color:var(--orange);}.enquiry-left .sec-desc{color:rgba(255,255,255,.65);margin-bottom:2.5rem;max-width:100%;}.contact-items{display:flex;flex-direction:column;gap:1.2rem;}.contact-item{display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,.85);font-size:.92rem;}.contact-item-icon{width:42px;height:42px;background:rgba(255,255,255,.1);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}.contact-item strong{display:block;font-weight:700;font-size:.8rem;color:var(--white);}.contact-item span{font-size:.85rem;color:rgba(255,255,255,.65);}.enquiry-right{background:var(--white);padding:5.5rem 5rem;}.enquiry-right h3{font-family:\'Montserrat\',sans-serif;font-size:1.3rem;font-weight:900;color:var(--black);margin-bottom:.4rem;}.enquiry-right p{font-size:.85rem;color:var(--gray);margin-bottom:2rem;}.form-group{margin-bottom:1.2rem;}.form-group label{display:block;font-family:\'Montserrat\',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;}.form-group input,.form-group select,.form-group textarea{width:100%;padding:.85rem 1.1rem;border:1.5px solid var(--border);border-radius:3px;font-family:\'Open Sans\',sans-serif;font-size:.9rem;color:var(--black);outline:none;transition:border-color .2s;background:var(--white);appearance:none;}.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);}.form-group textarea{resize:vertical;min-height:100px;}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}.form-submit{background:var(--orange);color:var(--white);border:none;width:100%;padding:1rem;font-family:\'Montserrat\',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:3px;transition:background .2s;margin-top:.5rem;}.form-submit:hover{background:var(--orange-dark);}footer{background:var(--black);padding:4.5rem 5rem 2rem;}.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:2rem;}.f-logo-wrap{margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem;}.f-logo-tri{width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid var(--green);}.f-logo-text{font-family:\'Montserrat\',sans-serif;font-size:1.35rem;font-weight:900;}.f-logo-text .ardhi{color:var(--white);}.f-logo-text .soko{color:var(--orange);}.f-tagline{font-size:.62rem;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-top:-2px;}.f-about{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.75;margin-bottom:1.5rem;}.f-socials{display:flex;gap:.5rem;}.fsoc{width:34px;height:34px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.82rem;color:rgba(255,255,255,.4);cursor:pointer;border-radius:3px;transition:all .2s;}.fsoc:hover{background:var(--orange);border-color:var(--orange);color:var(--white);}.f-col h5{font-family:\'Montserrat\',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1.2rem;}.f-links{list-style:none;}.f-links li{margin-bottom:.6rem;}.f-links a{font-size:.83rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}.f-links a:hover{color:var(--white);}.f-contact{list-style:none;}.f-contact li{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.8rem;font-size:.83rem;color:rgba(255,255,255,.35);}.f-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;color:rgba(255,255,255,.2);font-family:\'Montserrat\',sans-serif;font-weight:500;}.wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;background:#25D366;color:var(--white);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;}.wa-btn:hover{transform:scale(1.1);}@media(max-width:1100px){nav,.top-bar,.sec,footer{padding-left:2rem;padding-right:2rem;}.hero-content{padding:3rem 2rem;}.hero{min-height:420px;max-height:520px;}.projects-grid{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto;}.detail-strip{grid-template-columns:1fr;}.detail-strip.reverse{direction:ltr;}.detail-img{height:300px;}.detail-content{padding:3.5rem 2rem;}.why-grid{grid-template-columns:1fr 1fr;}.enquiry-sec{grid-template-columns:1fr;}.enquiry-left,.enquiry-right{padding:3.5rem 2rem;}.f-grid{grid-template-columns:1fr 1fr;gap:2rem;}}@media(max-width:680px){.top-bar{padding:.4rem 1rem;}.top-bar-left{display:none;}nav{padding:.8rem 1rem;}.nav-links{display:none;}.hero-content{padding:2.5rem 1.5rem;}.hero{min-height:380px;max-height:480px;}.sec{padding:3.5rem 1.5rem;}.stats-strip{flex-wrap:wrap;}.ss-block{flex:0 0 50%;}.why-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.f-grid{grid-template-columns:1fr;}footer{padding:3rem 1.5rem 2rem;}}\n</style>\n</head>\n<body>\n';
+html+='<div class="top-bar"><div class="top-bar-left"><a href="tel:'+ph+'">'+ph+'</a><a href="mailto:'+em+'">'+em+'</a></div><span>'+tg+'</span></div>\n';
+html+='<nav><a href="#" class="logo"><div class="logo-triangle"></div><div><div class="logo-text"><span class="ardhi">'+p1+'</span><span class="soko">'+p2+'</span></div><div class="logo-tagline">'+tg+'</div></div></a><ul class="nav-links"><li><a href="#projects">Our Projects</a></li><li><a href="#malindi">Malindi</a></li><li><a href="#konza">Konza</a></li><li><a href="#kamakis">Kamakis</a></li><li><a href="#enquiry" class="nav-cta">Enquire Now</a></li></ul></nav>\n';
+html+='<div class="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-badge"><div class="badge-dot"></div><span>3 Premium Projects &mdash; Across Kenya</span></div><h1 class="hero-title">Own Prime Land.<br>Live <span class="hl">Premium.</span><br>Invest Smart.</h1><p class="hero-sub">'+p1+p2+' brings you three hand-picked property investments &mdash; 1-acre plots in Malindi, 1/8-acre plots near Konza Technopolis, and upcoming apartments in Kamakis, Ruiru.</p><div class="hero-btns"><button class="btn-primary" onclick="document.getElementById(\'projects\').scrollIntoView({behavior:\'smooth\'})">View Our Projects</button><button class="btn-outline" onclick="document.getElementById(\'enquiry\').scrollIntoView({behavior:\'smooth\'})">Enquire Now</button></div></div></div>\n';
+html+='<div class="stats-strip"><div class="ss-block"><div class="ss-num">3</div><div class="ss-lbl">Prime Locations</div></div><div class="ss-block"><div class="ss-num">'+gv('msz')+'</div><div class="ss-lbl">Malindi Plots</div></div><div class="ss-block"><div class="ss-num">'+gv('ksz')+'</div><div class="ss-lbl">Konza Plots</div></div><div class="ss-block"><div class="ss-num">'+gv('kasz')+'</div><div class="ss-lbl">Kamakis Ruiru</div></div><div class="ss-block"><div class="ss-num">&#10003;</div><div class="ss-lbl">Title Deed Ready</div></div></div>\n';
+html+='<section class="sec" style="background:var(--white)" id="projects"><div class="sec-eyebrow">Our Projects</div><h2 class="sec-title">Three locations.<br><span>One trusted developer.</span></h2><p class="sec-desc">Whether you are looking for a coastal retreat, a smart tech-city investment, or a modern apartment &mdash; '+p1+p2+' has the right property for you.</p><div class="projects-grid">';
+html+='<div class="proj-card"><div class="proj-img"><img src="'+gv('mi')+'" alt="'+gv('mn')+'"><span class="proj-tag tag-land">Land for Sale</span><span class="proj-status">'+gv('mst')+'</span></div><div class="proj-body"><div class="proj-location">&#128205; '+gv('ml')+'</div><div class="proj-name">'+gv('mn')+'</div><p class="proj-desc">'+gv('md')+'</p><div class="proj-features">'+mf+'</div><div class="proj-price-row"><div><div class="proj-price">'+gv('mp')+'</div><div class="proj-price-sub">'+gv('mps')+'</div></div><button class="proj-cta" onclick="document.getElementById(\'malindi\').scrollIntoView({behavior:\'smooth\'})">Learn More</button></div></div></div>';
+html+='<div class="proj-card"><div class="proj-img"><img src="'+gv('ki')+'" alt="'+gv('kn')+'"><span class="proj-tag tag-land">Land for Sale</span><span class="proj-status">'+gv('kst')+'</span></div><div class="proj-body"><div class="proj-location">&#128205; '+gv('kl')+'</div><div class="proj-name">'+gv('kn')+'</div><p class="proj-desc">'+gv('kd')+'</p><div class="proj-features">'+kf2+'</div><div class="proj-price-row"><div><div class="proj-price">'+gv('kp')+'</div><div class="proj-price-sub">'+gv('kps')+'</div></div><button class="proj-cta" onclick="document.getElementById(\'konza\').scrollIntoView({behavior:\'smooth\'})">Learn More</button></div></div></div>';
+html+='<div class="proj-card"><div class="proj-img"><img src="'+gv('kai')+'" alt="'+gv('kan')+'"><span class="proj-tag tag-apt">Apartments</span><span class="proj-status">'+gv('kast')+'</span></div><div class="proj-body"><div class="proj-location">&#128205; '+gv('kal')+'</div><div class="proj-name">'+gv('kan')+'</div><p class="proj-desc">'+gv('kad')+'</p><div class="proj-features">'+kaf+'</div><div class="proj-price-row"><div><div class="proj-price">'+gv('kap')+'</div><div class="proj-price-sub">'+gv('kaps')+'</div></div><button class="proj-cta" onclick="document.getElementById(\'kamakis\').scrollIntoView({behavior:\'smooth\'})">Learn More</button></div></div></div>';
+html+='</div></section>\n';
+html+='<div class="detail-strip" id="malindi"><div class="detail-img"><img src="'+gv('mi')+'" alt="'+gv('mn')+'"></div><div class="detail-content strip-green"><div class="sec-eyebrow">Project 01 &mdash; Malindi</div><h2 class="sec-title">'+gv('mn')+'</h2><p class="sec-desc">'+gv('md2')+'</p><div class="detail-specs"><div class="dspec"><div class="dspec-val">'+gv('msz')+'</div><div class="dspec-key">Plot Size</div></div><div class="dspec"><div class="dspec-val">'+gv('mp')+'</div><div class="dspec-key">Price per Plot</div></div><div class="dspec"><div class="dspec-val">Title Deed</div><div class="dspec-key">Ownership</div></div><div class="dspec"><div class="dspec-val">Malindi</div><div class="dspec-key">Nearest Town</div></div></div><button class="detail-btn" onclick="document.getElementById(\'enquiry\').scrollIntoView({behavior:\'smooth\'})">Enquire About Malindi &rarr;</button></div></div>\n';
+html+='<div class="detail-strip reverse" id="konza"><div class="detail-img"><img src="'+gv('ki')+'" alt="'+gv('kn')+'"></div><div class="detail-content strip-light"><div class="sec-eyebrow">Project 02 &mdash; Konza</div><h2 class="sec-title">'+gv('kn')+'</h2><p class="sec-desc" style="color:var(--gray)">'+gv('kd2')+'</p><div class="detail-specs"><div class="dspec"><div class="dspec-val">'+gv('ksz')+'</div><div class="dspec-key">Plot Size</div></div><div class="dspec"><div class="dspec-val">'+gv('kp')+'</div><div class="dspec-key">Price per Plot</div></div><div class="dspec"><div class="dspec-val">Title Deed</div><div class="dspec-key">Ownership</div></div><div class="dspec"><div class="dspec-val">Konza City</div><div class="dspec-key">Nearest Hub</div></div></div><button class="detail-btn" onclick="document.getElementById(\'enquiry\').scrollIntoView({behavior:\'smooth\'})">Enquire About Konza &rarr;</button></div></div>\n';
+html+='<div class="detail-strip" id="kamakis"><div class="detail-img"><img src="'+gv('kai')+'" alt="'+gv('kan')+'"></div><div class="detail-content strip-dark"><div class="sec-eyebrow">Project 03 &mdash; Kamakis</div><h2 class="sec-title">'+gv('kan')+'</h2><p class="sec-desc">'+gv('kad2')+'</p><div class="detail-specs"><div class="dspec"><div class="dspec-val">'+gv('kasz')+'</div><div class="dspec-key">Unit Types</div></div><div class="dspec"><div class="dspec-val">'+gv('kap')+'</div><div class="dspec-key">Off-Plan Price</div></div><div class="dspec"><div class="dspec-val">Coming Soon</div><div class="dspec-key">Status</div></div><div class="dspec"><div class="dspec-val">Ruiru</div><div class="dspec-key">Location</div></div></div><button class="detail-btn" onclick="document.getElementById(\'enquiry\').scrollIntoView({behavior:\'smooth\'})">Register Interest &rarr;</button></div></div>\n';
+html+='<section class="sec" style="background:var(--gray-light)"><div class="sec-eyebrow">Why '+p1+p2+'</div><h2 class="sec-title">Buy with <span>total confidence</span></h2><div class="why-grid"><div class="wc"><div class="wc-icon">&#128220;</div><div class="wc-title">Title Deed Verified</div><p class="wc-desc">Every plot and unit comes with a clean, verified title deed. We handle all legal due diligence so you do not have to.</p></div><div class="wc"><div class="wc-icon">&#128241;</div><div class="wc-title">Flexible Payment Plans</div><p class="wc-desc">Easy instalment plans on all projects. Secure your plot with a deposit and pay the balance over time.</p></div><div class="wc"><div class="wc-icon">&#128641;</div><div class="wc-title">Free Site Visits</div><p class="wc-desc">We will take you to any of our sites at no cost. See the land yourself before you commit.</p></div><div class="wc"><div class="wc-icon">&#128200;</div><div class="wc-title">High Appreciation Areas</div><p class="wc-desc">Malindi, Konza, and Kamakis are among Kenya\'s fastest-appreciating property corridors.</p></div></div></section>\n';
+html+='<div class="enquiry-sec" id="enquiry"><div class="enquiry-left"><div class="sec-eyebrow">Get in Touch</div><h2 class="sec-title">Interested in a <span>project?</span></h2><p class="sec-desc">Fill in the form and one of our agents will get back to you within 24 hours.</p><div class="contact-items"><div class="contact-item"><div class="contact-item-icon">&#128222;</div><div><strong>Call / WhatsApp</strong><span>'+ph+'</span></div></div><div class="contact-item"><div class="contact-item-icon">&#9993;&#65039;</div><div><strong>Email Us</strong><span>'+em+'</span></div></div><div class="contact-item"><div class="contact-item-icon">&#128205;</div><div><strong>Office</strong><span>'+ad+'</span></div></div></div></div><div class="enquiry-right"><h3>Send Us an Enquiry</h3><p>We will respond within 24 hours.</p><div class="form-row"><div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div><div class="form-group"><label>Last Name</label><input type="text" placeholder="Kamau"></div></div><div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+254 7XX XXX XXX"></div><div class="form-group"><label>Email</label><input type="email" placeholder="john@email.com"></div><div class="form-group"><label>Which Project?</label><select><option value="">Select a project...</option><option>'+gv('mn')+' ('+gv('msz')+' &mdash; '+gv('mp')+')</option><option>'+gv('kn')+' ('+gv('ksz')+' &mdash; '+gv('kp')+')</option><option>'+gv('kan')+' ('+gv('kasz')+' &mdash; '+gv('kap')+')</option><option>All projects</option></select></div><div class="form-group"><label>Message</label><textarea placeholder="Tell us more about what you are looking for..."></textarea></div><button class="form-submit" onclick="this.textContent=\'Sent! We will be in touch.\';this.style.background=\'#43A047\';this.disabled=true">Send Enquiry &rarr;</button></div></div>\n';
+html+='<footer><div class="f-grid"><div><div class="f-logo-wrap"><div class="f-logo-tri"></div><div><div class="f-logo-text"><span class="ardhi">'+p1+'</span><span class="soko">'+p2+'</span></div><div class="f-tagline">'+tg+'</div></div></div><p class="f-about">'+p1+p2+' is a Kenyan property developer offering premium land and residential investments in Malindi, Konza, and Kamakis Ruiru. Every project is title-deed verified and backed by flexible payment plans.</p><div class="f-socials"><div class="fsoc">X</div><div class="fsoc">f</div><div class="fsoc">in</div><div class="fsoc">&#9654;</div><div class="fsoc">&#128247;</div></div></div><div class="f-col"><h5>Our Projects</h5><ul class="f-links"><li><a href="#malindi">'+gv('mn')+'</a></li><li><a href="#konza">'+gv('kn')+'</a></li><li><a href="#kamakis">'+gv('kan')+'</a></li></ul></div><div class="f-col"><h5>Company</h5><ul class="f-links"><li><a href="#">About '+p1+p2+'</a></li><li><a href="#">Payment Plans</a></li><li><a href="#">Site Visits</a></li><li><a href="#enquiry">Contact</a></li></ul></div><div class="f-col"><h5>Contact</h5><ul class="f-contact"><li>&#128205; '+ad+'</li><li>&#128222; '+ph+'</li><li>&#9993;&#65039; '+em+'</li><li>&#128172; WhatsApp us</li></ul></div></div><div class="f-bottom"><span>&copy; 2025 '+p1+p2+' Ltd. All rights reserved.</span><span>Privacy &middot; Terms</span></div></footer>\n';
+html+='<a href="https://wa.me/'+wa+'?text=Hi%20'+p1+p2+'%2C%20I%27m%20interested%20in%20your%20properties." class="wa-btn" target="_blank">&#128172;</a>\n</body>\n</html>';
+var blob=new Blob([html],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();toast('index.html downloaded!','ok');
+}
+ul();
+</script>
+</body>
+</html>
