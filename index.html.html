@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArdhiSoko — Premium Living, Smart Investing</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F5921E;
+    --orange-dark: #D97A10;
+    --orange-light: #FFF3E0;
+    --green: #2E7D1F;
+    --green-dark: #1E5A12;
+    --green-light: #E8F5E4;
+    --black: #1A1A1A;
+    --gray-dark: #333333;
+    --gray: #666666;
+    --gray-light: #F5F5F5;
+    --border: #E0E0E0;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── LANG BAR ── */
+  .lang-bar {
+    background: var(--green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.45rem 5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.85);
+  }
+  .lang-bar-left { display: flex; gap: 1.5rem; align-items: center; }
+  .lang-bar-left span { display: flex; align-items: center; gap: 0.4rem; }
+  .lang-btns { display: flex; gap: 0.4rem; }
+  .lang-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.75);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.08em; padding: 0.2rem 0.75rem;
+    cursor: pointer; transition: all 0.2s;
+    border-radius: 2px;
+  }
+  .lang-btn.active { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+  /* Bilingual */
+  [data-sw] { display: none; }
+  body.sw [data-en] { display: none; }
+  body.sw [data-sw] { display: block; }
+  body.sw span[data-sw] { display: inline; }
+  body.sw span[data-en] { display: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    background: var(--white);
+    border-bottom: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.9rem 5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+
+  /* LOGO */
+  .logo { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; }
+  .logo-triangle {
+    width: 0; height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 22px solid var(--green);
+    flex-shrink: 0;
+  }
+  .logo-words { line-height: 1; }
+  .logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.55rem; font-weight: 800;
+    letter-spacing: -0.02em; line-height: 1;
+  }
+  .logo-text .ardhi { color: var(--black); }
+  .logo-text .soko  { color: var(--orange); }
+  .logo-tagline {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.62rem; color: var(--gray);
+    letter-spacing: 0.04em; margin-top: 2px;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--gray-dark); text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+
+  .nav-cta {
+    background: var(--orange) !important;
+    color: var(--white) !important;
+    padding: 0.6rem 1.5rem;
+    border-radius: 3px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--orange-dark) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--gray-light);
+    padding: 5rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 88vh;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .hero-left { position: relative; z-index: 2; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--orange-light);
+    border-left: 3px solid var(--orange);
+    padding: 0.45rem 1rem;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.6s ease 0.1s both;
+  }
+  .hero-badge span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange);
+  }
+  .badge-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--orange);
+    animation: blink 2s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease 0.2s both;
+  }
+  .hero-title .hl-orange { color: var(--orange); }
+  .hero-title .hl-green  { color: var(--green); }
+
+  .hero-sub {
+    font-size: 1rem; color: var(--gray);
+    line-height: 1.75; max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s ease 0.35s both;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    border: none; padding: 0.9rem 2.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+    border-radius: 3px;
+  }
+  .btn-primary:hover { background: var(--orange-dark); }
+
+  .btn-outline {
+    background: transparent; color: var(--green);
+    border: 2px solid var(--green);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s;
+    border-radius: 3px;
+  }
+  .btn-outline:hover { background: var(--green); color: var(--white); }
+
+  .hero-stats {
+    display: flex; gap: 2.5rem; margin-top: 3rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+    animation: fadeUp 0.6s ease 0.65s both;
+  }
+  .hstat-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--orange); line-height: 1;
+  }
+  .hstat-lbl {
+    font-size: 0.75rem; color: var(--gray);
+    font-weight: 600; margin-top: 0.2rem;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* HERO RIGHT */
+  .hero-right {
+    position: relative; z-index: 2;
+    animation: fadeIn 0.8s ease 0.3s both;
+  }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+  .hero-img-stack { position: relative; }
+  .hero-img-main {
+    width: 100%; border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+  .hero-img-main img { width: 100%; height: 360px; object-fit: cover; display: block; }
+
+  .hero-img-inset {
+    position: absolute;
+    bottom: -1.5rem; left: -1.5rem;
+    width: 48%; border-radius: 4px;
+    overflow: hidden;
+    border: 4px solid var(--white);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  }
+  .hero-img-inset img { width: 100%; height: 140px; object-fit: cover; display: block; }
+
+  .hero-floating-card {
+    position: absolute;
+    top: -1.5rem; right: -1.5rem;
+    background: var(--orange);
+    color: var(--white);
+    padding: 1.2rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(245,146,30,0.4);
+  }
+  .hfc-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem; font-weight: 900; line-height: 1;
+  }
+  .hfc-lbl { font-size: 0.72rem; font-weight: 600; opacity: 0.9; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SEARCH BAR (below hero) ── */
+  .search-bar-wrap {
+    background: var(--white);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    position: relative; z-index: 10;
+  }
+
+  .search-tabs-row {
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    padding: 0 5rem;
+  }
+  .s-tab {
+    padding: 1rem 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; border: none; background: none;
+    color: var(--gray); border-bottom: 3px solid transparent;
+    margin-bottom: -1px; transition: all 0.2s;
+  }
+  .s-tab.active { color: var(--green); border-bottom-color: var(--green); }
+  .s-tab:hover:not(.active) { color: var(--orange); }
+
+  .search-fields-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr auto;
+    gap: 0;
+    padding: 0 5rem;
+    border-bottom: none;
+  }
+
+  .sf {
+    padding: 1.2rem 1.4rem;
+    border-right: 1px solid var(--border);
+  }
+  .sf:last-child { border-right: none; padding-right: 1.4rem; display: flex; align-items: flex-end; }
+
+  .sf label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 0.45rem;
+  }
+
+  .sf select, .sf input {
+    width: 100%;
+    border: none; background: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.92rem; color: var(--black);
+    outline: none; cursor: pointer;
+    appearance: none;
+  }
+  .sf select:focus { color: var(--green); }
+
+  .search-go-btn {
+    background: var(--green); color: var(--white);
+    border: none; padding: 0.85rem 2.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+    border-radius: 3px; white-space: nowrap;
+    width: 100%;
+  }
+  .search-go-btn:hover { background: var(--green-dark); }
+
+  .filter-chips-row {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    padding: 0.8rem 5rem 1rem;
+    border-top: 1px solid var(--border);
+    background: var(--gray-light);
+  }
+  .fchip {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.3rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; font-weight: 600;
+    color: var(--gray-dark); cursor: pointer;
+    background: var(--white); transition: all 0.2s;
+  }
+  .fchip.on, .fchip:hover {
+    background: var(--green); color: var(--white); border-color: var(--green);
+  }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--green);
+    display: flex;
+  }
+  .ss-block {
+    flex: 1; text-align: center;
+    padding: 1.6rem 1rem;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .ss-block:last-child { border-right: none; }
+  .ss-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem; font-weight: 900;
+    color: var(--white); line-height: 1;
+  }
+  .ss-lbl {
+    font-size: 0.7rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); margin-top: 0.3rem;
+  }
+
+  /* ── SECTION ── */
+  .sec { padding: 5rem 5rem; }
+
+  .sec-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .sec-eyebrow::before {
+    content: '';
+    width: 28px; height: 3px;
+    background: var(--orange);
+    display: inline-block;
+  }
+
+  .sec-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.7rem, 2.8vw, 2.5rem);
+    font-weight: 900; line-height: 1.2;
+    color: var(--black); margin-bottom: 0.8rem;
+  }
+  .sec-title span { color: var(--green); }
+
+  .sec-desc {
+    font-size: 0.93rem; color: var(--gray);
+    line-height: 1.75; max-width: 480px;
+  }
+
+  /* ── CATEGORIES ── */
+  .cats-sec { background: var(--gray-light); }
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.2rem; margin-top: 3rem;
+  }
+  .cat-card {
+    background: var(--white);
+    padding: 2.2rem 1.4rem;
+    text-align: center; cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .cat-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 4px; background: var(--orange);
+    transform: scaleX(0); transition: transform 0.3s;
+  }
+  .cat-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(245,146,30,0.15);
+  }
+  .cat-card:hover::after { transform: scaleX(1); }
+  .cat-icon { font-size: 2.4rem; margin-bottom: 0.9rem; display: block; }
+  .cat-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem; font-weight: 800;
+    color: var(--black); margin-bottom: 0.3rem;
+    text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .cat-sw { font-size: 0.7rem; color: var(--orange); font-style: italic; margin-bottom: 0.5rem; }
+  .cat-ct { font-size: 0.75rem; color: var(--gray); font-weight: 600; }
+
+  /* ── LISTINGS ── */
+  .listings-sec { background: var(--white); }
+  .listings-top {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 2rem;
+  }
+  .view-all {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--green); text-decoration: none;
+    border-bottom: 2px solid var(--green);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .view-all:hover { color: var(--orange); border-color: var(--orange); }
+
+  .toolbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.8rem 1.2rem;
+    background: var(--gray-light);
+    margin-bottom: 1.5rem;
+  }
+  .result-ct {
+    font-size: 0.85rem; color: var(--gray);
+    font-family: 'Montserrat', sans-serif;
+  }
+  .result-ct strong { color: var(--black); font-size: 1rem; }
+
+  .toolbar-r { display: flex; align-items: center; gap: 0.8rem; }
+  .sort-sel {
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--black); outline: none; cursor: pointer;
+    border-radius: 3px;
+  }
+  .vtog { display: flex; }
+  .vbtn {
+    width: 34px; height: 34px;
+    border: 1px solid var(--border);
+    background: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 0.9rem; color: var(--gray);
+    transition: all 0.2s;
+  }
+  .vbtn:first-child { border-radius: 3px 0 0 3px; }
+  .vbtn:last-child  { border-radius: 0 3px 3px 0; border-left: none; }
+  .vbtn.on { background: var(--green); border-color: var(--green); color: var(--white); }
+
+  .plots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-bottom: 3rem;
+  }
+
+  /* PLOT CARD */
+  .pc {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden; cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .pc:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+  }
+  .pc-img { height: 210px; overflow: hidden; position: relative; }
+  .pc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+  .pc:hover .pc-img img { transform: scale(1.05); }
+
+  .pc-badge {
+    position: absolute; top: 0.9rem; left: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 800;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.75rem; color: var(--white);
+    border-radius: 2px;
+  }
+  .badge-orange { background: var(--orange); }
+  .badge-green  { background: var(--green); }
+  .badge-red    { background: #E53935; }
+  .badge-gray   { background: #666; }
+
+  .pc-save {
+    position: absolute; top: 0.9rem; right: 0.9rem;
+    background: rgba(255,255,255,0.93);
+    border: none; width: 34px; height: 34px;
+    border-radius: 50%; font-size: 1rem;
+    cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+  }
+  .pc-save:hover { transform: scale(1.15); }
+
+  .pc-map {
+    position: absolute; bottom: 0.9rem; right: 0.9rem;
+    background: rgba(0,0,0,0.65); color: var(--white);
+    border: none; padding: 0.3rem 0.65rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 0.06em; cursor: pointer;
+    border-radius: 2px; transition: background 0.2s;
+  }
+  .pc-map:hover { background: var(--orange); }
+
+  .pc-body { padding: 1.4rem; }
+  .pc-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+
+  .pc-type {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange);
+  }
+  .pc-tenure {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem; font-weight: 700;
+    background: var(--green-light); color: var(--green);
+    padding: 0.2rem 0.6rem; border-radius: 2px;
+  }
+
+  .pc-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem; font-weight: 800;
+    color: var(--black); margin-bottom: 0.35rem; line-height: 1.35;
+  }
+  .pc-loc {
+    font-size: 0.8rem; color: var(--gray);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.25rem;
+  }
+
+  .pc-specs {
+    display: flex;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .spec {
+    flex: 1; padding: 0.6rem 0.3rem;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .spec:last-child { border-right: none; }
+  .sv {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    color: var(--black); display: block;
+  }
+  .sk {
+    font-size: 0.61rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gray); margin-top: 0.12rem; display: block;
+  }
+
+  .pc-footer { display: flex; justify-content: space-between; align-items: center; }
+  .pc-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem; font-weight: 900;
+    color: var(--green); line-height: 1;
+  }
+  .pc-per { font-size: 0.7rem; color: var(--gray); font-weight: 600; margin-top: 0.18rem; }
+
+  .pc-cta {
+    background: var(--orange); color: var(--white); border: none;
+    padding: 0.6rem 1.2rem; border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .pc-cta:hover { background: var(--orange-dark); }
+
+  .load-wrap { text-align: center; }
+  .load-btn {
+    background: none; border: 2px solid var(--green);
+    color: var(--green); padding: 0.9rem 2.8rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s; border-radius: 3px;
+  }
+  .load-btn:hover { background: var(--green); color: var(--white); }
+
+  /* ── MAP CTA ── */
+  .map-sec {
+    display: grid; grid-template-columns: 1fr 1fr;
+    overflow: hidden; min-height: 380px;
+  }
+  .map-left {
+    background: var(--green);
+    padding: 4.5rem 5rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .map-left .sec-eyebrow::before { background: var(--orange); }
+  .map-left .sec-eyebrow { color: var(--orange); }
+  .map-left .sec-title { color: var(--white); }
+  .map-left .sec-title span { color: var(--orange); }
+  .map-left .sec-desc { color: rgba(255,255,255,0.7); max-width: 380px; margin-bottom: 2rem; }
+  .map-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--orange); color: var(--white);
+    padding: 0.95rem 2.2rem; border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; border-radius: 3px; width: fit-content;
+    transition: background 0.2s;
+  }
+  .map-btn:hover { background: var(--orange-dark); }
+  .map-right { position: relative; overflow: hidden; }
+  .map-right img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; }
+  .map-pins { position: absolute; inset: 0; }
+  .pin {
+    position: absolute;
+    display: flex; flex-direction: column; align-items: center;
+    cursor: pointer; animation: popIn 0.4s ease both;
+  }
+  .pin-lbl {
+    background: var(--orange); color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem; font-weight: 700;
+    padding: 0.22rem 0.55rem; white-space: nowrap;
+    border-radius: 2px; margin-bottom: 3px;
+  }
+  .pin-dot {
+    width: 9px; height: 9px;
+    background: var(--white); border-radius: 50%;
+    border: 2px solid var(--orange);
+  }
+  @keyframes popIn {
+    0%{opacity:0;transform:scale(0) translateY(8px)}
+    80%{transform:scale(1.1)}
+    100%{opacity:1;transform:scale(1) translateY(0)}
+  }
+
+  /* ── TRUST ── */
+  .trust-sec { background: var(--gray-light); }
+  .trust-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .tc {
+    background: var(--white);
+    padding: 2.2rem 1.8rem;
+    border-radius: 6px;
+    border-top: 4px solid var(--green);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .tc:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(46,125,31,0.12);
+  }
+  .tc-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .tc-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem; font-weight: 800;
+    color: var(--black); margin-bottom: 0.6rem;
+    text-transform: uppercase; letter-spacing: 0.03em;
+  }
+  .tc-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.7; }
+
+  /* ── POPULAR ── */
+  .popular-sec { background: var(--white); padding: 3rem 5rem; }
+  .pop-head {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gray); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .pop-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .pop-tag {
+    background: var(--gray-light); border: 1px solid var(--border);
+    padding: 0.4rem 1rem; border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    color: var(--gray-dark); cursor: pointer;
+    transition: all 0.2s;
+  }
+  .pop-tag:hover { background: var(--orange); color: var(--white); border-color: var(--orange); }
+  .pop-tag em { color: var(--orange); font-style: normal; margin-right: 0.25rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 4.5rem 5rem 2rem;
+  }
+  .f-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: 3rem; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+  .f-logo-wrap { margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
+  .f-logo-tri {
+    width: 0; height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid var(--green);
+  }
+  .f-logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem; font-weight: 900;
+  }
+  .f-logo-text .ardhi { color: var(--white); }
+  .f-logo-text .soko  { color: var(--orange); }
+  .f-tagline { font-size: 0.65rem; color: rgba(255,255,255,0.35); letter-spacing: 0.08em; margin-top: -2px; }
+
+  .f-about { font-size: 0.82rem; color: rgba(255,255,255,0.35); line-height: 1.75; margin-bottom: 1.5rem; }
+  .f-socials { display: flex; gap: 0.5rem; }
+  .fsoc {
+    width: 34px; height: 34px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82rem; color: rgba(255,255,255,0.4);
+    cursor: pointer; border-radius: 3px; transition: all 0.2s;
+  }
+  .fsoc:hover { background: var(--orange); border-color: var(--orange); color: var(--white); }
+
+  .f-col h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.68rem; font-weight: 800;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--orange); margin-bottom: 1.2rem;
+  }
+  .f-links { list-style: none; }
+  .f-links li { margin-bottom: 0.6rem; }
+  .f-links a {
+    font-size: 0.83rem; color: rgba(255,255,255,0.35);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .f-links a:hover { color: var(--white); }
+
+  .f-contact { list-style: none; }
+  .f-contact li {
+    display: flex; align-items: flex-start; gap: 0.65rem;
+    margin-bottom: 0.8rem; font-size: 0.82rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .f-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.74rem; color: rgba(255,255,255,0.2);
+    font-family: 'Montserrat', sans-serif; font-weight: 500;
+  }
+
+  /* SCROLL TOP */
+  #scrollTop {
+    position: fixed; bottom: 1.5rem; right: 1.5rem;
+    width: 44px; height: 44px;
+    background: var(--orange); color: var(--white);
+    border: none; border-radius: 3px; font-size: 1.1rem;
+    cursor: pointer; opacity: 0; z-index: 99;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 16px rgba(245,146,30,0.4);
+    transition: opacity 0.3s, background 0.2s;
+  }
+  #scrollTop.vis { opacity: 1; }
+  #scrollTop:hover { background: var(--orange-dark); }
+
+  /* RESPONSIVE */
+  @media(max-width:1100px) {
+    nav, .lang-bar, .search-fields-row, .search-tabs-row, .filter-chips-row,
+    .sec, .popular-sec, footer { padding-left: 2rem; padding-right: 2rem; }
+    .hero { padding: 4rem 2rem; grid-template-columns: 1fr; min-height: auto; }
+    .hero::before { display: none; }
+    .hero-right { display: none; }
+    .plots-grid { grid-template-columns: 1fr 1fr; }
+    .cats-grid { grid-template-columns: repeat(3,1fr); }
+    .trust-grid { grid-template-columns: 1fr 1fr; }
+    .map-sec { grid-template-columns: 1fr; }
+    .map-right { height: 260px; }
+    .f-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .search-fields-row { grid-template-columns: 1fr 1fr; }
+  }
+  @media(max-width:680px) {
+    .lang-bar { padding: 0.4rem 1rem; }
+    .lang-bar-left { display: none; }
+    nav { padding: 0.8rem 1rem; }
+    .nav-links { display: none; }
+    .hero { padding: 3.5rem 1.5rem 2.5rem; }
+    .search-fields-row { grid-template-columns: 1fr; }
+    .plots-grid { grid-template-columns: 1fr; }
+    .cats-grid { grid-template-columns: 1fr 1fr; }
+    .stats-strip { flex-wrap: wrap; }
+    .ss-block { flex: 0 0 50%; }
+    .trust-grid { grid-template-columns: 1fr; }
+    .map-left { padding: 3rem 1.5rem; }
+    .f-grid { grid-template-columns: 1fr; }
+    .sec, .popular-sec, footer { padding: 3rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <div class="lang-bar-left">
+    <span>📞 +254 700 ARDHI (27344)</span>
+    <span>✉️ hello@ardhisoko.co.ke</span>
+  </div>
+  <div class="lang-btns">
+    <button class="lang-btn active" onclick="setLang('en',this)">EN</button>
+    <button class="lang-btn" onclick="setLang('sw',this)">SW</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-triangle"></div>
+    <div class="logo-words">
+      <div class="logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div>
+      <div class="logo-tagline">Premium Living, Smart Investing</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#listings" data-en>Browse Plots</a><a href="#listings" data-sw>Tafuta Viwanja</a></li>
+    <li><a href="#categories" data-en>Categories</a><a href="#categories" data-sw>Kategoria</a></li>
+    <li><a href="#trust" data-en>Why Us</a><a href="#trust" data-sw>Kwa Nini Sisi</a></li>
+    <li><a href="#" data-en>Agents</a><a href="#" data-sw>Madalali</a></li>
+    <li><a href="#" class="nav-cta" data-en>List Your Land</a><a href="#" class="nav-cta" data-sw>Weka Ardhi Yako</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      <span data-en>Kenya's #1 Land & Plots Platform</span>
+      <span data-sw>Jukwaa Namba 1 la Ardhi Kenya</span>
+    </div>
+
+    <h1 class="hero-title">
+      <span data-en>Find Land.<br><span class="hl-orange">Own</span> Your<br><span class="hl-green">Future.</span></span>
+      <span data-sw>Pata Ardhi.<br><span class="hl-orange">Miliki</span> Kesho<br><span class="hl-green">Yako.</span></span>
+    </h1>
+
+    <p class="hero-sub" data-en>Browse thousands of verified plots, farms, and parcels across all 47 counties — with clear title deeds, fair prices, and EARB-licensed agents.</p>
+    <p class="hero-sub" data-sw>Tafuta viwanja, mashamba na ardhi zilizothibitishwa katika kaunti zote 47 — hati za umiliki wazi, bei za haki, na madalali wenye leseni ya EARB.</p>
+
+    <div class="hero-btns">
+      <button class="btn-primary" data-en>🔍 Search Plots</button>
+      <button class="btn-primary" data-sw>🔍 Tafuta Viwanja</button>
+      <button class="btn-outline" data-en>List Your Land</button>
+      <button class="btn-outline" data-sw>Weka Ardhi Yako</button>
+    </div>
+
+    <div class="hero-stats">
+      <div>
+        <div class="hstat-num">9,400+</div>
+        <div class="hstat-lbl" data-en>Verified Plots</div>
+        <div class="hstat-lbl" data-sw>Viwanja Vilivyothibitishwa</div>
+      </div>
+      <div>
+        <div class="hstat-num">47</div>
+        <div class="hstat-lbl" data-en>Counties</div>
+        <div class="hstat-lbl" data-sw>Kaunti</div>
+      </div>
+      <div>
+        <div class="hstat-num">99.2%</div>
+        <div class="hstat-lbl" data-en>Title Deed Verified</div>
+        <div class="hstat-lbl" data-sw>Hati Zilizothibitishwa</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-stack">
+      <div class="hero-img-main">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80" alt="Kenyan land">
+      </div>
+      <div class="hero-img-inset">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" alt="Plot">
+      </div>
+      <div class="hero-floating-card">
+        <div class="hfc-num">KES 2.1B</div>
+        <div class="hfc-lbl" data-en>Land Sold 2024</div>
+        <div class="hfc-lbl" data-sw>Ardhi Iliyouzwa 2024</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH BAR -->
+<div class="search-bar-wrap">
+  <div class="search-tabs-row">
+    <button class="s-tab active" onclick="setTab(this)" data-en>Buy Land</button>
+    <button class="s-tab active" onclick="setTab(this)" data-sw>Nunua Ardhi</button>
+    <button class="s-tab" onclick="setTab(this)" data-en>Lease Land</button>
+    <button class="s-tab" onclick="setTab(this)" data-sw>Panga Ardhi</button>
+    <button class="s-tab" onclick="setTab(this)" data-en>Search by Map</button>
+    <button class="s-tab" onclick="setTab(this)" data-sw>Tafuta kwa Ramani</button>
+  </div>
+  <div class="search-fields-row">
+    <div class="sf">
+      <label data-en>County / Location</label>
+      <label data-sw>Kaunti / Mahali</label>
+      <select>
+        <option data-en>All Counties</option><option data-sw>Kaunti Zote</option>
+        <option>Nairobi</option><option>Kiambu</option><option>Machakos</option>
+        <option>Kajiado</option><option>Nakuru</option><option>Mombasa</option>
+        <option>Kilifi</option><option>Kisumu</option><option>Laikipia / Nanyuki</option>
+      </select>
+    </div>
+    <div class="sf">
+      <label data-en>Plot Size</label><label data-sw>Ukubwa</label>
+      <select>
+        <option data-en>Any Size</option><option data-sw>Ukubwa Wowote</option>
+        <option data-en>Under 1/8 Acre</option>
+        <option>1/8 – 1/2 Acre</option><option>1/2 – 2 Acres</option>
+        <option>2 – 10 Acres</option>
+        <option data-en>10+ Acres / Farm</option>
+      </select>
+    </div>
+    <div class="sf">
+      <label data-en>Max Budget (KES)</label><label data-sw>Bajeti ya Juu</label>
+      <select>
+        <option data-en>Any Budget</option><option data-sw>Bajeti Yoyote</option>
+        <option>Under 500K</option><option>500K – 2M</option>
+        <option>2M – 8M</option><option>8M – 25M</option><option>25M+</option>
+      </select>
+    </div>
+    <div class="sf">
+      <label data-en>Title Deed</label><label data-sw>Hati ya Umiliki</label>
+      <select>
+        <option data-en>Any</option><option data-sw>Yoyote</option>
+        <option data-en>Freehold</option><option data-sw>Hati Kamili</option>
+        <option data-en>Leasehold</option><option data-sw>Upangaji</option>
+        <option>CCO</option>
+      </select>
+    </div>
+    <div class="sf">
+      <button class="search-go-btn" data-en>🔍 Search</button>
+      <button class="search-go-btn" data-sw>🔍 Tafuta</button>
+    </div>
+  </div>
+  <div class="filter-chips-row">
+    <button class="fchip on" data-en>🌾 Agricultural</button>
+    <button class="fchip on" data-sw>🌾 Kilimo</button>
+    <button class="fchip" data-en>🏘 Residential</button>
+    <button class="fchip" data-sw>🏘 Makazi</button>
+    <button class="fchip" data-en>🏭 Commercial</button>
+    <button class="fchip" data-sw>🏭 Biashara</button>
+    <button class="fchip" data-en>🏖 Coastal</button>
+    <button class="fchip" data-sw>🏖 Pwani</button>
+    <button class="fchip" data-en>⛰ Upcountry</button>
+    <button class="fchip" data-sw>⛰ Mashambani</button>
+    <button class="fchip" data-en>✅ Title Deed Ready</button>
+    <button class="fchip" data-sw>✅ Hati Tayari</button>
+  </div>
+</div>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="ss-block"><div class="ss-num">9,400+</div><div class="ss-lbl" data-en>Verified Plots</div><div class="ss-lbl" data-sw>Viwanja Vilivyothibitishwa</div></div>
+  <div class="ss-block"><div class="ss-num">47</div><div class="ss-lbl" data-en>Counties Covered</div><div class="ss-lbl" data-sw>Kaunti Zinazohudumika</div></div>
+  <div class="ss-block"><div class="ss-num">620+</div><div class="ss-lbl" data-en>Licensed Agents</div><div class="ss-lbl" data-sw>Madalali Walioidhinishwa</div></div>
+  <div class="ss-block"><div class="ss-num">KES 2.1B</div><div class="ss-lbl" data-en>Land Sold in 2024</div><div class="ss-lbl" data-sw>Ardhi Iliyouzwa 2024</div></div>
+  <div class="ss-block"><div class="ss-num">99.2%</div><div class="ss-lbl" data-en>Title Deed Verified</div><div class="ss-lbl" data-sw>Hati Zilizothibitishwa</div></div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="sec cats-sec" id="categories">
+  <div class="sec-eyebrow" data-en>Browse by Category</div>
+  <div class="sec-eyebrow" data-sw>Tafuta kwa Kategoria</div>
+  <h2 class="sec-title" data-en>What kind of land are you <span>looking for?</span></h2>
+  <h2 class="sec-title" data-sw>Unatafuta ardhi ya <span>aina gani?</span></h2>
+
+  <div class="cats-grid">
+    <div class="cat-card"><span class="cat-icon">🌾</span><div class="cat-name" data-en>Farmland</div><div class="cat-name" data-sw>Shamba</div><div class="cat-sw">Ardhi ya Kilimo</div><div class="cat-ct" data-en>3,240 listings</div><div class="cat-ct" data-sw>Orodha 3,240</div></div>
+    <div class="cat-card"><span class="cat-icon">🏘</span><div class="cat-name" data-en>Residential Plot</div><div class="cat-name" data-sw>Kiwanja cha Nyumba</div><div class="cat-sw">Ardhi ya Makazi</div><div class="cat-ct" data-en>2,810 listings</div><div class="cat-ct" data-sw>Orodha 2,810</div></div>
+    <div class="cat-card"><span class="cat-icon">🏭</span><div class="cat-name" data-en>Commercial Land</div><div class="cat-name" data-sw>Ardhi ya Biashara</div><div class="cat-sw">Biashara / Viwanda</div><div class="cat-ct" data-en>1,050 listings</div><div class="cat-ct" data-sw>Orodha 1,050</div></div>
+    <div class="cat-card"><span class="cat-icon">🏖</span><div class="cat-name" data-en>Beach / Coastal</div><div class="cat-name" data-sw>Kiwanja cha Pwani</div><div class="cat-sw">Pwani ya Kenya</div><div class="cat-ct" data-en>480 listings</div><div class="cat-ct" data-sw>Orodha 480</div></div>
+    <div class="cat-card"><span class="cat-icon">⛰</span><div class="cat-name" data-en>Upcountry Parcel</div><div class="cat-name" data-sw>Ardhi ya Mashambani</div><div class="cat-sw">Ndani ya Nchi</div><div class="cat-ct" data-en>1,820 listings</div><div class="cat-ct" data-sw>Orodha 1,820</div></div>
+  </div>
+</section>
+
+<!-- LISTINGS -->
+<section class="sec listings-sec" id="listings">
+  <div class="listings-top">
+    <div>
+      <div class="sec-eyebrow" data-en>Featured Listings</div>
+      <div class="sec-eyebrow" data-sw>Orodha Zilizochaguliwa</div>
+      <h2 class="sec-title" data-en>Verified plots <span>available now</span></h2>
+      <h2 class="sec-title" data-sw>Viwanja vilivyothibitishwa <span>vinapatikana sasa</span></h2>
+    </div>
+    <a href="#" class="view-all" data-en>View All Listings →</a>
+    <a href="#" class="view-all" data-sw>Ona Orodha Zote →</a>
+  </div>
+
+  <div class="toolbar">
+    <div class="result-ct"><strong>9,412</strong> <span data-en>plots found across Kenya</span><span data-sw>viwanja vinapatikana Kenya nzima</span></div>
+    <div class="toolbar-r">
+      <select class="sort-sel">
+        <option data-en>Newest First</option><option data-sw>Mpya Kwanza</option>
+        <option data-en>Price: Low → High</option>
+        <option data-en>Price: High → Low</option>
+        <option data-en>Largest First</option>
+      </select>
+      <div class="vtog">
+        <button class="vbtn on">⊞</button>
+        <button class="vbtn">≡</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="plots-grid">
+
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Farmland">
+        <span class="pc-badge badge-orange" data-en>Featured</span><span class="pc-badge badge-orange" data-sw>Iliyochaguliwa</span>
+        <button class="pc-save">🤍</button>
+        <button class="pc-map" data-en>📍 Map</button><button class="pc-map" data-sw>📍 Ramani</button>
+      </div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type" data-en>Farmland</span><span class="pc-type" data-sw>Shamba</span><span class="pc-tenure" data-en>Freehold</span><span class="pc-tenure" data-sw>Hati Kamili</span></div>
+        <div class="pc-name">Ol Kalou Agricultural Acres</div>
+        <div class="pc-loc">📍 Ol Kalou, Nyandarua County</div>
+        <div class="pc-specs">
+          <div class="spec"><span class="sv">12</span><span class="sk" data-en>Acres</span><span class="sk" data-sw>Ekari</span></div>
+          <div class="spec"><span class="sv">✅</span><span class="sk" data-en>Title</span><span class="sk" data-sw>Hati</span></div>
+          <div class="spec"><span class="sv">💧</span><span class="sk" data-en>Water</span><span class="sk" data-sw>Maji</span></div>
+          <div class="spec"><span class="sv">🚗</span><span class="sk" data-en>Road</span><span class="sk" data-sw>Barabara</span></div>
+        </div>
+        <div class="pc-footer">
+          <div><div class="pc-price">KES 9.6M</div><div class="pc-per" data-en>KES 800K / acre</div><div class="pc-per" data-sw>KES 800K / ekari</div></div>
+          <button class="pc-cta" data-en>View Plot</button><button class="pc-cta" data-sw>Ona Kiwanja</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1504615755583-2916b52192a3?w=600&q=80" alt="Residential">
+        <span class="pc-badge badge-green" data-en>New</span><span class="pc-badge badge-green" data-sw>Mpya</span>
+        <button class="pc-save">🤍</button>
+        <button class="pc-map" data-en>📍 Map</button><button class="pc-map" data-sw>📍 Ramani</button>
+      </div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type" data-en>Residential</span><span class="pc-type" data-sw>Makazi</span><span class="pc-tenure" data-en>Freehold</span><span class="pc-tenure" data-sw>Hati Kamili</span></div>
+        <div class="pc-name">Syokimau Garden Estate Plot</div>
+        <div class="pc-loc">📍 Syokimau, Machakos County</div>
+        <div class="pc-specs">
+          <div class="spec"><span class="sv">50×100</span><span class="sk" data-en>Metres</span><span class="sk" data-sw>Mita</span></div>
+          <div class="spec"><span class="sv">✅</span><span class="sk" data-en>Title</span><span class="sk" data-sw>Hati</span></div>
+          <div class="spec"><span class="sv">⚡</span><span class="sk" data-en>Power</span><span class="sk" data-sw>Umeme</span></div>
+          <div class="spec"><span class="sv">🚗</span><span class="sk" data-en>Road</span><span class="sk" data-sw>Barabara</span></div>
+        </div>
+        <div class="pc-footer">
+          <div><div class="pc-price">KES 2.8M</div><div class="pc-per" data-en>Negotiable</div><div class="pc-per" data-sw>Inaweza Kujadiliwa</div></div>
+          <button class="pc-cta" data-en>View Plot</button><button class="pc-cta" data-sw>Ona Kiwanja</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80" alt="Coastal">
+        <span class="pc-badge badge-red" data-en>Hot Deal</span><span class="pc-badge badge-red" data-sw>Bei Nzuri</span>
+        <button class="pc-save">🤍</button>
+        <button class="pc-map" data-en>📍 Map</button><button class="pc-map" data-sw>📍 Ramani</button>
+      </div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type" data-en>Beach Plot</span><span class="pc-type" data-sw>Pwani</span><span class="pc-tenure" data-en>Leasehold 99yr</span><span class="pc-tenure" data-sw>Upangaji 99yr</span></div>
+        <div class="pc-name">Kilifi Creek Waterfront Plot</div>
+        <div class="pc-loc">📍 Kilifi Creek, Kilifi County</div>
+        <div class="pc-specs">
+          <div class="spec"><span class="sv">0.75</span><span class="sk" data-en>Acres</span><span class="sk" data-sw>Ekari</span></div>
+          <div class="spec"><span class="sv">✅</span><span class="sk" data-en>Title</span><span class="sk" data-sw>Hati</span></div>
+          <div class="spec"><span class="sv">🌊</span><span class="sk" data-en>Seafront</span><span class="sk" data-sw>Pwani</span></div>
+          <div class="spec"><span class="sv">⚡</span><span class="sk" data-en>Power</span><span class="sk" data-sw>Umeme</span></div>
+        </div>
+        <div class="pc-footer">
+          <div><div class="pc-price">KES 18.5M</div><div class="pc-per" data-en>Rare seafront opportunity</div><div class="pc-per" data-sw>Fursa nadra ya pwani</div></div>
+          <button class="pc-cta" data-en>View Plot</button><button class="pc-cta" data-sw>Ona Kiwanja</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Upcountry">
+        <span class="pc-badge badge-orange" data-en>Verified</span><span class="pc-badge badge-orange" data-sw>Imethibitishwa</span>
+        <button class="pc-save">🤍</button>
+        <button class="pc-map" data-en>📍 Map</button><button class="pc-map" data-sw>📍 Ramani</button>
+      </div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type" data-en>Upcountry</span><span class="pc-type" data-sw>Mashambani</span><span class="pc-tenure" data-en>Freehold</span><span class="pc-tenure" data-sw>Hati Kamili</span></div>
+        <div class="pc-name">Nanyuki Highlands Plot</div>
+        <div class="pc-loc">📍 Nanyuki, Laikipia County</div>
+        <div class="pc-specs">
+          <div class="spec"><span class="sv">5</span><span class="sk" data-en>Acres</span><span class="sk" data-sw>Ekari</span></div>
+          <div class="spec"><span class="sv">✅</span><span class="sk" data-en>Title</span><span class="sk" data-sw>Hati</span></div>
+          <div class="spec"><span class="sv">🏔</span><span class="sk" data-en>Mt. View</span><span class="sk" data-sw>Mlima</span></div>
+          <div class="spec"><span class="sv">💧</span><span class="sk" data-en>Borehole</span><span class="sk" data-sw>Kisima</span></div>
+        </div>
+        <div class="pc-footer">
+          <div><div class="pc-price">KES 7.5M</div><div class="pc-per" data-en>KES 1.5M / acre</div><div class="pc-per" data-sw>KES 1.5M / ekari</div></div>
+          <button class="pc-cta" data-en>View Plot</button><button class="pc-cta" data-sw>Ona Kiwanja</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=600&q=80" alt="Residential">
+        <span class="pc-badge badge-green" data-en>Just Listed</span><span class="pc-badge badge-green" data-sw>Hivi Karibuni</span>
+        <button class="pc-save">🤍</button>
+        <button class="pc-map" data-en>📍 Map</button><button class="pc-map" data-sw>📍 Ramani</button>
+      </div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type" data-en>Residential</span><span class="pc-type" data-sw>Makazi</span><span class="pc-tenure" data-en>Freehold</span><span class="pc-tenure" data-sw>Hati Kamili</span></div>
+        <div class="pc-name">Rongai Township Development Plot</div>
+        <div class="pc-loc">📍 Rongai, Kajiado County</div>
+        <div class="pc-specs">
+          <div class="spec"><span class="sv">1/8</span><span class="sk" data-en>Acre</span><span class="sk" data-sw>Ekari</span></div>
+          <div class="spec"><span class="sv">✅</span><span class="sk" data-en>Title</span><span class="sk" data-sw>Hati</span></div>
+          <div class="spec"><span class="sv">⚡</span><span class="sk" data-en>Power</span><span class="sk" data-sw>Umeme</span></div>
+          <div class="spec"><span class="sv">💧</span><span class="sk" data-en>Water</span><span class="sk" data-sw>Maji</span></div>
+        </div>
+        <div class="pc-footer">
+          <div><div class="pc-price">KES 1.2M</div><div class="pc-per" data-en>Affordable starter plot</div><div class="pc-per" data-sw>Kiwanja cha bei nafuu</div></div>
+          <button class="pc-cta" data-en>View Plot</button><button class="pc-cta" data-sw>Ona Kiwanja</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1444927714506-8492d94b4e3d?w=600&q=80" alt="Commercial">
+        <span class="pc-badge badge-gray" data-en>Commercial</span><span class="pc-badge badge-gray" data-sw>Biashara</span>
+        <button class="pc-save">🤍</button>
+        <button class="pc-map" data-en>📍 Map</button><button class="pc-map" data-sw>📍 Ramani</button>
+      </div>
+      <div class="pc-body">
+        <div class="pc-meta"><span class="pc-type" data-en>Commercial</span><span class="pc-type" data-sw>Biashara</span><span class="pc-tenure" data-en>Leasehold</span><span class="pc-tenure" data-sw>Upangaji</span></div>
+        <div class="pc-name">Thika Road Commercial Corner</div>
+        <div class="pc-loc">📍 Roysambu, Nairobi County</div>
+        <div class="pc-specs">
+          <div class="spec"><span class="sv">0.5</span><span class="sk" data-en>Acre</span><span class="sk" data-sw>Ekari</span></div>
+          <div class="spec"><span class="sv">✅</span><span class="sk" data-en>Title</span><span class="sk" data-sw>Hati</span></div>
+          <div class="spec"><span class="sv">🚦</span><span class="sk" data-en>High Traffic</span><span class="sk" data-sw>Msongamano</span></div>
+          <div class="spec"><span class="sv">⚡</span><span class="sk" data-en>3-Phase</span><span class="sk" data-sw>Nguvu 3</span></div>
+        </div>
+        <div class="pc-footer">
+          <div><div class="pc-price">KES 45M</div><div class="pc-per" data-en>Prime road frontage</div><div class="pc-per" data-sw>Barabara kuu mbele</div></div>
+          <button class="pc-cta" data-en>View Plot</button><button class="pc-cta" data-sw>Ona Kiwanja</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="load-wrap">
+    <button class="load-btn" data-en>Load More Listings</button>
+    <button class="load-btn" data-sw>Pakia Orodha Zaidi</button>
+  </div>
+</section>
+
+<!-- MAP CTA -->
+<div class="map-sec">
+  <div class="map-left">
+    <div class="sec-eyebrow" data-en>Interactive Map Search</div>
+    <div class="sec-eyebrow" data-sw>Utafutaji wa Ramani</div>
+    <h2 class="sec-title" data-en>Search land <span>on the map</span></h2>
+    <h2 class="sec-title" data-sw>Tafuta ardhi <span>kwenye ramani</span></h2>
+    <p class="sec-desc" data-en>Browse all 47 counties on our live Kenya map. Zoom in, filter by price and size, and find your perfect plot visually.</p>
+    <p class="sec-desc" data-sw>Angalia kaunti zote 47 kwenye ramani yetu. Karibishia, chagua kwa bei na ukubwa, na pata kiwanja chako kwa urahisi.</p>
+    <button class="map-btn" data-en>🗺 Open Map Search</button>
+    <button class="map-btn" data-sw>🗺 Fungua Utafutaji wa Ramani</button>
+  </div>
+  <div class="map-right">
+    <img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69c836?w=900&q=80" alt="Kenya aerial">
+    <div class="map-pins">
+      <div class="pin" style="top:32%;left:50%;animation-delay:0.2s"><div class="pin-lbl">Nairobi</div><div class="pin-dot"></div></div>
+      <div class="pin" style="top:58%;left:73%;animation-delay:0.5s"><div class="pin-lbl">Mombasa</div><div class="pin-dot"></div></div>
+      <div class="pin" style="top:36%;left:22%;animation-delay:0.8s"><div class="pin-lbl">Kisumu</div><div class="pin-dot"></div></div>
+      <div class="pin" style="top:20%;left:57%;animation-delay:1.1s"><div class="pin-lbl">Nanyuki</div><div class="pin-dot"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<section class="sec trust-sec" id="trust">
+  <div class="sec-eyebrow" data-en>Why ArdhiSoko</div>
+  <div class="sec-eyebrow" data-sw>Kwa Nini ArdhiSoko</div>
+  <h2 class="sec-title" data-en>Buy land with <span>total confidence</span></h2>
+  <h2 class="sec-title" data-sw>Nunua ardhi bila <span>wasiwasi</span></h2>
+  <div class="trust-grid">
+    <div class="tc">
+      <div class="tc-icon">📜</div>
+      <div class="tc-title" data-en>Title Deed Verification</div>
+      <div class="tc-title" data-sw>Uthibitisho wa Hati</div>
+      <p class="tc-desc" data-en>Every listing is cross-checked with the Ministry of Lands registry before going live. Zero unverified plots, ever.</p>
+      <p class="tc-desc" data-sw>Kila orodha inaangaliwa na Wizara ya Ardhi kabla ya kuonekana. Hakuna viwanja visivyothibitishwa.</p>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🏛</div>
+      <div class="tc-title" data-en>EARB-Licensed Agents</div>
+      <div class="tc-title" data-sw>Madalali wa EARB</div>
+      <p class="tc-desc" data-en>All 620+ agents are registered with Kenya's Estate Agents Registration Board. No unlicensed brokers — ever.</p>
+      <p class="tc-desc" data-sw>Madalali wote 620+ wamesajiliwa na EARB Kenya. Hakuna dalali asiye na leseni — kamwe.</p>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">📱</div>
+      <div class="tc-title" data-en>M-Pesa Escrow</div>
+      <div class="tc-title" data-sw>Akaunti Salama ya M-Pesa</div>
+      <p class="tc-desc" data-en>Deposit funds safely via M-Pesa escrow. Money is released only when title deed transfer is fully confirmed.</p>
+      <p class="tc-desc" data-sw>Weka pesa kwa usalama kupitia M-Pesa. Pesa hutolewa tu wakati uhamisho wa hati unathibitishwa.</p>
+    </div>
+    <div class="tc">
+      <div class="tc-icon">🚁</div>
+      <div class="tc-title" data-en>Free Site Visits</div>
+      <div class="tc-title" data-sw>Ziara za Bure za Shamba</div>
+      <p class="tc-desc" data-en>Request a guided site visit with any listing. Our agents take you to the exact plot — no surprises on arrival.</p>
+      <p class="tc-desc" data-sw>Omba ziara ya bure ya shamba. Madalali wetu watakupeleka — hakuna mshangao wa siri.</p>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR SEARCHES -->
+<section class="popular-sec">
+  <div class="pop-head" data-en>🔥 Popular Searches</div>
+  <div class="pop-head" data-sw>🔥 Utafutaji Maarufu</div>
+  <div class="pop-tags">
+    <div class="pop-tag"><em>🔥</em><span data-en>Land in Kiambu</span><span data-sw>Ardhi Kiambu</span></div>
+    <div class="pop-tag"><em>🔥</em><span data-en>1/8 Acre Plots Nairobi</span><span data-sw>Viwanja 1/8 Nairobi</span></div>
+    <div class="pop-tag"><em>🔥</em><span data-en>Farmland Nakuru</span><span data-sw>Shamba Nakuru</span></div>
+    <div class="pop-tag"><em>🔥</em><span data-en>Beach Plots Diani</span><span data-sw>Viwanja Diani</span></div>
+    <div class="pop-tag"><em>📍</em><span data-en>Plots Under 2M Nairobi</span><span data-sw>Viwanja Chini 2M</span></div>
+    <div class="pop-tag"><em>📍</em><span data-en>Land in Thika</span><span data-sw>Ardhi Thika</span></div>
+    <div class="pop-tag"><em>📍</em><span data-en>Athi River Commercial</span><span data-sw>Biashara Athi River</span></div>
+    <div class="pop-tag"><em>📍</em><span data-en>Nanyuki 5 Acre Farm</span><span data-sw>Shamba Ekari 5 Nanyuki</span></div>
+    <div class="pop-tag"><em>📍</em><span data-en>Title Deed Ready Machakos</span><span data-sw>Hati Tayari Machakos</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-grid">
+    <div>
+      <div class="f-logo-wrap">
+        <div class="f-logo-tri"></div>
+        <div>
+          <div class="f-logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div>
+          <div class="f-tagline">Premium Living, Smart Investing</div>
+        </div>
+      </div>
+      <p class="f-about" data-en>Kenya's most trusted land and plots marketplace. Connecting buyers, sellers and agents across all 47 counties since 2018. Every listing verified. Every agent licensed.</p>
+      <p class="f-about" data-sw>Soko la ardhi linaloaminiwa zaidi Kenya. Tunaoanisha wanunuzi, wauzaji na madalali katika kaunti zote 47 tangu 2018.</p>
+      <div class="f-socials">
+        <div class="fsoc">𝕏</div>
+        <div class="fsoc">f</div>
+        <div class="fsoc">in</div>
+        <div class="fsoc">▶</div>
+        <div class="fsoc">📸</div>
+      </div>
+    </div>
+    <div class="f-col">
+      <h5 data-en>Land Types</h5><h5 data-sw>Aina za Ardhi</h5>
+      <ul class="f-links">
+        <li><a href="#" data-en>Farmland</a><a href="#" data-sw>Shamba</a></li>
+        <li><a href="#" data-en>Residential Plots</a><a href="#" data-sw>Viwanja vya Makazi</a></li>
+        <li><a href="#" data-en>Commercial Land</a><a href="#" data-sw>Ardhi ya Biashara</a></li>
+        <li><a href="#" data-en>Beach & Coastal</a><a href="#" data-sw>Viwanja vya Pwani</a></li>
+        <li><a href="#" data-en>Upcountry Parcels</a><a href="#" data-sw>Ardhi ya Ndani</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5 data-en>Company</h5><h5 data-sw>Kampuni</h5>
+      <ul class="f-links">
+        <li><a href="#" data-en>About Us</a><a href="#" data-sw>Kuhusu Sisi</a></li>
+        <li><a href="#" data-en>Our Agents</a><a href="#" data-sw>Madalali Wetu</a></li>
+        <li><a href="#" data-en>Land Market Reports</a><a href="#" data-sw>Ripoti za Soko</a></li>
+        <li><a href="#" data-en>Blog & Guide</a><a href="#" data-sw>Blogu na Mwongozo</a></li>
+        <li><a href="#" data-en>Careers</a><a href="#" data-sw>Kazi</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5 data-en>Contact Us</h5><h5 data-sw>Wasiliana Nasi</h5>
+      <ul class="f-contact">
+        <li>📍 Westlands Square, Nairobi, Kenya</li>
+        <li>📞 +254 700 ARDHI (27344)</li>
+        <li>✉️ hello@ardhisoko.co.ke</li>
+        <li>💬 <span data-en>WhatsApp us anytime</span><span data-sw>Tutumie WhatsApp wakati wowote</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <span data-en>© 2025 ArdhiSoko Ltd. EARB Licensed. All rights reserved.</span>
+    <span data-sw>© 2025 ArdhiSoko Ltd. Leseni ya EARB. Haki Zote Zimehifadhiwa.</span>
+    <span data-en>Privacy · Terms · Sitemap</span>
+    <span data-sw>Faragha · Masharti · Ramani ya Tovuti</span>
+  </div>
+</footer>
+
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  function setLang(lang, btn) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.body.classList.toggle('sw', lang === 'sw');
+  }
+
+  function setTab(el) {
+    el.closest('.search-tabs-row').querySelectorAll('.s-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+
+  document.querySelectorAll('.fchip').forEach(c => c.addEventListener('click', () => c.classList.toggle('on')));
+
+  document.querySelectorAll('.pc-save').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+  }));
+
+  document.querySelectorAll('.vbtn').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.vbtn').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+  }));
+
+  window.addEventListener('scroll', () =>
+    document.getElementById('scrollTop').classList.toggle('vis', scrollY > 500));
+
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = '1'; io.unobserve(e.target); }
+  }), { threshold: 0.1 });
+  document.querySelectorAll('.pc, .cat-card, .tc').forEach(el => { el.style.opacity='0'; io.observe(el); });
+</script>
+</body>
+</html>
