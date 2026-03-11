@@ -60,6 +60,26 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
 .fd textarea{resize:vertical;min-height:86px;line-height:1.6;}
 .fh{font-size:.68rem;color:var(--gr);margin-top:.28rem;}
 .ip{width:100%;height:150px;object-fit:cover;border-radius:4px;border:2px solid var(--gm);display:block;margin-top:.45rem;background:var(--gl);}
+.cpw{margin-top:1.2rem;background:var(--gl);border-radius:8px;padding:1.2rem;border:1.5px solid var(--gm);}
+.cpl{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gr);margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;}
+.cpl::before{content:'';width:20px;height:2px;background:var(--o);display:inline-block;}
+.pcp{background:var(--w);border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.1);max-width:360px;margin:0 auto;}
+.pcp-im{height:210px;position:relative;overflow:hidden;}
+.pcp-im img{width:100%;height:100%;object-fit:cover;display:block;}
+.pcp-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 55%);}
+.pcp-pr{position:absolute;bottom:.9rem;left:.9rem;color:var(--w);font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:900;line-height:1;}
+.pcp-ps{font-size:.63rem;font-weight:500;opacity:.82;margin-top:2px;}
+.pcp-tg{position:absolute;top:.8rem;left:.8rem;background:var(--g);color:var(--w);font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;padding:.24rem .62rem;border-radius:2px;letter-spacing:.08em;text-transform:uppercase;}
+.pcp-st{position:absolute;top:.8rem;right:.8rem;background:var(--o);color:var(--w);font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:700;padding:.22rem .58rem;border-radius:2px;letter-spacing:.06em;text-transform:uppercase;}
+.pcp-bd{padding:1rem;}
+.pcp-lc{font-size:.66rem;color:var(--o);font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem;}
+.pcp-nm{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:800;color:var(--bk);margin-bottom:.9rem;line-height:1.3;}
+.pcp-ac{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.4rem;}
+.pcpb{padding:.5rem .3rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.63rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;border:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:.25rem;}
+.wa{background:#25D366;color:var(--w);}
+.cl{background:var(--g);color:var(--w);}
+.vd{background:var(--o);color:var(--w);}
+.cpht{font-size:.68rem;color:var(--gr);text-align:center;margin-top:.7rem;font-style:italic;}
 .fl{display:flex;flex-direction:column;gap:.42rem;margin-top:.45rem;}
 .fi{display:flex;align-items:center;gap:.42rem;}
 .fi input{flex:1;padding:.56rem .78rem;border:1.5px solid var(--gm);border-radius:4px;font-size:.83rem;outline:none;font-family:'Open Sans',sans-serif;transition:border-color .2s;}
@@ -173,18 +193,39 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
         <div class="cd">
           <div class="ch"><div class="ct2">&#127754; Malindi Plots</div><span class="cbg cbl">Land for Sale</span></div>
           <div class="fg">
-            <div class="fd"><label>Project Name</label><input type="text" id="mn" value="Malindi Ocean View Acres" oninput="so()"></div>
-            <div class="fd"><label>Location</label><input type="text" id="ml" value="Malindi, Kilifi County"></div>
-            <div class="fd"><label>Price</label><input type="text" id="mp" value="KES 1.5M" oninput="so()"></div>
-            <div class="fd"><label>Price Subtitle</label><input type="text" id="mps" value="per 1-acre plot"></div>
+            <div class="fd"><label>Project Name</label><input type="text" id="mn" value="Malindi Ocean View Acres" oninput="so();syncCard('m')"></div>
+            <div class="fd"><label>Location</label><input type="text" id="ml" value="Malindi, Kilifi County" oninput="syncCard('m')"></div>
+            <div class="fd"><label>Price</label><input type="text" id="mp" value="KES 1.5M" oninput="so();syncCard('m')"></div>
+            <div class="fd"><label>Price Subtitle</label><input type="text" id="mps" value="per 1-acre plot" oninput="syncCard('m')"></div>
             <div class="fd"><label>Plot Size</label><input type="text" id="msz" value="1 Acre"></div>
-            <div class="fd"><label>Status Badge</label><input type="text" id="mst" value="Selling Fast"></div>
+            <div class="fd"><label>Status Badge</label><input type="text" id="mst" value="Selling Fast" oninput="syncCard('m')"></div>
             <div class="fd ff"><label>Short Description</label><textarea id="md">Spacious 1-acre plots set in the heart of Kenya's premier coastal town. Ideal for holiday homes, eco-lodges, farming, or long-term investment. Just minutes from Malindi Beach and the airport.</textarea></div>
             <div class="fd ff"><label>Full Description</label><textarea id="md2">Own a piece of Kenya's most beautiful coastline. These 1-acre plots in Malindi are perfect for a holiday home, Airbnb retreat, small-scale farming, or a long-term land investment. Malindi's property values have grown consistently, making this a smart buy.</textarea></div>
           </div>
           <div class="dv"></div>
-          <div class="fd"><label>Image URL</label><input type="text" id="mi" value="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" oninput="pi('mi','mp2')"><div class="fh">Paste any image URL from Unsplash, Google, Dropbox, etc.</div></div>
-          <img id="mp2" class="ip" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="preview">
+          <div class="fd"><label>Image URL</label><input type="text" id="mi" value="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" oninput="updCard('m')"><div class="fh">Paste any direct image URL — from Unsplash, Google, Dropbox, or your own photos</div></div>
+          <div class="cpw">
+            <div class="cpl">Live Card Preview</div>
+            <div class="pcp">
+              <div class="pcp-im">
+                <img id="m-cimg" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="preview">
+                <div class="pcp-ov"></div>
+                <div class="pcp-pr"><div id="m-cpr">KES 1.5M</div><div class="pcp-ps" id="m-cps">per 1-acre plot</div></div>
+                <span class="pcp-tg">Land for Sale</span>
+                <span class="pcp-st" id="m-cst">Selling Fast</span>
+              </div>
+              <div class="pcp-bd">
+                <div class="pcp-lc" id="m-clc">&#128205; Malindi, Kilifi County</div>
+                <div class="pcp-nm" id="m-cnm">Malindi Ocean View Acres</div>
+                <div class="pcp-ac">
+                  <button class="pcpb wa">&#128172; WhatsApp</button>
+                  <button class="pcpb cl">&#128222; Call</button>
+                  <button class="pcpb vd">View Details</button>
+                </div>
+              </div>
+            </div>
+            <div class="cpht">This is exactly how your project card will appear on the website</div>
+          </div>
           <div class="dv"></div>
           <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr)">Features</label>
           <div class="fl" id="mf">
@@ -203,18 +244,39 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
         <div class="cd">
           <div class="ch"><div class="ct2">&#127759; Konza Plots</div><span class="cbg cbl">Land for Sale</span></div>
           <div class="fg">
-            <div class="fd"><label>Project Name</label><input type="text" id="kn" value="Konza Technopolis Plots" oninput="so()"></div>
-            <div class="fd"><label>Location</label><input type="text" id="kl" value="Konza, Machakos County"></div>
-            <div class="fd"><label>Price</label><input type="text" id="kp" value="KES 450K" oninput="so()"></div>
-            <div class="fd"><label>Price Subtitle</label><input type="text" id="kps" value="per 1/8-acre plot"></div>
+            <div class="fd"><label>Project Name</label><input type="text" id="kn" value="Konza Technopolis Plots" oninput="so();syncCard('k')"></div>
+            <div class="fd"><label>Location</label><input type="text" id="kl" value="Konza, Machakos County" oninput="syncCard('k')"></div>
+            <div class="fd"><label>Price</label><input type="text" id="kp" value="KES 450K" oninput="so();syncCard('k')"></div>
+            <div class="fd"><label>Price Subtitle</label><input type="text" id="kps" value="per 1/8-acre plot" oninput="syncCard('k')"></div>
             <div class="fd"><label>Plot Size</label><input type="text" id="ksz" value="1/8 Acre"></div>
-            <div class="fd"><label>Status Badge</label><input type="text" id="kst" value="Tech City Zone"></div>
+            <div class="fd"><label>Status Badge</label><input type="text" id="kst" value="Tech City Zone" oninput="syncCard('k')"></div>
             <div class="fd ff"><label>Short Description</label><textarea id="kd">Strategically positioned 1/8-acre residential plots adjacent to Kenya's Silicon Savannah - Konza Technopolis. The fastest appreciating land corridor in Kenya right now.</textarea></div>
             <div class="fd ff"><label>Full Description</label><textarea id="kd2">Position yourself in Kenya's future capital of innovation. Konza Technopolis - Kenya's Silicon Savannah - is a multi-billion dollar smart city project. These 1/8-acre plots sit right in the growth path, offering exceptional appreciation potential as the city develops.</textarea></div>
           </div>
           <div class="dv"></div>
-          <div class="fd"><label>Image URL</label><input type="text" id="ki" value="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" oninput="pi('ki','kp2')"><div class="fh">Paste any image URL</div></div>
-          <img id="kp2" class="ip" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="preview">
+          <div class="fd"><label>Image URL</label><input type="text" id="ki" value="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" oninput="updCard('k')"><div class="fh">Paste any direct image URL — from Unsplash, Google, Dropbox, or your own photos</div></div>
+          <div class="cpw">
+            <div class="cpl">Live Card Preview</div>
+            <div class="pcp">
+              <div class="pcp-im">
+                <img id="k-cimg" src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="preview">
+                <div class="pcp-ov"></div>
+                <div class="pcp-pr"><div id="k-cpr">KES 450K</div><div class="pcp-ps" id="k-cps">per 1/8-acre plot</div></div>
+                <span class="pcp-tg">Land for Sale</span>
+                <span class="pcp-st" id="k-cst">Tech City Zone</span>
+              </div>
+              <div class="pcp-bd">
+                <div class="pcp-lc" id="k-clc">&#128205; Konza, Machakos County</div>
+                <div class="pcp-nm" id="k-cnm">Konza Technopolis Plots</div>
+                <div class="pcp-ac">
+                  <button class="pcpb wa">&#128172; WhatsApp</button>
+                  <button class="pcpb cl">&#128222; Call</button>
+                  <button class="pcpb vd">View Details</button>
+                </div>
+              </div>
+            </div>
+            <div class="cpht">This is exactly how your project card will appear on the website</div>
+          </div>
           <div class="dv"></div>
           <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr)">Features</label>
           <div class="fl" id="kf">
@@ -233,18 +295,39 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
         <div class="cd">
           <div class="ch"><div class="ct2">&#127970; Kamakis Apartments</div><span class="cbg cba">Apartments</span></div>
           <div class="fg">
-            <div class="fd"><label>Project Name</label><input type="text" id="kan" value="Kamakis Urban Residences" oninput="so()"></div>
-            <div class="fd"><label>Location</label><input type="text" id="kal" value="Kamakis, Ruiru - Kiambu County"></div>
-            <div class="fd"><label>Price</label><input type="text" id="kap" value="From 3.2M" oninput="so()"></div>
-            <div class="fd"><label>Price Subtitle</label><input type="text" id="kaps" value="off-plan pricing"></div>
+            <div class="fd"><label>Project Name</label><input type="text" id="kan" value="Kamakis Urban Residences" oninput="so();syncCard('ka')"></div>
+            <div class="fd"><label>Location</label><input type="text" id="kal" value="Kamakis, Ruiru - Kiambu County" oninput="syncCard('ka')"></div>
+            <div class="fd"><label>Price</label><input type="text" id="kap" value="From 3.2M" oninput="so();syncCard('ka')"></div>
+            <div class="fd"><label>Price Subtitle</label><input type="text" id="kaps" value="off-plan pricing" oninput="syncCard('ka')"></div>
             <div class="fd"><label>Unit Types</label><input type="text" id="kasz" value="1-3 Bed"></div>
-            <div class="fd"><label>Status Badge</label><input type="text" id="kast" value="Coming Soon"></div>
+            <div class="fd"><label>Status Badge</label><input type="text" id="kast" value="Coming Soon" oninput="syncCard('ka')"></div>
             <div class="fd ff"><label>Short Description</label><textarea id="kad">Modern, well-designed apartments for sale in the rapidly growing Kamakis-Ruiru corridor. Excellent connectivity to Nairobi CBD, JKIA, and the Eastern Bypass. Off-plan prices available now.</textarea></div>
             <div class="fd ff"><label>Full Description</label><textarea id="kad2">Modern apartments designed for comfortable urban living in one of Nairobi's fastest-growing suburbs. Kamakis sits at the intersection of the Eastern Bypass and Thika Superhighway - giving residents unmatched access to the entire city. Buy off-plan today at the best prices.</textarea></div>
           </div>
           <div class="dv"></div>
-          <div class="fd"><label>Image URL</label><input type="text" id="kai" value="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" oninput="pi('kai','kap3')"><div class="fh">Paste any image URL</div></div>
-          <img id="kap3" class="ip" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="preview">
+          <div class="fd"><label>Image URL</label><input type="text" id="kai" value="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" oninput="updCard('ka')"><div class="fh">Paste any direct image URL — from Unsplash, Google, Dropbox, or your own photos</div></div>
+          <div class="cpw">
+            <div class="cpl">Live Card Preview</div>
+            <div class="pcp">
+              <div class="pcp-im">
+                <img id="ka-cimg" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="preview">
+                <div class="pcp-ov"></div>
+                <div class="pcp-pr"><div id="ka-cpr">From 3.2M</div><div class="pcp-ps" id="ka-cps">off-plan pricing</div></div>
+                <span class="pcp-tg" style="background:var(--o)">Apartments</span>
+                <span class="pcp-st" id="ka-cst">Coming Soon</span>
+              </div>
+              <div class="pcp-bd">
+                <div class="pcp-lc" id="ka-clc">&#128205; Kamakis, Ruiru - Kiambu County</div>
+                <div class="pcp-nm" id="ka-cnm">Kamakis Urban Residences</div>
+                <div class="pcp-ac">
+                  <button class="pcpb wa">&#128172; WhatsApp</button>
+                  <button class="pcpb cl">&#128222; Call</button>
+                  <button class="pcpb vd">View Details</button>
+                </div>
+              </div>
+            </div>
+            <div class="cpht">This is exactly how your project card will appear on the website</div>
+          </div>
           <div class="dv"></div>
           <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr)">Features</label>
           <div class="fl" id="kaf">
@@ -323,6 +406,24 @@ function li(){var u=document.getElementById('u').value.trim(),p=document.getElem
 function lo(){document.getElementById('ls').style.display='flex';document.getElementById('app').classList.remove('v');}
 function sp(n,b){document.querySelectorAll('.pn').forEach(function(x){x.classList.remove('ac');});document.querySelectorAll('.si').forEach(function(x){x.classList.remove('ac');});document.getElementById('pn-'+n).classList.add('ac');if(b)b.classList.add('ac');document.getElementById('tbt').textContent=TNM[n]||n;}
 function pi(i,p){document.getElementById(p).src=document.getElementById(i).value;}
+function updCard(prefix){
+  var cfg={
+    'm': {img:'m-cimg',inp:'mi',pr:'m-cpr',ps:'m-cps',st:'m-cst',lc:'m-clc',nm:'m-cnm',prInp:'mp',psInp:'mps',stInp:'mst',lcInp:'ml',nmInp:'mn'},
+    'k': {img:'k-cimg',inp:'ki',pr:'k-cpr',ps:'k-cps',st:'k-cst',lc:'k-clc',nm:'k-cnm',prInp:'kp',psInp:'kps',stInp:'kst',lcInp:'kl',nmInp:'kn'},
+    'ka':{img:'ka-cimg',inp:'kai',pr:'ka-cpr',ps:'ka-cps',st:'ka-cst',lc:'ka-clc',nm:'ka-cnm',prInp:'kap',psInp:'kaps',stInp:'kast',lcInp:'kal',nmInp:'kan'}
+  };
+  var c=cfg[prefix]; if(!c) return;
+  var imgEl=document.getElementById(c.img);
+  var imgUrl=document.getElementById(c.inp).value;
+  if(imgEl && imgUrl) imgEl.src=imgUrl;
+  function upd(elId, srcId){var e=document.getElementById(elId),s=document.getElementById(srcId);if(e&&s)e.textContent=s.value;}
+  upd(c.pr,c.prInp); upd(c.ps,c.psInp); upd(c.st,c.stInp);
+  var lc=document.getElementById(c.lc),lcS=document.getElementById(c.lcInp);
+  if(lc&&lcS) lc.innerHTML='&#128205; '+lcS.value;
+  upd(c.nm,c.nmInp);
+}
+// Also sync card previews when typing in name/price/etc fields
+function syncCard(prefix){updCard(prefix);}
 function af(l){var d=document.createElement('div');d.className='fi';d.innerHTML='<input type="text" placeholder="New feature"><button class="fd2" onclick="df(this)">x</button>';document.getElementById(l).appendChild(d);}
 function df(b){b.closest('.fi').remove();}
 function gv(i){var e=document.getElementById(i);return e?e.value:'';}
