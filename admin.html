@@ -203,7 +203,21 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
             <div class="fd ff"><label>Full Description</label><textarea id="md2">Own a piece of Kenya's most beautiful coastline. These 1-acre plots in Malindi are perfect for a holiday home, Airbnb retreat, small-scale farming, or a long-term land investment. Malindi's property values have grown consistently, making this a smart buy.</textarea></div>
           </div>
           <div class="dv"></div>
-          <div class="fd"><label>Image URL</label><input type="text" id="mi" value="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" oninput="updCard('m')"><div class="fh">Paste any direct image URL — from Unsplash, Google, Dropbox, or your own photos</div></div>
+          <div class="dv"></div>
+          <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);margin-bottom:.6rem;display:block">Project Image</label>
+
+          <!-- Upload from device -->
+          <div class="img-upload-area" id="m-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'m')">
+            <input type="file" accept="image/*" onchange="handleFile(this,'m')">
+            <div class="img-upload-icon">&#128247;</div>
+            <div class="img-upload-title">Click to upload or drag &amp; drop</div>
+            <div class="img-upload-sub">JPG, PNG, WEBP — from your computer or phone</div>
+          </div>
+          <div class="img-status" id="m-status"></div>
+
+          <!-- OR paste URL -->
+          <div class="img-upload-or">or paste an image URL</div>
+          <div class="fd"><input type="text" id="mi" value="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" placeholder="https://..." oninput="updCard('m')"><div class="fh">Paste any direct image link from Unsplash, Google, etc.</div></div>
           <div class="cpw">
             <div class="cpl">Live Card Preview</div>
             <div class="pcp">
@@ -254,7 +268,21 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
             <div class="fd ff"><label>Full Description</label><textarea id="kd2">Position yourself in Kenya's future capital of innovation. Konza Technopolis - Kenya's Silicon Savannah - is a multi-billion dollar smart city project. These 1/8-acre plots sit right in the growth path, offering exceptional appreciation potential as the city develops.</textarea></div>
           </div>
           <div class="dv"></div>
-          <div class="fd"><label>Image URL</label><input type="text" id="ki" value="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" oninput="updCard('k')"><div class="fh">Paste any direct image URL — from Unsplash, Google, Dropbox, or your own photos</div></div>
+          <div class="dv"></div>
+          <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);margin-bottom:.6rem;display:block">Project Image</label>
+
+          <!-- Upload from device -->
+          <div class="img-upload-area" id="k-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'k')">
+            <input type="file" accept="image/*" onchange="handleFile(this,'k')">
+            <div class="img-upload-icon">&#128247;</div>
+            <div class="img-upload-title">Click to upload or drag &amp; drop</div>
+            <div class="img-upload-sub">JPG, PNG, WEBP — from your computer or phone</div>
+          </div>
+          <div class="img-status" id="k-status"></div>
+
+          <!-- OR paste URL -->
+          <div class="img-upload-or">or paste an image URL</div>
+          <div class="fd"><input type="text" id="ki" value="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" placeholder="https://..." oninput="updCard('k')"><div class="fh">Paste any direct image link from Unsplash, Google, etc.</div></div>
           <div class="cpw">
             <div class="cpl">Live Card Preview</div>
             <div class="pcp">
@@ -305,7 +333,21 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
             <div class="fd ff"><label>Full Description</label><textarea id="kad2">Modern apartments designed for comfortable urban living in one of Nairobi's fastest-growing suburbs. Kamakis sits at the intersection of the Eastern Bypass and Thika Superhighway - giving residents unmatched access to the entire city. Buy off-plan today at the best prices.</textarea></div>
           </div>
           <div class="dv"></div>
-          <div class="fd"><label>Image URL</label><input type="text" id="kai" value="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" oninput="updCard('ka')"><div class="fh">Paste any direct image URL — from Unsplash, Google, Dropbox, or your own photos</div></div>
+          <div class="dv"></div>
+          <label style="font-family:Montserrat,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);margin-bottom:.6rem;display:block">Project Image</label>
+
+          <!-- Upload from device -->
+          <div class="img-upload-area" id="ka-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'ka')">
+            <input type="file" accept="image/*" onchange="handleFile(this,'ka')">
+            <div class="img-upload-icon">&#128247;</div>
+            <div class="img-upload-title">Click to upload or drag &amp; drop</div>
+            <div class="img-upload-sub">JPG, PNG, WEBP — from your computer or phone</div>
+          </div>
+          <div class="img-status" id="ka-status"></div>
+
+          <!-- OR paste URL -->
+          <div class="img-upload-or">or paste an image URL</div>
+          <div class="fd"><input type="text" id="kai" value="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" placeholder="https://..." oninput="updCard('ka')"><div class="fh">Paste any direct image link from Unsplash, Google, etc.</div></div>
           <div class="cpw">
             <div class="cpl">Live Card Preview</div>
             <div class="pcp">
@@ -461,6 +503,82 @@ html+='<a href="https://wa.me/'+wa+'?text=Hi%20'+p1+p2+'%2C%20I%27m%20interested
 var blob=new Blob([html],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();toast('index.html downloaded!','ok');
 }
 ul();
+
+// ── IMAGE UPLOAD FROM FILE ──
+function handleFile(input, prefix) {
+  var file = input.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    showStatus(prefix, 'Please select an image file (JPG, PNG, WEBP)', 'er');
+    return;
+  }
+  var maxSize = 10 * 1024 * 1024; // 10MB
+  if (file.size > maxSize) {
+    showStatus(prefix, 'Image too large. Please use an image under 10MB.', 'er');
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var dataUrl = e.target.result;
+    applyImage(prefix, dataUrl, file.name);
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleDrop(event, prefix) {
+  event.preventDefault();
+  document.getElementById(prefix + '-drop').style.borderColor = '';
+  var file = event.dataTransfer.files[0];
+  if (!file) return;
+  if (!file.type.startsWith('image/')) {
+    showStatus(prefix, 'Please drop an image file (JPG, PNG, WEBP)', 'er');
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    applyImage(prefix, e.target.result, file.name);
+  };
+  reader.readAsDataURL(file);
+}
+
+function applyImage(prefix, dataUrl, fileName) {
+  // Map prefix to correct element IDs
+  var imgMap = { 'm': 'm-cimg', 'k': 'k-cimg', 'ka': 'ka-cimg' };
+  var urlMap = { 'm': 'mi', 'k': 'ki', 'ka': 'kai' };
+  var dropMap = { 'm': 'm-drop', 'k': 'k-drop', 'ka': 'ka-drop' };
+
+  // Update card preview image
+  var cardImg = document.getElementById(imgMap[prefix]);
+  if (cardImg) cardImg.src = dataUrl;
+
+  // Store dataUrl in the URL input so export picks it up
+  var urlInput = document.getElementById(urlMap[prefix]);
+  if (urlInput) urlInput.value = dataUrl;
+
+  // Update the drop zone to show the uploaded image as background
+  var drop = document.getElementById(dropMap[prefix]);
+  if (drop) {
+    drop.style.backgroundImage = 'url(' + dataUrl + ')';
+    drop.style.backgroundSize = 'cover';
+    drop.style.backgroundPosition = 'center';
+    drop.style.minHeight = '120px';
+    drop.innerHTML = '<input type="file" accept="image/*" onchange="handleFile(this,'' + prefix + '')">'
+      + '<div style="background:rgba(0,0,0,0.55);border-radius:4px;padding:.6rem 1rem;display:inline-block">'
+      + '<div style="color:#fff;font-family:Montserrat,sans-serif;font-size:.75rem;font-weight:700;">&#10003; ' + fileName + '</div>'
+      + '<div style="color:rgba(255,255,255,.7);font-size:.65rem;margin-top:2px;">Click to change photo</div>'
+      + '</div>';
+  }
+
+  showStatus(prefix, '✅ Image uploaded: ' + fileName, 'ok');
+}
+
+function showStatus(prefix, msg, type) {
+  var el = document.getElementById(prefix + '-status');
+  if (!el) return;
+  el.textContent = msg;
+  el.className = 'img-status ' + type;
+  if (type === 'ok') setTimeout(function(){ el.className = 'img-status'; }, 4000);
+}
 </script>
 </body>
 </html>
