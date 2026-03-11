@@ -83,7 +83,8 @@
   /* ── HERO ── */
   .hero {
     position: relative; overflow: hidden;
-    min-height: 92vh;
+    min-height: 520px;
+    max-height: 620px;
     display: flex; align-items: center;
   }
   .hero-bg {
@@ -97,7 +98,7 @@
   }
   .hero-content {
     position: relative; z-index: 2;
-    padding: 5rem;
+    padding: 3rem 5rem;
     max-width: 720px;
   }
 
@@ -105,7 +106,7 @@
     display: inline-flex; align-items: center; gap: 0.5rem;
     background: rgba(245,146,30,0.15);
     border: 1px solid rgba(245,146,30,0.5);
-    padding: 0.45rem 1.1rem; margin-bottom: 2rem;
+    padding: 0.4rem 1rem; margin-bottom: 1.2rem;
     animation: fadeUp 0.6s ease 0.1s both;
   }
   .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); animation: blink 2s infinite; }
@@ -118,17 +119,17 @@
 
   h1.hero-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: clamp(2.6rem, 5vw, 4.2rem);
-    font-weight: 900; line-height: 1.08; color: var(--white);
-    margin-bottom: 1.5rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900; line-height: 1.12; color: var(--white);
+    margin-bottom: 1rem;
     animation: fadeUp 0.6s ease 0.2s both;
   }
   h1.hero-title .hl { color: var(--orange); }
 
   .hero-sub {
-    font-size: 1.05rem; color: rgba(255,255,255,0.72);
-    line-height: 1.75; max-width: 540px;
-    margin-bottom: 3rem;
+    font-size: 0.92rem; color: rgba(255,255,255,0.72);
+    line-height: 1.7; max-width: 500px;
+    margin-bottom: 1.8rem;
     animation: fadeUp 0.6s ease 0.35s both;
   }
 
@@ -520,7 +521,8 @@
   /* RESPONSIVE */
   @media(max-width:1100px) {
     nav, .top-bar, .sec, footer { padding-left: 2rem; padding-right: 2rem; }
-    .hero-content { padding: 4rem 2rem; }
+    .hero-content { padding: 3rem 2rem; }
+    .hero { min-height: 420px; max-height: 520px; }
     .projects-grid { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; }
     .detail-strip { grid-template-columns: 1fr; }
     .detail-strip.reverse { direction: ltr; }
@@ -536,7 +538,8 @@
     .top-bar-left { display: none; }
     nav { padding: 0.8rem 1rem; }
     .nav-links { display: none; }
-    .hero-content { padding: 3.5rem 1.5rem; }
+    .hero-content { padding: 2.5rem 1.5rem; }
+    .hero { min-height: 380px; max-height: 480px; }
     .sec { padding: 3.5rem 1.5rem; }
     .stats-strip { flex-wrap: wrap; }
     .ss-block { flex: 0 0 50%; }
@@ -554,7 +557,7 @@
 <div class="top-bar">
   <div class="top-bar-left">
     <a href="tel:+254700000000">📞 +254 700 000 000</a>
-    <a href="mailto:hello@ardhisoko.co.ke">✉️ hello@ardhisoko.co.ke</a>
+    <a href="/cdn-cgi/l/email-protection#94fcf1f8f8fbd4f5e6f0fcfde7fbfffbbaf7fbbafff1">✉️ <span class="__cf_email__" data-cfemail="b4dcd1d8d8dbf4d5c6d0dcddc7dbdfdb9ad7db9adfd1">[email&#160;protected]</span></a>
   </div>
   <span>Premium Living, Smart Investing</span>
 </div>
@@ -805,7 +808,7 @@
         <div class="contact-item-icon">✉️</div>
         <div>
           <strong>Email Us</strong>
-          <span>hello@ardhisoko.co.ke</span>
+          <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c4aca1a8a8ab84a5b6a0acadb7abafabeaa7abeaafa1">[email&#160;protected]</a></span>
         </div>
       </div>
       <div class="contact-item">
@@ -899,7 +902,7 @@
       <ul class="f-contact">
         <li>📍 Westlands, Nairobi, Kenya</li>
         <li>📞 +254 700 000 000</li>
-        <li>✉️ hello@ardhisoko.co.ke</li>
+        <li>✉️ <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="08606d64646748697a6c60617b676367266b6726636d">[email&#160;protected]</a></li>
         <li>💬 WhatsApp us anytime</li>
       </ul>
     </div>
@@ -913,7 +916,7 @@
 <!-- WHATSAPP FLOATING BUTTON -->
 <a href="https://wa.me/254700000000?text=Hi%20ArdhiSoko%2C%20I'm%20interested%20in%20your%20properties." class="wa-btn" target="_blank" title="Chat on WhatsApp">💬</a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Smooth nav highlight
   const sections = ['projects','malindi','konza','kamakis','enquiry'];
   window.addEventListener('scroll', () => {
@@ -922,21 +925,4 @@
       const el = document.getElementById(id);
       if (el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
         document.querySelectorAll('.nav-links a').forEach(a => a.style.color = '');
-        const match = document.querySelector(`.nav-links a[href="#${id}"]`);
-        if (match) match.style.color = 'var(--orange)';
-      }
-    });
-  });
-
-  // Form submit
-  function handleSubmit(btn) {
-    const form = btn.closest('.enquiry-right');
-    const name = form.querySelector('input[type="text"]').value;
-    if (!name) { alert('Please fill in your name.'); return; }
-    btn.textContent = '✅ Enquiry Sent! We\'ll be in touch shortly.';
-    btn.style.background = 'var(--green)';
-    btn.disabled = true;
-  }
-</script>
-</body>
-</html>
+        const match = document.querySelector(`.nav-lin
