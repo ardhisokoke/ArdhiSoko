@@ -1,0 +1,48 @@
+<h2>ArdhiSoko Admin Panel</h2>
+
+<select id="project">
+<option value="0">Malindi</option>
+<option value="1">Konza</option>
+<option value="2">Kamakis</option>
+</select>
+
+<input id="name" placeholder="Project Name">
+<input id="price" placeholder="Price">
+<input id="image" placeholder="Image URL">
+
+<textarea id="description" placeholder="Description"></textarea>
+
+<input id="features" placeholder="Feature1,Feature2,Feature3">
+
+<button onclick="save()">Save</button>
+
+<script src="data.js"></script>
+
+<script>
+
+function save(){
+
+let id = document.getElementById("project").value
+
+siteData.projects[id].name =
+document.getElementById("name").value
+
+siteData.projects[id].price =
+document.getElementById("price").value
+
+siteData.projects[id].image =
+document.getElementById("image").value
+
+siteData.projects[id].description =
+document.getElementById("description").value
+
+siteData.projects[id].features =
+document.getElementById("features").value.split(",")
+
+localStorage.setItem("ardhisoko",JSON.stringify(siteData))
+
+alert("Saved locally")
+
+}
+
+</script>
