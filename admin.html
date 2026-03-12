@@ -220,6 +220,8 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
       <button class="si" onclick="sp('co',this)">&#128222; Contact Details</button>
       <button class="si" onclick="sp('lo',this)">&#127912; Logo &amp; Branding</button>
       <button class="si" onclick="sp('wb',this)">&#127752; Why Banners</button>
+      <button class="si" onclick="sp('ti',this)">&#11088; Testimonials</button>
+      <button class="si" onclick="sp('bl',this)">&#128240; Blog Posts</button>
       <button class="si" onclick="sp('ex',this)">&#128229; Export Website</button>
       <button class="si" onclick="sp('gh',this)">&#128279; Push to GitHub</button>
     </div>
@@ -517,7 +519,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
       </div>
 
       <!-- PROJECT 4 -->
-      <div class="pn" id="pn-p4" style="display:none">
+      <div class="pn" id="pn-p4">
         <div class="cd">
           <div class="ch"><div class="ct2">&#127961; New Project</div><span class="cbg badge-apt">Custom</span></div>
           <div class="fg">
@@ -692,6 +694,165 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
         </div>
       </div>
 
+      <!-- TESTIMONIALS -->
+      <div class="pn" id="pn-ti">
+        <div class="cd">
+          <div class="ch"><div class="ct2">&#11088; Testimonials</div><span class="cbg" style="background:#E8F5E4;color:var(--g)">3 Reviews</span></div>
+          <p style="font-size:.84rem;color:var(--gr);margin-bottom:1.4rem;line-height:1.65">Edit the 3 testimonial cards shown in the <strong>"Trusted by real buyers"</strong> section.</p>
+          
+            <div class="cd" style="margin-bottom:1.2rem">
+              <div class="ch"><div class="ct2">Testimonial 1</div><div class="testi-mini-prev" id="t0-prev" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.8rem 1rem;margin-top:.8rem;font-size:.78rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.6">I bought a 1-acre plot in Malindi through ArdhiSoko and the process was so smoot...</div></div>
+              <div class="fd"><label>Initials (shown in avatar)</label><input type="text" id="t0-ini" value="JK" maxlength="2" oninput="updTesti(0)"></div>
+              <div class="fd"><label>Full Name</label><input type="text" id="t0-name" value="James Kamau" oninput="updTesti(0)"></div>
+              <div class="fd"><label>Role / Location</label><input type="text" id="t0-role" value="Malindi Plot Owner — Nairobi" oninput="updTesti(0)"></div>
+              <div class="fd ff"><label>Quote</label><textarea id="t0-quote" oninput="updTesti(0)">I bought a 1-acre plot in Malindi through ArdhiSoko and the process was so smooth. Title deed was ready within 3 weeks. The team organised a free site visit and I fell in love with the land immediately.</textarea></div>
+            </div>
+            <div class="cd" style="margin-bottom:1.2rem">
+              <div class="ch"><div class="ct2">Testimonial 2</div><div class="testi-mini-prev" id="t1-prev" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.8rem 1rem;margin-top:.8rem;font-size:.78rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.6">The Konza plots are the best investment I have made. ArdhiSoko was transparent f...</div></div>
+              <div class="fd"><label>Initials (shown in avatar)</label><input type="text" id="t1-ini" value="AW" maxlength="2" oninput="updTesti(1)"></div>
+              <div class="fd"><label>Full Name</label><input type="text" id="t1-name" value="Amina Wanjiru" oninput="updTesti(1)"></div>
+              <div class="fd"><label>Role / Location</label><input type="text" id="t1-role" value="Konza Plot Owner — Mombasa" oninput="updTesti(1)"></div>
+              <div class="fd ff"><label>Quote</label><textarea id="t1-quote" oninput="updTesti(1)">The Konza plots are the best investment I have made. ArdhiSoko was transparent from day one — no hidden charges. The payment plan made it very affordable. Highly recommend to anyone looking for land near the SGR.</textarea></div>
+            </div>
+            <div class="cd" style="margin-bottom:1.2rem">
+              <div class="ch"><div class="ct2">Testimonial 3</div><div class="testi-mini-prev" id="t2-prev" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.8rem 1rem;margin-top:.8rem;font-size:.78rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.6">Professional, honest, and fast. I was sceptical at first but ArdhiSoko proved me...</div></div>
+              <div class="fd"><label>Initials (shown in avatar)</label><input type="text" id="t2-ini" value="DO" maxlength="2" oninput="updTesti(2)"></div>
+              <div class="fd"><label>Full Name</label><input type="text" id="t2-name" value="David Ochieng" oninput="updTesti(2)"></div>
+              <div class="fd"><label>Role / Location</label><input type="text" id="t2-role" value="Kamakis Apartments — Kisumu" oninput="updTesti(2)"></div>
+              <div class="fd ff"><label>Quote</label><textarea id="t2-quote" oninput="updTesti(2)">Professional, honest, and fast. I was sceptical at first but ArdhiSoko proved me wrong. I registered my interest for Kamakis apartments and have been updated every step of the way. Excellent customer service.</textarea></div>
+            </div>
+        </div>
+      </div>
+
+      <!-- BLOG POSTS -->
+      <div class="pn" id="pn-bl">
+        <div class="cd">
+          <div class="ch"><div class="ct2">&#128240; Blog Posts</div><span class="cbg" style="background:#E8F5E4;color:var(--g)">6 Posts</span></div>
+          <p style="font-size:.84rem;color:var(--gr);margin-bottom:1.4rem;line-height:1.65">Edit all 6 blog posts shown in the <strong>"Property insights"</strong> section. Upload images, change titles, categories and excerpts.</p>
+          
+            <div class="cd" style="margin-bottom:1.5rem">
+              <div class="ch"><div class="ct2">Post 1 — Why Konza Technopolis Land is Doubling i...</div></div>
+              <div class="img-upload-area" id="b0-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'b0')">
+                <input type="file" accept="image/*" onchange="handleFile(this,'b0')">
+                <div class="iui">&#128247;</div><div class="iut">Upload post image</div><div class="iub">Browse Files</div>
+              </div>
+              <div class="img-status" id="b0-status"></div>
+              <div class="fd"><label>Image URL</label><input type="text" id="b0-img" value="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" oninput="updBlogPrev(0)"></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Category</label><select id="b0-cat" oninput="updBlogPrev(0)"><option value="market" selected>Market News</option><option value="update">Project Update</option><option value="tips">Buying Tips</option></select></div>
+                <div class="fd"><label>Status Badge</label><input type="text" id="b0-status-txt" value="Trending" oninput="updBlogPrev(0)"></div>
+              </div>
+              <div class="fd"><label>Location</label><input type="text" id="b0-loc" value="Konza, Machakos County" oninput="updBlogPrev(0)"></div>
+              <div class="fd"><label>Title</label><input type="text" id="b0-title" value="Why Konza Technopolis Land is Doubling in Value Every 2 Years" oninput="updBlogPrev(0)"></div>
+              <div class="fd ff"><label>Excerpt</label><textarea id="b0-excerpt" oninput="updBlogPrev(0)">With the SGR station, data centres, and government offices all confirmed for Konza, early investors are already seeing massive returns on their land.</textarea></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Date</label><input type="text" id="b0-date" value="March 2025" oninput="updBlogPrev(0)"></div>
+                <div class="fd"><label>Read Time</label><input type="text" id="b0-readtime" value="4 min read" oninput="updBlogPrev(0)"></div>
+              </div>
+            </div>
+            <div class="cd" style="margin-bottom:1.5rem">
+              <div class="ch"><div class="ct2">Post 2 — Malindi Phase 2 Now Open — Only 12 Plots...</div></div>
+              <div class="img-upload-area" id="b1-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'b1')">
+                <input type="file" accept="image/*" onchange="handleFile(this,'b1')">
+                <div class="iui">&#128247;</div><div class="iut">Upload post image</div><div class="iub">Browse Files</div>
+              </div>
+              <div class="img-status" id="b1-status"></div>
+              <div class="fd"><label>Image URL</label><input type="text" id="b1-img" value="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" oninput="updBlogPrev(1)"></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Category</label><select id="b1-cat" oninput="updBlogPrev(1)"><option value="market">Market News</option><option value="update" selected>Project Update</option><option value="tips">Buying Tips</option></select></div>
+                <div class="fd"><label>Status Badge</label><input type="text" id="b1-status-txt" value="Hot" oninput="updBlogPrev(1)"></div>
+              </div>
+              <div class="fd"><label>Location</label><input type="text" id="b1-loc" value="Malindi, Kilifi County" oninput="updBlogPrev(1)"></div>
+              <div class="fd"><label>Title</label><input type="text" id="b1-title" value="Malindi Phase 2 Now Open — Only 12 Plots Remaining" oninput="updBlogPrev(1)"></div>
+              <div class="fd ff"><label>Excerpt</label><textarea id="b1-excerpt" oninput="updBlogPrev(1)">Following the sell-out success of Phase 1, ArdhiSoko has released Phase 2 of the Malindi Ocean View Acres project. Act fast — demand is extremely high.</textarea></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Date</label><input type="text" id="b1-date" value="February 2025" oninput="updBlogPrev(1)"></div>
+                <div class="fd"><label>Read Time</label><input type="text" id="b1-readtime" value="3 min read" oninput="updBlogPrev(1)"></div>
+              </div>
+            </div>
+            <div class="cd" style="margin-bottom:1.5rem">
+              <div class="ch"><div class="ct2">Post 3 — 5 Things to Check Before Buying Land in ...</div></div>
+              <div class="img-upload-area" id="b2-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'b2')">
+                <input type="file" accept="image/*" onchange="handleFile(this,'b2')">
+                <div class="iui">&#128247;</div><div class="iut">Upload post image</div><div class="iub">Browse Files</div>
+              </div>
+              <div class="img-status" id="b2-status"></div>
+              <div class="fd"><label>Image URL</label><input type="text" id="b2-img" value="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" oninput="updBlogPrev(2)"></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Category</label><select id="b2-cat" oninput="updBlogPrev(2)"><option value="market">Market News</option><option value="update">Project Update</option><option value="tips" selected>Buying Tips</option></select></div>
+                <div class="fd"><label>Status Badge</label><input type="text" id="b2-status-txt" value="Must Read" oninput="updBlogPrev(2)"></div>
+              </div>
+              <div class="fd"><label>Location</label><input type="text" id="b2-loc" value="Kenya Wide" oninput="updBlogPrev(2)"></div>
+              <div class="fd"><label>Title</label><input type="text" id="b2-title" value="5 Things to Check Before Buying Land in Kenya" oninput="updBlogPrev(2)"></div>
+              <div class="fd ff"><label>Excerpt</label><textarea id="b2-excerpt" oninput="updBlogPrev(2)">From title deed verification to land rates clearance — here is a simple checklist every Kenyan land buyer must go through before signing anything.</textarea></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Date</label><input type="text" id="b2-date" value="January 2025" oninput="updBlogPrev(2)"></div>
+                <div class="fd"><label>Read Time</label><input type="text" id="b2-readtime" value="5 min read" oninput="updBlogPrev(2)"></div>
+              </div>
+            </div>
+            <div class="cd" style="margin-bottom:1.5rem">
+              <div class="ch"><div class="ct2">Post 4 — Malindi Tourism Boom is Pushing Property...</div></div>
+              <div class="img-upload-area" id="b3-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'b3')">
+                <input type="file" accept="image/*" onchange="handleFile(this,'b3')">
+                <div class="iui">&#128247;</div><div class="iut">Upload post image</div><div class="iub">Browse Files</div>
+              </div>
+              <div class="img-status" id="b3-status"></div>
+              <div class="fd"><label>Image URL</label><input type="text" id="b3-img" value="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80" oninput="updBlogPrev(3)"></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Category</label><select id="b3-cat" oninput="updBlogPrev(3)"><option value="market" selected>Market News</option><option value="update">Project Update</option><option value="tips">Buying Tips</option></select></div>
+                <div class="fd"><label>Status Badge</label><input type="text" id="b3-status-txt" value="New" oninput="updBlogPrev(3)"></div>
+              </div>
+              <div class="fd"><label>Location</label><input type="text" id="b3-loc" value="Malindi, Kilifi County" oninput="updBlogPrev(3)"></div>
+              <div class="fd"><label>Title</label><input type="text" id="b3-title" value="Malindi Tourism Boom is Pushing Property Prices Up Fast" oninput="updBlogPrev(3)"></div>
+              <div class="fd ff"><label>Excerpt</label><textarea id="b3-excerpt" oninput="updBlogPrev(3)">International tourist arrivals to Malindi grew by 38% in 2024. Hotels are full and demand for holiday homes and Airbnb retreats is at an all-time high.</textarea></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Date</label><input type="text" id="b3-date" value="December 2024" oninput="updBlogPrev(3)"></div>
+                <div class="fd"><label>Read Time</label><input type="text" id="b3-readtime" value="4 min read" oninput="updBlogPrev(3)"></div>
+              </div>
+            </div>
+            <div class="cd" style="margin-bottom:1.5rem">
+              <div class="ch"><div class="ct2">Post 5 — Kamakis Apartments — Construction Update...</div></div>
+              <div class="img-upload-area" id="b4-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'b4')">
+                <input type="file" accept="image/*" onchange="handleFile(this,'b4')">
+                <div class="iui">&#128247;</div><div class="iut">Upload post image</div><div class="iub">Browse Files</div>
+              </div>
+              <div class="img-status" id="b4-status"></div>
+              <div class="fd"><label>Image URL</label><input type="text" id="b4-img" value="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" oninput="updBlogPrev(4)"></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Category</label><select id="b4-cat" oninput="updBlogPrev(4)"><option value="market">Market News</option><option value="update" selected>Project Update</option><option value="tips">Buying Tips</option></select></div>
+                <div class="fd"><label>Status Badge</label><input type="text" id="b4-status-txt" value="Launch Soon" oninput="updBlogPrev(4)"></div>
+              </div>
+              <div class="fd"><label>Location</label><input type="text" id="b4-loc" value="Kamakis, Ruiru" oninput="updBlogPrev(4)"></div>
+              <div class="fd"><label>Title</label><input type="text" id="b4-title" value="Kamakis Apartments — Construction Update and Launch Date" oninput="updBlogPrev(4)"></div>
+              <div class="fd ff"><label>Excerpt</label><textarea id="b4-excerpt" oninput="updBlogPrev(4)">ArdhiSoko is pleased to announce that groundbreaking for Kamakis Urban Residences is scheduled for Q2 2025. Register your interest now to lock in off-plan pricing.</textarea></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Date</label><input type="text" id="b4-date" value="November 2024" oninput="updBlogPrev(4)"></div>
+                <div class="fd"><label>Read Time</label><input type="text" id="b4-readtime" value="3 min read" oninput="updBlogPrev(4)"></div>
+              </div>
+            </div>
+            <div class="cd" style="margin-bottom:1.5rem">
+              <div class="ch"><div class="ct2">Post 6 — How to Buy Land in Kenya with a Flexible...</div></div>
+              <div class="img-upload-area" id="b5-drop" ondragover="event.preventDefault();this.style.borderColor='var(--o)'" ondragleave="this.style.borderColor=''" ondrop="handleDrop(event,'b5')">
+                <input type="file" accept="image/*" onchange="handleFile(this,'b5')">
+                <div class="iui">&#128247;</div><div class="iut">Upload post image</div><div class="iub">Browse Files</div>
+              </div>
+              <div class="img-status" id="b5-status"></div>
+              <div class="fd"><label>Image URL</label><input type="text" id="b5-img" value="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80" oninput="updBlogPrev(5)"></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Category</label><select id="b5-cat" oninput="updBlogPrev(5)"><option value="market">Market News</option><option value="update">Project Update</option><option value="tips" selected>Buying Tips</option></select></div>
+                <div class="fd"><label>Status Badge</label><input type="text" id="b5-status-txt" value="Popular" oninput="updBlogPrev(5)"></div>
+              </div>
+              <div class="fd"><label>Location</label><input type="text" id="b5-loc" value="Kenya Wide" oninput="updBlogPrev(5)"></div>
+              <div class="fd"><label>Title</label><input type="text" id="b5-title" value="How to Buy Land in Kenya with a Flexible Payment Plan" oninput="updBlogPrev(5)"></div>
+              <div class="fd ff"><label>Excerpt</label><textarea id="b5-excerpt" oninput="updBlogPrev(5)">You do not need to have the full amount to buy land. Here is how ArdhiSoko's instalment plan works and how you can secure your plot with as little as 30% deposit.</textarea></div>
+              <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+                <div class="fd"><label>Date</label><input type="text" id="b5-date" value="October 2024" oninput="updBlogPrev(5)"></div>
+                <div class="fd"><label>Read Time</label><input type="text" id="b5-readtime" value="4 min read" oninput="updBlogPrev(5)"></div>
+              </div>
+            </div>
+        </div>
+      </div>
+
       <!-- GITHUB PUSH -->
       <div class="pn" id="pn-gh">
         <div class="gh-box">
@@ -765,7 +926,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
 <div class="ts" id="ts"></div>
 
 <script>
-var TNM={ov:'Dashboard',ma:'Malindi Plots',ko:'Konza Plots',ka:'Kamakis Apartments',co:'Contact Details',lo:'Logo & Branding',ex:'Export Website'};
+var TNM={ov:'Dashboard',ma:'Malindi Plots',ko:'Konza Plots',ka:'Kamakis Apartments',co:'Contact Details',lo:'Logo & Branding',wb:'Why Banners',ti:'Testimonials',bl:'Blog Posts',gh:'Push to GitHub',ex:'Export Website',pw:'Change Password',p4:'New Project 4'};
 function li(){var u=document.getElementById('u').value.trim(),p=document.getElementById('p').value.trim();if(u==='admin'&&p==='ardhisoko2025'){document.getElementById('ls').style.display='none';document.getElementById('app').classList.add('v');}else{document.getElementById('le').style.display='block';}}
 function lo(){document.getElementById('ls').style.display='flex';document.getElementById('app').classList.remove('v');}
 function sp(n,b){document.querySelectorAll('.pn').forEach(function(x){x.classList.remove('ac');});document.querySelectorAll('.si').forEach(function(x){x.classList.remove('ac');});document.getElementById('pn-'+n).classList.add('ac');if(b)b.classList.add('ac');document.getElementById('tbt').textContent=TNM[n]||n;}
@@ -801,7 +962,13 @@ function dk(h){var r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=par
 function lk(h){var r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);r=Math.min(255,Math.round(r+(255-r)*.85));g=Math.min(255,Math.round(g+(255-g)*.85));b=Math.min(255,Math.round(b+(255-b)*.85));return '#'+[r,g,b].map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
 
 function ex(){var html=generateHTML();var blob=new Blob([html],{type:'text/html'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';a.click();toast('index.html downloaded!','ok');}
-function buildHTML(og,gr,p1,p2,tg,ph,em,ad,wa,heroImg,mf,kf2,kaf,banners){
+function buildHTML(og,gr,p1,p2,tg,ph,em,ad,wa,heroImg,mf,kf2,kaf,banners,testis,blogs){
+if(!testis)testis=[
+  {ini:'JK',name:'James Kamau',role:'Malindi Plot Owner — Nairobi',quote:'I bought a 1-acre plot in Malindi through ArdhiSoko and the process was so smooth. Title deed was ready within 3 weeks.'},
+  {ini:'AW',name:'Amina Wanjiru',role:'Konza Plot Owner — Mombasa',quote:'The Konza plots are the best investment I have made. ArdhiSoko was transparent from day one — no hidden charges.'},
+  {ini:'DO',name:'David Ochieng',role:'Kamakis Apartments — Kisumu',quote:'Professional, honest, and fast. I was sceptical at first but ArdhiSoko proved me wrong. Excellent customer service.'}
+];
+if(!blogs)blogs=[];
 if(!banners)banners=[{img:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80',tag:'Legal',title:'Title Deed Verified',desc:'Every plot comes with a clean, verified title deed.'},{img:'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80',tag:'Finance',title:'Flexible Payment Plans',desc:'Secure your plot with a deposit and pay over time.'},{img:'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=700&q=80',tag:'Service',title:'Free Site Visits',desc:'We take you to any site at no cost.'},{img:'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80',tag:'Investment',title:'High Appreciation Areas',desc:'Among Kenya\'s fastest-appreciating corridors.'}];
 // parameters received
 var html='<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>'+p1+p2+' \u2014 '+tg+'</title>\n<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">\n<style>\n:root{--orange:'+og+';--orange-dark:'+dk(og)+';--orange-light:'+lk(og)+';--green:'+gr+';--green-dark:'+dk(gr)+';--green-light:'+lk(gr)+';--black:#1A1A1A;--gray-dark:#333;--gray:#666;--gray-light:#F5F5F5;--border:#E0E0E0;--white:#fff;}\n';
@@ -825,6 +992,25 @@ for(var bi=0;bi<banners.length;bi++){
   whyCards+='<div class="wc"><img class="wc-img" src="'+bn.img+'" alt="'+bn.title+'"><div class="wc-overlay"></div><span class="wc-tag">'+bn.tag+'</span><div class="wc-body"><div class="wc-title">'+bn.title+'</div><p class="wc-desc">'+bn.desc+'</p></div></div>';
 }
 html+='<section class="sec" style="background:var(--gray-light)"><div class="sec-eyebrow">Why '+p1+p2+'</div><h2 class="sec-title">Buy with <span>total confidence</span></h2><div class="why-carousel-wrap"><div class="why-grid" id="why-grid">'+whyCards+'</div><div class="why-dots" id="why-dots"><button class="why-dot active" onclick="scrollToCard(0)"></button><button class="why-dot" onclick="scrollToCard(1)"></button><button class="why-dot" onclick="scrollToCard(2)"></button><button class="why-dot" onclick="scrollToCard(3)"></button></div></div></section>\n';
+// ── TESTIMONIALS ──
+var testiCards='';
+for(var ti=0;ti<testis.length;ti++){
+  var t=testis[ti];
+  testiCards+='<div class="testi-card"><div class="testi-quote">&quot;</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">'+t.quote+'</p><div class="testi-author"><div class="testi-avatar">'+t.ini+'</div><div><div class="testi-name">'+t.name+'</div><div class="testi-role">'+t.role+'</div></div></div></div>';
+}
+html+='<section class="testi-section" id="testimonials"><div class="sec-eyebrow">Client Stories</div><h2 class="sec-title">Trusted by <span>real buyers</span></h2><div class="testi-grid">'+testiCards+'</div></section>\n';
+
+// ── BLOG POSTS ──
+var blogSlide1='',blogSlide2='';
+var catColors={market:'var(--green)',update:'var(--orange)',tips:'#1565C0'};
+for(var bi2=0;bi2<blogs.length;bi2++){
+  var bl=blogs[bi2];
+  var clr=catColors[bl.cat]||'var(--orange)';
+  var card='<div class="blog-card" data-cat="'+bl.cat+'"><div class="blog-img"><img src="'+bl.img+'" alt="'+bl.title+'"><span class="blog-cat-tag '+bl.cat+'">'+bl.label+'</span><span class="blog-status">'+bl.status+'</span></div><div class="blog-body"><div class="blog-loc">&#128205; '+bl.loc+'</div><div class="blog-title">'+bl.title+'</div><p class="blog-excerpt">'+bl.excerpt+'</p><div class="blog-footer"><span class="blog-meta">'+bl.date+' &nbsp;&middot;&nbsp; '+bl.readtime+'</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>';
+  if(bi2<3) blogSlide1+=card; else blogSlide2+=card;
+}
+html+='<section class="blog-section" id="blog"><div class="sec-eyebrow">Latest News</div><h2 class="sec-title">Property insights &amp; <span>project updates</span></h2><div class="blog-cats"><button class="blog-cat active" onclick="filterBlog(&apos;all&apos;,this)">All Posts</button><button class="blog-cat" onclick="filterBlog(&apos;market&apos;,this)">Market News</button><button class="blog-cat" onclick="filterBlog(&apos;update&apos;,this)">Project Updates</button><button class="blog-cat" onclick="filterBlog(&apos;tips&apos;,this)">Buying Tips</button></div><div class="blog-scroll-wrap"><div class="blog-track-outer" id="blog-track"><div class="blog-window">'+blogSlide1+'</div><div class="blog-window">'+blogSlide2+'</div></div></div><div class="blog-nav"><div class="blog-dots" id="blog-dots"><button class="blog-dot active"></button><button class="blog-dot"></button></div><div class="blog-arrows"><button class="blog-arrow" onclick="moveBlog(-1)">&#8592;</button><button class="blog-arrow" onclick="moveBlog(1)">&#8594;</button></div></div></section>\n';
+
 html+='<div class="enquiry-sec" id="enquiry"><div class="enquiry-left"><div class="sec-eyebrow">Get in Touch</div><h2 class="sec-title">Interested in a <span>project?</span></h2><p class="sec-desc">Fill in the form and one of our agents will get back to you within 24 hours.</p><div class="contact-items"><div class="contact-item"><div class="contact-item-icon">&#128222;</div><div><strong>Call / WhatsApp</strong><span>'+ph+'</span></div></div><div class="contact-item"><div class="contact-item-icon">&#9993;&#65039;</div><div><strong>Email Us</strong><span>'+em+'</span></div></div><div class="contact-item"><div class="contact-item-icon">&#128205;</div><div><strong>Office</strong><span>'+ad+'</span></div></div></div></div><div class="enquiry-right"><h3>Send Us an Enquiry</h3><p>We will respond within 24 hours.</p><div class="form-row"><div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div><div class="form-group"><label>Last Name</label><input type="text" placeholder="Kamau"></div></div><div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+254 7XX XXX XXX"></div><div class="form-group"><label>Email</label><input type="email" placeholder="john@email.com"></div><div class="form-group"><label>Which Project?</label><select><option value="">Select a project...</option><option>'+gv('mn')+' ('+gv('msz')+' &mdash; '+gv('mp')+')</option><option>'+gv('kn')+' ('+gv('ksz')+' &mdash; '+gv('kp')+')</option><option>'+gv('kan')+' ('+gv('kasz')+' &mdash; '+gv('kap')+')</option><option>All projects</option></select></div><div class="form-group"><label>Message</label><textarea placeholder="Tell us more about what you are looking for..."></textarea></div><button class="form-submit" onclick="this.textContent=\'Sent! We will be in touch.\';this.style.background=\'#43A047\';this.disabled=true">Send Enquiry &rarr;</button></div></div>\n';
 html+='<footer><div class="f-grid"><div><div class="f-logo-wrap"><div class="f-logo-tri"></div><div><div class="f-logo-text"><span class="ardhi">'+p1+'</span><span class="soko">'+p2+'</span></div><div class="f-tagline">'+tg+'</div></div></div><p class="f-about">'+p1+p2+' is a Kenyan property developer offering premium land and residential investments in Malindi, Konza, and Kamakis Ruiru. Every project is title-deed verified and backed by flexible payment plans.</p><div class="f-socials"><div class="fsoc">X</div><div class="fsoc">f</div><div class="fsoc">in</div><div class="fsoc">&#9654;</div><div class="fsoc">&#128247;</div></div></div><div class="f-col"><h5>Our Projects</h5><ul class="f-links"><li><a href="#malindi">'+gv('mn')+'</a></li><li><a href="#konza">'+gv('kn')+'</a></li><li><a href="#kamakis">'+gv('kan')+'</a></li></ul></div><div class="f-col"><h5>Company</h5><ul class="f-links"><li><a href="#">About '+p1+p2+'</a></li><li><a href="#">Payment Plans</a></li><li><a href="#">Site Visits</a></li><li><a href="#enquiry">Contact</a></li></ul></div><div class="f-col"><h5>Contact</h5><ul class="f-contact"><li>&#128205; '+ad+'</li><li>&#128222; '+ph+'</li><li>&#9993;&#65039; '+em+'</li><li>&#128172; WhatsApp us</li></ul></div></div><div class="f-bottom"><span>&copy; 2025 '+p1+p2+' Ltd. All rights reserved.</span><span>Privacy &middot; Terms</span></div></footer>\n';
 html+='<a href="https://wa.me/'+wa+'?text=Hi%20'+p1+p2+'%2C%20I%27m%20interested%20in%20your%20properties." class="wa-btn" target="_blank">&#128172;</a>\n</body>\n</html>';
@@ -845,6 +1031,20 @@ function addProject(){
   sp('p4', document.getElementById('sb-p4'));
   toast('New project added!','ok');
 }
+
+// ── TESTIMONIAL UPDATE ──
+function updTesti(i){
+  var ini   = document.getElementById('t'+i+'-ini').value;
+  var name  = document.getElementById('t'+i+'-name').value;
+  var role  = document.getElementById('t'+i+'-role').value;
+  var quote = document.getElementById('t'+i+'-quote').value;
+  var prev  = document.getElementById('t'+i+'-prev');
+  if(prev){ prev.textContent = quote.substring(0,80) + (quote.length>80?'...':''); }
+  so();
+}
+
+// ── BLOG POST UPDATE ──
+function updBlogPrev(i){ so(); }
 
 // ── BANNER PREVIEW UPDATE ──
 function updBanner(i){
@@ -997,7 +1197,41 @@ function generateHTML(){
       desc: gv('bn'+i+'-desc') || ['Every plot comes with a clean, verified title deed.','Secure your plot with a deposit and pay over time.','We take you to any site at no cost.','Among Kenya\'s fastest-appreciating corridors.'][i]
     });
   }
-  return buildHTML(og,gr2,p1,p2,tg,ph,em,ad,wa,heroImg,mf,kf2,kaf,banners);
+  // Testimonials
+  var testis=[];
+  for(var i=0;i<3;i++){
+    testis.push({
+      ini:  gv('t'+i+'-ini')  || ['JK','AW','DO'][i],
+      name: gv('t'+i+'-name') || ['James Kamau','Amina Wanjiru','David Ochieng'][i],
+      role: gv('t'+i+'-role') || ['Malindi Plot Owner — Nairobi','Konza Plot Owner — Mombasa','Kamakis Apartments — Kisumu'][i],
+      quote:gv('t'+i+'-quote')|| ['I bought a 1-acre plot in Malindi through ArdhiSoko and the process was so smooth. Title deed was ready within 3 weeks.','The Konza plots are the best investment I have made. ArdhiSoko was transparent from day one — no hidden charges.','Professional, honest, and fast. I was sceptical at first but ArdhiSoko proved me wrong. Excellent customer service.'][i]
+    });
+  }
+  // Blog posts
+  var defaultImgs=['https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80','https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80','https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80','https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80','https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80'];
+  var defaultCats=['market','update','tips','market','update','tips'];
+  var defaultLabels=['Market News','Project Update','Buying Tips','Market News','Project Update','Buying Tips'];
+  var defaultStatus=['Trending','Hot','Must Read','New','Launch Soon','Popular'];
+  var defaultLocs=['Konza, Machakos County','Malindi, Kilifi County','Kenya Wide','Malindi, Kilifi County','Kamakis, Ruiru','Kenya Wide'];
+  var defaultTitles=['Why Konza Technopolis Land is Doubling in Value Every 2 Years','Malindi Phase 2 Now Open — Only 12 Plots Remaining','5 Things to Check Before Buying Land in Kenya','Malindi Tourism Boom is Pushing Property Prices Up Fast','Kamakis Apartments — Construction Update and Launch Date','How to Buy Land in Kenya with a Flexible Payment Plan'];
+  var defaultExcerpts=['With the SGR station, data centres, and government offices all confirmed for Konza, early investors are already seeing massive returns.','Following the sell-out success of Phase 1, ArdhiSoko has released Phase 2. Act fast — demand is extremely high.','From title deed verification to land rates clearance — a simple checklist every Kenyan land buyer must go through.','International tourist arrivals to Malindi grew by 38% in 2024. Demand for holiday homes is at an all-time high.','Groundbreaking for Kamakis Urban Residences is scheduled for Q2 2025. Register your interest now.','You do not need the full amount to buy land. Secure your plot with as little as 30% deposit.'];
+  var defaultDates=['March 2025','February 2025','January 2025','December 2024','November 2024','October 2024'];
+  var defaultReads=['4 min read','3 min read','5 min read','4 min read','3 min read','4 min read'];
+  var blogs=[];
+  for(var j=0;j<6;j++){
+    blogs.push({
+      img:      gv('b'+j+'-img')        || defaultImgs[j],
+      cat:      gv('b'+j+'-cat')        || defaultCats[j],
+      label:    (document.getElementById('b'+j+'-cat')?document.getElementById('b'+j+'-cat').options[document.getElementById('b'+j+'-cat').selectedIndex].text:null) || defaultLabels[j],
+      status:   gv('b'+j+'-status-txt') || defaultStatus[j],
+      loc:      gv('b'+j+'-loc')        || defaultLocs[j],
+      title:    gv('b'+j+'-title')      || defaultTitles[j],
+      excerpt:  gv('b'+j+'-excerpt')    || defaultExcerpts[j],
+      date:     gv('b'+j+'-date')       || defaultDates[j],
+      readtime: gv('b'+j+'-readtime')   || defaultReads[j]
+    });
+  }
+  return buildHTML(og,gr2,p1,p2,tg,ph,em,ad,wa,heroImg,mf,kf2,kaf,banners,testis,blogs);
 }
 
 // ── IMAGE UPLOAD FROM FILE ──
@@ -1039,13 +1273,13 @@ function handleDrop(event, prefix) {
 
 function applyImage(prefix, dataUrl, fileName) {
   // Map prefix to correct element IDs
-  var imgMap = { 'm': 'm-cimg', 'k': 'k-cimg', 'ka': 'ka-cimg', 'hero': 'hero-prev', 'p4': 'p4-cimg', 'bn0': 'bn0-prev', 'bn1': 'bn1-prev', 'bn2': 'bn2-prev', 'bn3': 'bn3-prev' };
-  var urlMap = { 'm': 'mi', 'k': 'ki', 'ka': 'kai', 'hero': 'hero-img', 'p4': 'p4i', 'bn0': 'bn0-img', 'bn1': 'bn1-img', 'bn2': 'bn2-img', 'bn3': 'bn3-img' };
-  var dropMap = { 'm': 'm-drop', 'k': 'k-drop', 'ka': 'ka-drop', 'hero': 'hero-drop', 'p4': 'p4-drop', 'bn0': 'bn0-drop', 'bn1': 'bn1-drop', 'bn2': 'bn2-drop', 'bn3': 'bn3-drop' };
+  var imgMap = { 'm': 'm-cimg', 'k': 'k-cimg', 'ka': 'ka-cimg', 'hero': 'hero-prev', 'p4': 'p4-cimg', 'bn0': 'bn0-prev', 'bn1': 'bn1-prev', 'bn2': 'bn2-prev', 'bn3': 'bn3-prev', 'b0': 'b0-img', 'b1': 'b1-img', 'b2': 'b2-img', 'b3': 'b3-img', 'b4': 'b4-img', 'b5': 'b5-img' };
+  var urlMap = { 'm': 'mi', 'k': 'ki', 'ka': 'kai', 'hero': 'hero-img', 'p4': 'p4i', 'bn0': 'bn0-img', 'bn1': 'bn1-img', 'bn2': 'bn2-img', 'bn3': 'bn3-img', 'b0': 'b0-img', 'b1': 'b1-img', 'b2': 'b2-img', 'b3': 'b3-img', 'b4': 'b4-img', 'b5': 'b5-img' };
+  var dropMap = { 'm': 'm-drop', 'k': 'k-drop', 'ka': 'ka-drop', 'hero': 'hero-drop', 'p4': 'p4-drop', 'bn0': 'bn0-drop', 'bn1': 'bn1-drop', 'bn2': 'bn2-drop', 'bn3': 'bn3-drop', 'b0': 'b0-drop', 'b1': 'b1-drop', 'b2': 'b2-drop', 'b3': 'b3-drop', 'b4': 'b4-drop', 'b5': 'b5-drop' };
 
-  // Update card preview image
+  // Update card preview image (skip for blog posts which have no img preview tag)
   var cardImg = document.getElementById(imgMap[prefix]);
-  if (cardImg) cardImg.src = dataUrl;
+  if (cardImg && cardImg.tagName === 'IMG') cardImg.src = dataUrl;
 
   // Store dataUrl in the URL input so export picks it up
   var urlInput = document.getElementById(urlMap[prefix]);
@@ -1069,6 +1303,8 @@ function applyImage(prefix, dataUrl, fileName) {
   showStatus(prefix, '✅ Image uploaded: ' + fileName, 'ok');
   var bnMatch = prefix.match(/^bn(\d)$/);
   if(bnMatch) updBanner(parseInt(bnMatch[1]));
+  var blMatch = prefix.match(/^b(\d)$/);
+  if(blMatch){ document.getElementById('b'+blMatch[1]+'-img').value = dataUrl; updBlogPrev(parseInt(blMatch[1])); }
 }
 
 function showStatus(prefix, msg, type) {
