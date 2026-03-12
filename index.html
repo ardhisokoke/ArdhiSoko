@@ -63,7 +63,32 @@
 .blog-arrow{width:40px;height:40px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all .2s;line-height:1;}
 .blog-arrow:hover{background:var(--orange);border-color:var(--orange);color:#fff;}
 @media(max-width:900px){.blog-window{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:680px){.blog-section{padding:3.5rem 1.5rem;}.blog-window{grid-template-columns:1fr;}}
+@media(max-width:680px){
+  .blog-section{padding:3.5rem 1.2rem;}
+  .blog-scroll-wrap{margin:0 -1.2rem;}
+  .blog-window{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    gap:1rem;
+    padding:0 1.2rem 1rem;
+    scrollbar-width:none;
+    grid-template-columns:unset;
+    box-sizing:border-box;
+  }
+  .blog-window::-webkit-scrollbar{display:none;}
+  .blog-card{
+    min-width:82vw;
+    scroll-snap-align:start;
+    flex-shrink:0;
+    flex-direction:column;
+  }
+  .blog-img{height:190px;width:100%;flex-shrink:0;}
+  .blog-body{padding:1.1rem;}
+  .blog-title{font-size:.92rem;}
+  .blog-excerpt{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+}
 
 @media(max-width:1100px){
   .testi-section,.blog-section{padding:4rem 2rem;}
@@ -113,32 +138,14 @@
   <div class="blog-scroll-wrap">
     <div class="blog-track-outer" id="blog-track">
       <div class="blog-window">
-        <div class="blog-card" data-cat="market">
-      <div class="blog-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="Konza"><span class="blog-cat-tag market">Market News</span><span class="blog-status">Trending</span></div>
-      <div class="blog-body"><div class="blog-loc">&#128205; Konza, Machakos County</div><div class="blog-title">Why Konza Technopolis Land is Doubling in Value Every 2 Years</div><p class="blog-excerpt">With the SGR station, data centres, and government offices all confirmed for Konza, early investors are already seeing massive returns on their land.</p><div class="blog-footer"><span class="blog-meta">March 2025 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div>
-    </div>
-      <div class="blog-card" data-cat="update">
-      <div class="blog-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="Malindi"><span class="blog-cat-tag update">Project Update</span><span class="blog-status">Hot</span></div>
-      <div class="blog-body"><div class="blog-loc">&#128205; Malindi, Kilifi County</div><div class="blog-title">Malindi Phase 2 Now Open &mdash; Only 12 Plots Remaining</div><p class="blog-excerpt">Following the sell-out success of Phase 1, ArdhiSoko has released Phase 2 of the Malindi Ocean View Acres project. Act fast &mdash; demand is extremely high.</p><div class="blog-footer"><span class="blog-meta">February 2025 &nbsp;&middot;&nbsp; 3 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div>
-    </div>
-      <div class="blog-card" data-cat="tips">
-      <div class="blog-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" alt="Title Deed"><span class="blog-cat-tag tips">Buying Tips</span><span class="blog-status">Must Read</span></div>
-      <div class="blog-body"><div class="blog-loc">&#128205; Kenya Wide</div><div class="blog-title">5 Things to Check Before Buying Land in Kenya</div><p class="blog-excerpt">From title deed verification to land rates clearance &mdash; here is a simple checklist every Kenyan land buyer must go through before signing anything.</p><div class="blog-footer"><span class="blog-meta">January 2025 &nbsp;&middot;&nbsp; 5 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div>
-    </div>
+        <div class="blog-card" data-cat="market"><div class="blog-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="Market News"><span class="blog-cat-tag market">Market News</span><span class="blog-status">Trending</span></div><div class="blog-body"><div class="blog-loc">&#128205; Konza, Machakos County</div><div class="blog-title">Why Konza Technopolis Land is Doubling in Value Every 2 Years</div><p class="blog-excerpt">With the SGR station, data centres, and government offices all confirmed for Konza, early investors are already seeing massive returns on their land.</p><div class="blog-footer"><span class="blog-meta">March 2025 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="update"><div class="blog-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="Project Update"><span class="blog-cat-tag update">Project Update</span><span class="blog-status">Hot</span></div><div class="blog-body"><div class="blog-loc">&#128205; Malindi, Kilifi County</div><div class="blog-title">Malindi Phase 2 Now Open &mdash; Only 12 Plots Remaining</div><p class="blog-excerpt">Following the sell-out success of Phase 1, ArdhiSoko has released Phase 2 of the Malindi Ocean View Acres project. Act fast &mdash; demand is extremely high.</p><div class="blog-footer"><span class="blog-meta">February 2025 &nbsp;&middot;&nbsp; 3 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="tips"><div class="blog-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80" alt="Buying Tips"><span class="blog-cat-tag tips">Buying Tips</span><span class="blog-status">Must Read</span></div><div class="blog-body"><div class="blog-loc">&#128205; Kenya Wide</div><div class="blog-title">5 Things to Check Before Buying Land in Kenya</div><p class="blog-excerpt">From title deed verification to land rates clearance &mdash; here is a simple checklist every Kenyan land buyer must go through before signing anything.</p><div class="blog-footer"><span class="blog-meta">January 2025 &nbsp;&middot;&nbsp; 5 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
       </div>
       <div class="blog-window">
-        <div class="blog-card" data-cat="market">
-      <div class="blog-img"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80" alt="Investment"><span class="blog-cat-tag market">Market News</span><span class="blog-status">New</span></div>
-      <div class="blog-body"><div class="blog-loc">&#128205; Malindi, Kilifi County</div><div class="blog-title">Malindi Tourism Boom is Pushing Property Prices Up Fast</div><p class="blog-excerpt">International tourist arrivals to Malindi grew by 38% in 2024. Hotels are full and demand for holiday homes and Airbnb retreats is at an all-time high.</p><div class="blog-footer"><span class="blog-meta">December 2024 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div>
-    </div>
-      <div class="blog-card" data-cat="update">
-      <div class="blog-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="Kamakis"><span class="blog-cat-tag update">Project Update</span><span class="blog-status">Launch Soon</span></div>
-      <div class="blog-body"><div class="blog-loc">&#128205; Kamakis, Ruiru</div><div class="blog-title">Kamakis Apartments &mdash; Construction Update and Launch Date</div><p class="blog-excerpt">ArdhiSoko is pleased to announce that groundbreaking for Kamakis Urban Residences is scheduled for Q2 2025. Register your interest now to lock in off-plan pricing.</p><div class="blog-footer"><span class="blog-meta">November 2024 &nbsp;&middot;&nbsp; 3 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div>
-    </div>
-      <div class="blog-card" data-cat="tips">
-      <div class="blog-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80" alt="Finance"><span class="blog-cat-tag tips">Buying Tips</span><span class="blog-status">Popular</span></div>
-      <div class="blog-body"><div class="blog-loc">&#128205; Kenya Wide</div><div class="blog-title">How to Buy Land in Kenya with a Flexible Payment Plan</div><p class="blog-excerpt">You do not need to have the full amount to buy land. Here is how ArdhiSoko's instalment plan works and how you can secure your plot with as little as 30% deposit.</p><div class="blog-footer"><span class="blog-meta">October 2024 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div>
-    </div>
+        <div class="blog-card" data-cat="market"><div class="blog-img"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700&q=80" alt="Market News"><span class="blog-cat-tag market">Market News</span><span class="blog-status">New</span></div><div class="blog-body"><div class="blog-loc">&#128205; Malindi, Kilifi County</div><div class="blog-title">Malindi Tourism Boom is Pushing Property Prices Up Fast</div><p class="blog-excerpt">International tourist arrivals to Malindi grew by 38% in 2024. Hotels are full and demand for holiday homes and Airbnb retreats is at an all-time high.</p><div class="blog-footer"><span class="blog-meta">December 2024 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="update"><div class="blog-img"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="Project Update"><span class="blog-cat-tag update">Project Update</span><span class="blog-status">Launch Soon</span></div><div class="blog-body"><div class="blog-loc">&#128205; Kamakis, Ruiru</div><div class="blog-title">Kamakis Apartments &mdash; Construction Update and Launch Date</div><p class="blog-excerpt">ArdhiSoko is pleased to announce that groundbreaking for Kamakis Urban Residences is scheduled for Q2 2025. Register now to lock in off-plan pricing.</p><div class="blog-footer"><span class="blog-meta">November 2024 &nbsp;&middot;&nbsp; 3 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
+        <div class="blog-card" data-cat="tips"><div class="blog-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80" alt="Buying Tips"><span class="blog-cat-tag tips">Buying Tips</span><span class="blog-status">Popular</span></div><div class="blog-body"><div class="blog-loc">&#128205; Kenya Wide</div><div class="blog-title">How to Buy Land in Kenya with a Flexible Payment Plan</div><p class="blog-excerpt">You do not need to have the full amount to buy land. Secure your plot with as little as 30% deposit and pay the balance over time.</p><div class="blog-footer"><span class="blog-meta">October 2024 &nbsp;&middot;&nbsp; 4 min read</span><a href="#enquiry" class="blog-read">Read More &#8594;</a></div></div></div>
       </div>
     </div>
   </div>
@@ -155,12 +162,13 @@
 </section>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Blog window carousel
+// Blog 3-per-window carousel — auto-advance
 (function(){
   var track = document.getElementById('blog-track');
   var dots  = Array.from(document.querySelectorAll('.blog-dot'));
+  var wrap  = document.querySelector('.blog-scroll-wrap');
   if(!track) return;
-  var cur = 0;
+  var cur = 0, timer;
   var windows = Array.from(track.querySelectorAll('.blog-window'));
   var total = windows.length;
 
@@ -170,21 +178,33 @@
     dots.forEach(function(d,j){ d.classList.toggle('active', j===cur); });
   }
 
-  window.moveBlog = function(dir){ goto(cur + dir); };
+  window.moveBlog = function(dir){ goto(cur + dir); resetTimer(); };
 
   dots.forEach(function(d,i){
-    d.addEventListener('click', function(){ goto(i); });
+    d.addEventListener('click', function(){ goto(i); resetTimer(); });
   });
 
   window.filterBlog = function(cat, btn){
     document.querySelectorAll('.blog-cat').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
-    // Show/hide cards across all windows
     track.querySelectorAll('.blog-card').forEach(function(card){
       card.style.visibility = (cat==='all' || card.dataset.cat===cat) ? '' : 'hidden';
     });
-    goto(0);
+    goto(0); resetTimer();
   };
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(function(){ goto(cur + 1); }, 4500);
+  }
+
+  if(wrap){
+    wrap.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    wrap.addEventListener('mouseleave', resetTimer);
+  }
+
+  goto(0);
+  resetTimer();
 })();
 </script>
 
@@ -222,29 +242,49 @@
   });
 })();
 
-// Blog window carousel
+// Blog 3-per-window carousel
 (function(){
   var track = document.getElementById('blog-track');
   var dots  = Array.from(document.querySelectorAll('.blog-dot'));
+  var wrap  = document.querySelector('.blog-scroll-wrap');
   if(!track) return;
-  var cur = 0;
+  var cur = 0, timer;
   var windows = Array.from(track.querySelectorAll('.blog-window'));
   var total = windows.length;
+
   function goto(i){
     cur = ((i % total) + total) % total;
     track.style.transform = 'translateX(-' + (cur * 100) + '%)';
     dots.forEach(function(d,j){ d.classList.toggle('active', j===cur); });
   }
-  window.moveBlog = function(dir){ goto(cur + dir); };
-  dots.forEach(function(d,i){ d.addEventListener('click', function(){ goto(i); }); });
+
+  window.moveBlog = function(dir){ goto(cur + dir); resetTimer(); };
+
+  dots.forEach(function(d,i){
+    d.addEventListener('click', function(){ goto(i); resetTimer(); });
+  });
+
   window.filterBlog = function(cat, btn){
     document.querySelectorAll('.blog-cat').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
     track.querySelectorAll('.blog-card').forEach(function(card){
       card.style.visibility = (cat==='all' || card.dataset.cat===cat) ? '' : 'hidden';
     });
-    goto(0);
+    goto(0); resetTimer();
   };
+
+  function resetTimer(){
+    clearInterval(timer);
+    timer = setInterval(function(){ goto(cur + 1); }, 4500);
+  }
+
+  if(wrap){
+    wrap.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    wrap.addEventListener('mouseleave', resetTimer);
+  }
+
+  goto(0);
+  resetTimer();
 })();
 </script>
 </body>
