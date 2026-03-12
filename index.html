@@ -181,9 +181,12 @@
 .nav-search-btn:hover{background:var(--green);}
 @media(max-width:900px){.nav-search-input{width:160px;}}
 @media(max-width:680px){
-  .nav-search{margin-left:auto;}
-  .nav-search-input{width:120px;font-size:.75rem;padding:.4rem .75rem;}
-  .nav-search-btn{padding:.4rem .75rem;font-size:.82rem;}
+  .nav-search{margin-left:auto;background:transparent;border:none;position:relative;}
+  .nav-search:focus-within{background:#f4f4f4;border:1.5px solid var(--orange);}
+  .nav-search-input{width:0;padding:0;opacity:0;transition:width .3s,opacity .3s,padding .3s;}
+  .nav-search-input.open{width:150px;padding:.4rem .75rem;opacity:1;}
+  .nav-search-btn{background:transparent;color:var(--orange);padding:.4rem;font-size:1.1rem;}
+  .nav-search-btn:hover{background:transparent;color:var(--green);}
 }
 
 /* ── PAGE MENU BAR ── */
@@ -480,6 +483,22 @@
       if(dist < minDist){ minDist = dist; closest = i; }
     });
     setDot(closest);
+  });
+})();
+
+// Mobile search toggle
+(function(){
+  var btn = document.querySelector('.nav-search-btn');
+  var inp = document.querySelector('.nav-search-input');
+  if(!btn || !inp) return;
+  btn.addEventListener('click', function(){
+    if(window.innerWidth > 680) return;
+    inp.classList.toggle('open');
+    if(inp.classList.contains('open')){ inp.focus(); }
+  });
+  document.addEventListener('click', function(e){
+    if(window.innerWidth > 680) return;
+    if(!e.target.closest('.nav-search')){ inp.classList.remove('open'); }
   });
 })();
 
