@@ -97,6 +97,11 @@
   .blog-nav{padding:0 1.2rem;}
 }
 
+.testi-scroll-wrap{overflow:hidden;}
+.testi-nav{display:none;justify-content:center;margin-top:1.8rem;}
+.testi-dots{display:flex;gap:.5rem;}
+.testi-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:none;padding:0;cursor:pointer;transition:all .2s;}
+.testi-dot.active{background:var(--orange);width:22px;border-radius:4px;}
 @media(max-width:1100px){
   .testi-section,.blog-section{padding:4rem 2rem;}
   .testi-grid{grid-template-columns:1fr;}
@@ -106,7 +111,30 @@
   .blog-title{font-size:1.1rem;}
 }
 @media(max-width:680px){
-  .testi-section,.blog-section{padding:3.5rem 1.5rem;}
+  .testi-section{padding:3rem 0;}
+  .testi-section .sec-eyebrow,.testi-section .sec-title{padding-left:1.2rem;padding-right:1.2rem;}
+  .testi-scroll-wrap{width:100%;overflow:hidden;}
+  .testi-grid{
+    display:flex;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    grid-template-columns:unset;
+    gap:1.2rem;
+    padding:0 1.2rem;
+    box-sizing:border-box;
+    margin-top:2rem;
+  }
+  .testi-grid::-webkit-scrollbar{display:none;}
+  .testi-card{
+    min-width:calc(100vw - 2.4rem);
+    width:calc(100vw - 2.4rem);
+    scroll-snap-align:start;
+    flex-shrink:0;
+  }
+  .testi-nav{display:flex;}
+  .blog-section{padding:3.5rem 0;}
   .blog-body{padding:1.4rem;}
   .blog-title{font-size:1rem;}
 }
@@ -125,10 +153,19 @@
 <section class="testi-section" id="testimonials">
   <div class="sec-eyebrow">Client Stories</div>
   <h2 class="sec-title">Trusted by <span>real buyers</span></h2>
-  <div class="testi-grid">
-    <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">I bought a 1-acre plot in Malindi through ArdhiSoko and the process was so smooth. Title deed was ready within 3 weeks. The team organised a free site visit and I fell in love with the land immediately.</p><div class="testi-author"><div class="testi-avatar">JK</div><div><div class="testi-name">James Kamau</div><div class="testi-role">Malindi Plot Owner &mdash; Nairobi</div></div></div></div>
-    <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">The Konza plots are the best investment I have made. ArdhiSoko was transparent from day one — no hidden charges. The payment plan made it very affordable. Highly recommend to anyone looking for land near the SGR.</p><div class="testi-author"><div class="testi-avatar">AW</div><div><div class="testi-name">Amina Wanjiru</div><div class="testi-role">Konza Plot Owner &mdash; Mombasa</div></div></div></div>
-    <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">Professional, honest, and fast. I was sceptical at first but ArdhiSoko proved me wrong. I registered my interest for Kamakis apartments and have been updated every step of the way. Excellent customer service.</p><div class="testi-author"><div class="testi-avatar">DO</div><div><div class="testi-name">David Ochieng</div><div class="testi-role">Kamakis Apartments &mdash; Kisumu</div></div></div></div>
+  <div class="testi-scroll-wrap">
+    <div class="testi-grid" id="testi-track">
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">I bought a 1-acre plot in Malindi through ArdhiSoko and the process was so smooth. Title deed was ready within 3 weeks. The team organised a free site visit and I fell in love with the land immediately.</p><div class="testi-author"><div class="testi-avatar">JK</div><div><div class="testi-name">James Kamau</div><div class="testi-role">Malindi Plot Owner &mdash; Nairobi</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">The Konza plots are the best investment I have made. ArdhiSoko was transparent from day one — no hidden charges. The payment plan made it very affordable. Highly recommend to anyone looking for land near the SGR.</p><div class="testi-author"><div class="testi-avatar">AW</div><div><div class="testi-name">Amina Wanjiru</div><div class="testi-role">Konza Plot Owner &mdash; Mombasa</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><div class="testi-badge">&#10003; Verified Buyer</div><div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testi-text">Professional, honest, and fast. I was sceptical at first but ArdhiSoko proved me wrong. I registered my interest for Kamakis apartments and have been updated every step of the way. Excellent customer service.</p><div class="testi-author"><div class="testi-avatar">DO</div><div><div class="testi-name">David Ochieng</div><div class="testi-role">Kamakis Apartments &mdash; Kisumu</div></div></div></div>
+    </div>
+  </div>
+  <div class="testi-nav" id="testi-nav">
+    <div class="testi-dots" id="testi-dots">
+      <button class="testi-dot active"></button>
+      <button class="testi-dot"></button>
+      <button class="testi-dot"></button>
+    </div>
   </div>
 </section>
 
@@ -276,6 +313,31 @@
   buildDots();
   gotoSlide(0);
   resetTimer();
+})();
+
+// Testimonials mobile swipe dots sync
+(function(){
+  var track = document.getElementById('testi-track');
+  var dotsEl = document.getElementById('testi-dots');
+  if(!track || !dotsEl) return;
+  var cards = Array.from(track.querySelectorAll('.testi-card'));
+  var dots = Array.from(dotsEl.querySelectorAll('.testi-dot'));
+
+  function setDot(i){
+    dots.forEach(function(d,j){ d.classList.toggle('active', j===i); });
+  }
+
+  dots.forEach(function(d,i){
+    d.addEventListener('click', function(){
+      track.scrollTo({left: i * track.offsetWidth, behavior:'smooth'});
+      setDot(i);
+    });
+  });
+
+  track.addEventListener('scroll', function(){
+    var idx = Math.round(track.scrollLeft / track.offsetWidth);
+    setDot(idx);
+  });
 })();
 </script>
 
