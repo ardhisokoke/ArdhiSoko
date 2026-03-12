@@ -276,6 +276,41 @@ footer{background:var(--black);padding:4.5rem 5rem 2rem;}
   .f-grid{grid-template-columns:1fr;}
   footer{padding:3rem 1.2rem 2rem;}
 }
+
+@media(max-width:680px){
+  /* Prevent any element from causing horizontal scroll */
+  .product-layout,.prod-left,.prod-section{max-width:100%;overflow-x:hidden;}
+  /* Gallery thumbs */
+  .gallery-main{height:220px;}
+  .g-thumb{width:60px;height:42px;}
+  /* Price bar */
+  .price-bar{flex-direction:column;align-items:flex-start;gap:.6rem;padding:1rem 1.2rem;}
+  .price-meta{text-align:left;}
+  .price-main{font-size:1.7rem;}
+  /* Specs */
+  .specs-grid{grid-template-columns:1fr 1fr;}
+  /* Features */
+  .features-grid{grid-template-columns:1fr;}
+  /* Payment */
+  .payment-grid{grid-template-columns:1fr;}
+  /* Location details */
+  .loc-details{grid-template-columns:1fr;}
+  /* Map */
+  .map-frame{height:260px;}
+  /* Subdivision map header - stack on mobile */
+  .subdiv-header{flex-direction:column;align-items:flex-start;gap:.5rem;}
+  .subdiv-legend{flex-wrap:wrap;gap:.5rem;}
+  .subdiv-svg-wrap{padding:.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  /* Similar properties */
+  .similar-section{padding:2rem 1.2rem;}
+  .similar-grid{grid-template-columns:1fr;}
+  .sim-card{flex-direction:column;}
+  .sim-img{width:100%;height:160px;}
+  /* Sticky card */
+  .sticky-specs{grid-template-columns:1fr 1fr;}
+  /* Page hero */
+  .page-hero{padding:1.8rem 1.2rem;}
+}
 </style>
 </head>
 <body>
