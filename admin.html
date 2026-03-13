@@ -179,7 +179,15 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
 .proj-counter{background:var(--o);color:var(--w);font-size:.62rem;font-weight:800;padding:.15rem .5rem;border-radius:10px;font-family:'Montserrat',sans-serif;}
 
 
-/* ── PRODUCT PAGE TABS ── */
+/* ── GITHUB FILE PROGRESS ── */
+.gh-file-row{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;background:var(--w);border-radius:4px;margin-bottom:.4rem;border:1px solid var(--gm);}
+.gh-file-icon{font-size:1rem;flex-shrink:0;}
+.gh-file-name{flex:1;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;}
+.gh-file-status{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:10px;background:var(--gl);color:var(--gr);}
+.gh-file-status.pushing{background:#FFF3E0;color:var(--o);}
+.gh-file-status.done{background:#E8F5E4;color:var(--g);}
+.gh-file-status.err{background:#FFEBEE;color:var(--d);}
+
 .proj-tabs{display:flex;gap:0;margin-bottom:1.4rem;border-bottom:2px solid var(--gm);}
 .proj-tab{padding:.6rem 1.3rem;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border:none;background:none;color:var(--gr);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
 .proj-tab:hover{color:var(--o);}
@@ -306,7 +314,7 @@ body{font-family:'Open Sans',sans-serif;background:var(--gl);color:var(--bk);}
       </div>
 
 <!-- MALINDI OCEAN VIEW ACRES -->
-      <div class="pn" id="pn-m">
+      <div class="pn" id="pn-ma">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
           <div class="ct2">🏖️ Malindi Ocean View Acres</div>
           <a href="malindi.html" target="_blank" class="live-link">&#128279; Open Live Page</a>
@@ -482,7 +490,7 @@ over 12 months</textarea>
       </div>
 
 <!-- KONZA TECHNOPOLIS PLOTS -->
-      <div class="pn" id="pn-k">
+      <div class="pn" id="pn-ko">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
           <div class="ct2">🌍 Konza Technopolis Plots</div>
           <a href="konza.html" target="_blank" class="live-link">&#128279; Open Live Page</a>
@@ -1231,22 +1239,49 @@ over 36 months</textarea>
           <div class="gh-header">
             <div class="gh-logo">&#128279;</div>
             <div>
-              <div class="gh-title">Push Directly to GitHub</div>
-              <div style="font-size:.75rem;color:var(--gr);margin-top:.2rem">Update your live website without downloading any files</div>
+              <div class="gh-title">Push All Pages to GitHub</div>
+              <div style="font-size:.75rem;color:var(--gr);margin-top:.2rem">Pushes all 4 pages at once — homepage + all 3 product pages</div>
             </div>
           </div>
-          <div class="gh-tag">&#9989; One-click deployment</div>
-          <p style="font-size:.84rem;color:var(--gr);line-height:1.7;margin-bottom:1.2rem">Enter your GitHub details below. Your updated website will be pushed directly to your repo and go live automatically.</p>
+          <div class="gh-tag">&#9989; One-click deployment — 4 files</div>
+          <p style="font-size:.84rem;color:var(--gr);line-height:1.7;margin-bottom:1.2rem">Enter your GitHub credentials once. All changes across homepage, Malindi, Konza, and Kamakis pages will be pushed live automatically.</p>
           <div class="gh-input-row">
             <div class="fd"><label>GitHub Username</label><input type="text" id="gh-user" value="ardhisokoke" placeholder="e.g. ardhisokoke"></div>
             <div class="fd"><label>Repository Name</label><input type="text" id="gh-repo" value="ArdhiSoko" placeholder="e.g. ArdhiSoko"></div>
           </div>
-          <div class="fd"><label>GitHub Personal Access Token <span style="color:var(--d);font-size:.6rem">(required — kept private, never stored)</span></label><input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"><div class="fh">Go to GitHub → Settings → Developer Settings → Personal Access Tokens → Generate new token → tick "repo" scope</div></div>
+          <div class="fd"><label>GitHub Personal Access Token <span style="color:var(--d);font-size:.6rem">(required — kept private, never stored)</span></label><input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"><div class="fh">Settings → Developer Settings → Personal Access Tokens → Generate new token → tick "repo" scope</div></div>
+
+          <!-- Per-file progress rows -->
+          <div id="gh-file-progress" style="display:none;margin:1.2rem 0;display:none;">
+            <div style="font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gr);margin-bottom:.7rem">Upload Progress</div>
+            <div class="gh-file-row" id="ghf-index">
+              <div class="gh-file-icon" id="ghf-index-icon">&#128196;</div>
+              <div class="gh-file-name">index.html <span style="color:var(--gr);font-weight:400">Homepage</span></div>
+              <div class="gh-file-status" id="ghf-index-status">Waiting</div>
+            </div>
+            <div class="gh-file-row" id="ghf-malindi">
+              <div class="gh-file-icon" id="ghf-malindi-icon">&#128196;</div>
+              <div class="gh-file-name">malindi.html <span style="color:var(--gr);font-weight:400">Malindi Product Page</span></div>
+              <div class="gh-file-status" id="ghf-malindi-status">Waiting</div>
+            </div>
+            <div class="gh-file-row" id="ghf-konza">
+              <div class="gh-file-icon" id="ghf-konza-icon">&#128196;</div>
+              <div class="gh-file-name">konza.html <span style="color:var(--gr);font-weight:400">Konza Product Page</span></div>
+              <div class="gh-file-status" id="ghf-konza-status">Waiting</div>
+            </div>
+            <div class="gh-file-row" id="ghf-kamakis">
+              <div class="gh-file-icon" id="ghf-kamakis-icon">&#128196;</div>
+              <div class="gh-file-name">kamakis.html <span style="color:var(--gr);font-weight:400">Kamakis Product Page</span></div>
+              <div class="gh-file-status" id="ghf-kamakis-status">Waiting</div>
+            </div>
+          </div>
+
           <div class="progress-bar" id="gh-progress"><div class="progress-fill" id="gh-fill"></div></div>
-          <div id="gh-msg" style="font-size:.78rem;margin-bottom:.8rem;display:none"></div>
-          <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem">
-            <button class="gh-btn gh-btn-o" onclick="pushToGitHub()">&#128640; Export &amp; Push to GitHub</button>
-            <button class="gh-btn" onclick="sp('ex',null)">&#11015; Just Download Instead</button>
+          <div id="gh-msg" style="font-size:.78rem;margin:.6rem 0;display:none"></div>
+
+          <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.2rem">
+            <button class="gh-btn gh-btn-o" id="gh-push-btn" onclick="pushToGitHub()">&#128640; Push All 4 Pages to GitHub</button>
+            <button class="gh-btn" onclick="exAll()">&#11015; Download All Files</button>
           </div>
         </div>
         <div class="gh-box" style="background:var(--gl)">
@@ -1254,7 +1289,7 @@ over 36 months</textarea>
           <div class="gh-steps">
             <div class="gh-step"><div class="gh-sn">1</div><div class="gh-st">Go to GitHub Settings</div><div class="gh-sd">Click your profile photo → Settings → scroll to Developer Settings</div></div>
             <div class="gh-step"><div class="gh-sn">2</div><div class="gh-st">Create Access Token</div><div class="gh-sd">Personal Access Tokens → Tokens (classic) → Generate new token → tick the "repo" checkbox</div></div>
-            <div class="gh-step"><div class="gh-sn">3</div><div class="gh-st">Paste Token Above</div><div class="gh-sd">Copy the token and paste it in the field above. It only shows once so save it safely.</div></div>
+            <div class="gh-step"><div class="gh-sn">3</div><div class="gh-st">Paste Token Above</div><div class="gh-sd">Copy the token and paste it in the field above. It only shows once — save it safely.</div></div>
           </div>
           <a href="https://github.com/settings/tokens/new" target="_blank" class="gh-btn" style="font-size:.75rem;padding:.7rem 1.4rem">&#128279; Open GitHub Token Page</a>
         </div>
@@ -1263,13 +1298,13 @@ over 36 months</textarea>
       <!-- EXPORT -->
       <div class="pn" id="pn-ex">
         <div class="eb">
-          <h3>&#128229; Export Your Website</h3>
-          <p>Click below to generate and download your updated index.html with all your changes applied. Then upload it to GitHub to go live.</p>
-          <button class="ebt" onclick="ex()">&#11015; Download index.html</button>
+          <h3>&#128229; Export All 4 Pages</h3>
+          <p>Download all pages with your latest changes applied — ready to upload directly to GitHub.</p>
+          <button class="ebt" onclick="exAll()">&#11015; Download All 4 Files</button>
           <div class="stps">
-            <div class="stp"><div class="stn">1</div><div class="stt">Make Changes</div><div class="std">Edit projects, prices, contact details and logo using the sidebar.</div></div>
-            <div class="stp"><div class="stn">2</div><div class="stt">Download File</div><div class="std">Click the button above to download your updated index.html.</div></div>
-            <div class="stp"><div class="stn">3</div><div class="stt">Upload to GitHub</div><div class="std">Delete the old index.html in your GitHub repo and upload this new one.</div></div>
+            <div class="stp"><div class="stn">1</div><div class="stt">Make Changes</div><div class="std">Edit projects, prices, gallery, contact details using the sidebar.</div></div>
+            <div class="stp"><div class="stn">2</div><div class="stn" style="font-size:.9rem">📄×4</div><div class="stt">Download Files</div><div class="std">Saves index.html + malindi.html + konza.html + kamakis.html.</div></div>
+            <div class="stp"><div class="stn">3</div><div class="stt">Upload to GitHub</div><div class="std">Replace all 4 files in your GitHub repo to go live.</div></div>
           </div>
         </div>
       </div>
@@ -1483,74 +1518,558 @@ function changePassword(){
 }
 
 // ── PUSH TO GITHUB ──
+// ── DOWNLOAD ALL FILES ──
+function exAll(){
+  var files = [
+    {name:'index.html',   html:generateHTML()},
+    {name:'malindi.html', html:generateProductPageHTML('m')},
+    {name:'konza.html',   html:generateProductPageHTML('k')},
+    {name:'kamakis.html', html:generateProductPageHTML('ka')},
+  ];
+  files.forEach(function(f,i){
+    setTimeout(function(){
+      var blob=new Blob([f.html],{type:'text/html'});
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download=f.name;
+      a.click();
+    }, i*400);
+  });
+  toast('Downloading 4 files...','ok');
+}
+
+// ── PUSH ALL 4 FILES TO GITHUB ──
 async function pushToGitHub(){
-  var user=document.getElementById('gh-user').value.trim();
-  var repo=document.getElementById('gh-repo').value.trim();
-  var token=document.getElementById('gh-token').value.trim();
-  var msg=document.getElementById('gh-msg');
-  var bar=document.getElementById('gh-progress');
-  var fill=document.getElementById('gh-fill');
+  var user  = document.getElementById('gh-user').value.trim();
+  var repo  = document.getElementById('gh-repo').value.trim();
+  var token = document.getElementById('gh-token').value.trim();
 
-  if(!user||!repo||!token){toast('Please fill in all GitHub fields','er');return;}
+  if(!user||!repo||!token){toast('Please fill in GitHub username, repo and token','er');return;}
 
-  // Generate the HTML first
-  var html = generateHTML();
+  var files = [
+    {key:'index',   name:'index.html',   html:generateHTML()},
+    {key:'malindi', name:'malindi.html',  html:generateProductPageHTML('m')},
+    {key:'konza',   name:'konza.html',    html:generateProductPageHTML('k')},
+    {key:'kamakis', name:'kamakis.html',  html:generateProductPageHTML('ka')},
+  ];
 
-  bar.style.display='block';
-  msg.style.display='block';
+  var bar  = document.getElementById('gh-progress');
+  var fill = document.getElementById('gh-fill');
+  var msg  = document.getElementById('gh-msg');
+  var fprog= document.getElementById('gh-file-progress');
+  var btn  = document.getElementById('gh-push-btn');
 
-  function setProgress(pct, text, color){
+  bar.style.display  = 'block';
+  msg.style.display  = 'block';
+  fprog.style.display= 'block';
+  btn.disabled = true;
+  btn.textContent = '⏳ Pushing...';
+  fill.style.background = 'var(--o)';
+
+  // Reset all status badges
+  files.forEach(function(f){
+    setFileStatus(f.key,'Waiting','');
+  });
+
+  function setProgress(pct,text,color){
     fill.style.width=pct+'%';
     msg.textContent=text;
     msg.style.color=color||'var(--gr)';
   }
 
-  try {
-    setProgress(20,'Connecting to GitHub...','var(--gr)');
-
-    // Get current file SHA
-    var getUrl='https://api.github.com/repos/'+user+'/'+repo+'/contents/index.html';
-    var getRes=await fetch(getUrl,{headers:{'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json'}});
-
-    var sha='';
-    if(getRes.ok){
-      var existing=await getRes.json();
-      sha=existing.sha;
+  function setFileStatus(key,label,cls){
+    var el=document.getElementById('ghf-'+key+'-status');
+    var ic=document.getElementById('ghf-'+key+'-icon');
+    if(!el)return;
+    el.textContent=label;
+    el.className='gh-file-status'+(cls?' '+cls:'');
+    if(ic){
+      if(cls==='done') ic.textContent='✅';
+      else if(cls==='err') ic.textContent='❌';
+      else if(cls==='pushing') ic.textContent='⏳';
+      else ic.textContent='📄';
     }
-
-    setProgress(50,'Uploading your website...','var(--gr)');
-
-    // Encode HTML to base64
-    var encoded=btoa(unescape(encodeURIComponent(html)));
-
-    // Push to GitHub
-    var putBody={message:'Update website via ArdhiSoko Admin Dashboard',content:encoded};
-    if(sha) putBody.sha=sha;
-
-    var putRes=await fetch(getUrl,{
-      method:'PUT',
-      headers:{'Authorization':'token '+token,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
-      body:JSON.stringify(putBody)
-    });
-
-    if(putRes.ok){
-      setProgress(100,'Website live!','var(--g)');
-      fill.style.background='var(--g)';
-      toast('Website pushed to GitHub successfully!','ok');
-      setTimeout(function(){
-        msg.innerHTML='&#10003; Live at: <a href="https://'+user+'.github.io/'+repo+'/" target="_blank" style="color:var(--g)">https://'+user+'.github.io/'+repo+'/</a>';
-        msg.style.color='var(--g)';
-      },1000);
-    } else {
-      var err=await putRes.json();
-      setProgress(0,'Error: '+(err.message||'Push failed'),'var(--d)');
-      fill.style.background='var(--d)';
-      toast('GitHub push failed: '+(err.message||'Check your token'),'er');
-    }
-  } catch(e){
-    setProgress(0,'Connection error — check your internet','var(--d)');
-    toast('Connection error: '+e.message,'er');
   }
+
+  async function pushFile(file, pctStart, pctEnd){
+    setFileStatus(file.key,'Pushing...','pushing');
+    setProgress(pctStart, 'Pushing '+file.name+'...','var(--gr)');
+
+    var apiUrl='https://api.github.com/repos/'+user+'/'+repo+'/contents/'+file.name;
+    var headers={'Authorization':'token '+token,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
+
+    // Get existing SHA
+    var sha='';
+    try{
+      var getRes=await fetch(apiUrl,{headers:headers});
+      if(getRes.ok){var existing=await getRes.json();sha=existing.sha;}
+    }catch(e){}
+
+    // Encode and push
+    var encoded=btoa(unescape(encodeURIComponent(file.html)));
+    var body={message:'Update '+file.name+' via ArdhiSoko Admin',content:encoded};
+    if(sha) body.sha=sha;
+
+    var putRes=await fetch(apiUrl,{method:'PUT',headers:headers,body:JSON.stringify(body)});
+    if(putRes.ok){
+      setFileStatus(file.key,'✓ Done','done');
+      setProgress(pctEnd,'','var(--gr)');
+      return true;
+    } else {
+      var err=await putRes.json().catch(function(){return{};});
+      setFileStatus(file.key,'Failed','err');
+      throw new Error(err.message||'Push failed for '+file.name);
+    }
+  }
+
+  try{
+    setProgress(5,'Starting...','var(--gr)');
+    var pcts=[[5,28],[28,52],[52,76],[76,100]];
+    for(var i=0;i<files.length;i++){
+      await pushFile(files[i],pcts[i][0],pcts[i][1]);
+    }
+    fill.style.background='var(--g)';
+    setProgress(100,'All 4 pages pushed successfully! 🎉','var(--g)');
+    btn.disabled=false;
+    btn.textContent='🚀 Push All 4 Pages to GitHub';
+    toast('All pages are live on GitHub!','ok');
+    setTimeout(function(){
+      msg.innerHTML='&#10003; Live at: <a href="https://'+user+'.github.io/'+repo+'/" target="_blank" style="color:var(--g)">https://'+user+'.github.io/'+repo+'/</a>';
+      msg.style.color='var(--g)';
+    },800);
+  }catch(e){
+    fill.style.background='var(--d)';
+    setProgress(0,'Error: '+e.message,'var(--d)');
+    btn.disabled=false;
+    btn.textContent='🚀 Push All 4 Pages to GitHub';
+    toast('Push failed: '+e.message,'er');
+  }
+}
+
+// ── GENERATE PRODUCT PAGE HTML from admin fields ──
+function generateProductPageHTML(p){
+  // Collect gallery images
+  var imgs=[];
+  for(var i=0;i<5;i++){
+    var url=gv(p+'-gurl'+i);
+    if(url) imgs.push(url);
+  }
+  if(!imgs.length) imgs=['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80'];
+
+  // Basic info (reuse card fields)
+  var nameId   = p==='ka'?'kan' : (p==='k'?'kn':'mn');
+  var locId    = p==='ka'?'kal' : (p==='k'?'kl':'ml');
+  var priceId  = p==='ka'?'kap' : (p==='k'?'kp':'mp');
+  var psId     = p==='ka'?'kaps': (p==='k'?'kps':'mps');
+  var statusId = p==='ka'?'kast': (p==='k'?'kst':'mst');
+
+  var name      = gv(nameId)   || 'Property';
+  var location  = gv(locId)    || '';
+  var price     = gv(priceId)  || '';
+  var priceSub  = gv(psId)     || '';
+  var badge     = gv(statusId) || '';
+  var avBadge   = gv(p+'-avbadge') || badge;
+  var avNote    = gv(p+'-avnote')  || 'Limited availability';
+  var fullDesc  = gv(p+'-fulldesc')|| '';
+
+  // Specs (6)
+  var specs=[];
+  for(var i=0;i<6;i++){
+    specs.push({val:gv(p+'-sv'+i)||'',key:gv(p+'-sk'+i)||''});
+  }
+
+  // Detail features
+  var dfItems=[];
+  var dfEls=document.querySelectorAll('#'+p+'-dfl input');
+  dfEls.forEach(function(el){if(el.value)dfItems.push(el.value);});
+
+  // Payment plans
+  var plans=[];
+  for(var i=0;i<3;i++){
+    plans.push({label:gv(p+'-pl'+i)||'Option '+(i+1), pct:gv(p+'-pp'+i)||'', detail:gv(p+'-pd'+i)||'', featured:i===1});
+  }
+
+  // Contact (from Contact Details panel)
+  var waNum = gv('cw')||'254757364642';
+  var phone  = gv('cp')||'+254 711 465 650';
+
+  // Similar projects mapping
+  var simMap = {
+    'm':  [{name:'Konza Technopolis Plots',loc:'Konza, Machakos County',price:'KES 450K / plot',file:'konza.html',img:gv('k-gurl0')||gv('ki')||''},{name:'Kamakis Urban Residences',loc:'Kamakis, Ruiru',price:'From KES 3.2M',file:'kamakis.html',img:gv('ka-gurl0')||gv('kai')||''}],
+    'k':  [{name:'Malindi Ocean View Acres',loc:'Malindi, Kilifi County',price:'KES 1.5M / plot',file:'malindi.html',img:gv('m-gurl0')||gv('mi')||''},{name:'Kamakis Urban Residences',loc:'Kamakis, Ruiru',price:'From KES 3.2M',file:'kamakis.html',img:gv('ka-gurl0')||gv('kai')||''}],
+    'ka': [{name:'Malindi Ocean View Acres',loc:'Malindi, Kilifi County',price:'KES 1.5M / plot',file:'malindi.html',img:gv('m-gurl0')||gv('mi')||''},{name:'Konza Technopolis Plots',loc:'Konza, Machakos County',price:'KES 450K / plot',file:'konza.html',img:gv('k-gurl0')||gv('ki')||''}],
+  };
+  var sims = simMap[p]||[];
+
+  // Brand
+  var brand1=gv('bp1')||'Ardhi', brand2=gv('bp2')||'Soko';
+  var waMsg=encodeURIComponent("Hi "+brand1+brand2+", I am interested in "+name+".");
+
+  // Build thumbnail HTML
+  var thumbs='';
+  imgs.forEach(function(url,i){
+    thumbs+='<div class="g-thumb'+(i===0?' active':'')+'" onclick="gTo('+i+')" id="gt'+i+'"><img src="'+url+'" alt="Photo '+(i+1)+'"></div>';
+  });
+  var imgSlides='';
+  imgs.forEach(function(url,i){
+    imgSlides+='<img src="'+url+'" alt="Photo '+(i+1)+'" class="gslide'+(i===0?' active':'')+'" id="gs'+i+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:'+(i===0?'1':'0')+';transition:opacity .5s;">';
+  });
+
+  // Specs HTML
+  var specsHtml='';
+  specs.forEach(function(s){
+    if(s.val&&s.key) specsHtml+='<div class="spec-card"><div class="spec-val">'+s.val+'</div><div class="spec-key">'+s.key+'</div></div>';
+  });
+
+  // Features HTML
+  var featHtml='';
+  dfItems.forEach(function(f){
+    featHtml+='<div class="feat-item"><div class="feat-icon">✓</div> '+f+'</div>';
+  });
+
+  // Payment plans HTML
+  var payHtml='';
+  plans.forEach(function(plan){
+    var featured=plan.featured?'<div class="pay-tag">Most Popular</div>':'';
+    var cls=plan.featured?' featured':'';
+    payHtml+='<div class="pay-card'+cls+'">'+featured+'<div class="pay-label">'+plan.label+'</div><div class="pay-pct">'+plan.pct+'</div><div class="pay-detail">'+plan.detail.replace(/\n/g,'<br>')+'</div></div>';
+  });
+
+  // Similar cards HTML
+  var simHtml='';
+  sims.forEach(function(s){
+    simHtml+='<div class="sim-card" onclick="window.location=\''+s.file+'\'"><div class="sim-img"><img src="'+s.img+'" alt="'+s.name+'"></div><div class="sim-body"><div class="sim-loc">📍 '+s.loc+'</div><div class="sim-name">'+s.name+'</div><div class="sim-price">'+s.price+'</div><a href="'+s.file+'" class="sim-cta">View Details</a></div></div>';
+  });
+
+  // Read the current product page HTML and inject updated content
+  // Since we can't read files in browser, we reconstruct key dynamic sections only
+  // and wrap them in a minimal product page shell that matches the site design
+  var pageTitle = name + ' — ' + brand1 + brand2;
+
+  return buildProductPageHTML({
+    title:pageTitle, name:name, location:location, price:price, priceSub:priceSub,
+    avBadge:avBadge, avNote:avNote, fullDesc:fullDesc,
+    specsHtml:specsHtml, featHtml:featHtml, payHtml:payHtml,
+    thumbs:thumbs, imgSlides:imgSlides, imgCount:imgs.length,
+    simHtml:simHtml, waNum:waNum, phone:phone,
+    brand1:brand1, brand2:brand2, badge:badge,
+    pageFile: p==='m'?'malindi':p==='k'?'konza':'kamakis',
+    tagClass: p==='ka'?'tag-apt':'tag-land',
+    tagText:  p==='ka'?'Apartments':'Land for Sale',
+    og:gv('co')||'#F5921E', gr:gv('cg')||'#2E7D1F'
+  });
+}
+
+function buildProductPageHTML(d){
+  var og=d.og,gr=d.gr;
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${d.title}</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--orange:${og};--orange-dark:#D97A10;--green:${gr};--green-dark:#1E5A12;--black:#1A1A1A;--gray:#666;--gray-light:#F5F5F5;--border:#E0E0E0;--white:#fff;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:'Open Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
+/* NAV */
+.top-bar{background:var(--green);display:flex;justify-content:space-between;align-items:center;padding:.5rem 5rem;font-size:.78rem;color:rgba(255,255,255,.9);}
+.top-bar a{color:rgba(255,255,255,.9);text-decoration:none;}
+nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.9rem 5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;}
+.logo-triangle{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid var(--green);}
+.logo-text{font-family:'Montserrat',sans-serif;font-size:1.55rem;font-weight:800;}.logo-text .ardhi{color:var(--black);}.logo-text .soko{color:var(--orange);}
+.logo-tagline{font-size:.62rem;color:var(--gray);margin-top:2px;}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
+.nav-links a{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--orange);}
+.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:.6rem 1.5rem;border-radius:3px;}
+/* PAGE HERO */
+.page-hero{background:var(--green);padding:2.5rem 5rem;}
+.page-hero-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.6rem;font-family:'Montserrat',sans-serif;}
+.page-hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#fff;line-height:1.2;}
+.page-hero h1 span{color:var(--orange);}
+.page-hero p{font-size:.9rem;color:rgba(255,255,255,.7);margin-top:.8rem;max-width:560px;line-height:1.7;}
+/* PAGE MENU */
+.page-menu{background:var(--orange);border-bottom:1px solid rgba(255,255,255,.15);position:sticky;top:62px;z-index:199;}
+.pm-desktop{display:flex;}
+.pm-link{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);padding:.85rem 1.4rem;text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;}
+.pm-link:hover,.pm-link.active{color:#fff;border-bottom-color:#fff;}
+.pm-mobile{display:none;grid-template-columns:repeat(2,1fr);}
+.pm-mob-btn{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.85);font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.7rem .5rem;cursor:pointer;text-align:center;}
+.pm-mob-btn:hover{background:rgba(255,255,255,.2);}
+/* GALLERY */
+.gallery-wrap{background:#111;position:relative;}
+.gallery-main{position:relative;height:520px;overflow:hidden;cursor:zoom-in;}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.gallery-main:hover img.active{transform:scale(1.03);}
+.gallery-counter{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.6);color:#fff;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;padding:.4rem .9rem;border-radius:4px;z-index:2;}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:3;transition:background .2s;display:flex;align-items:center;justify-content:center;}
+.gallery-arrow:hover{background:rgba(0,0,0,.75);}
+.g-prev{left:1rem;}.g-next{right:1rem;}
+.gallery-thumbs{display:flex;gap:6px;padding:6px;background:#111;overflow-x:auto;scrollbar-width:none;}
+.gallery-thumbs::-webkit-scrollbar{display:none;}
+.g-thumb{width:90px;height:64px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border-color .2s;}
+.g-thumb.active{border-color:var(--orange);}
+.g-thumb img{width:100%;height:100%;object-fit:cover;}
+/* PRODUCT LAYOUT */
+.product-layout{display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start;padding:3.5rem 5rem;}
+.price-bar{display:flex;align-items:center;justify-content:space-between;background:var(--gray-light);border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:2rem;border-left:4px solid var(--green);}
+.price-main{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--green);line-height:1;}
+.price-meta{font-size:.85rem;color:var(--gray);margin-top:.3rem;}
+.price-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(245,146,30,.12);color:var(--orange);font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:800;padding:.35rem .9rem;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;}
+.price-note{font-size:.8rem;color:var(--gray);margin-top:.4rem;}
+.prod-section{margin-bottom:2.5rem;}
+.prod-section-title{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}
+.prod-section-title::before{content:'';width:22px;height:2px;background:var(--orange);display:inline-block;}
+.prod-desc{font-size:.93rem;color:#444;line-height:1.82;}
+.prod-desc p{margin-bottom:1rem;}
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.spec-card{background:var(--gray-light);border-radius:6px;padding:1rem 1.2rem;border-bottom:3px solid var(--orange);}
+.spec-val{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:900;color:var(--black);}
+.spec-key{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:.2rem;}
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
+.feat-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:#444;}
+.feat-icon{background:var(--green);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:900;flex-shrink:0;margin-top:.1rem;}
+.payment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.pay-card{background:var(--gray-light);border-radius:8px;padding:1.4rem;text-align:center;border:2px solid transparent;position:relative;}
+.pay-card.featured{border-color:var(--orange);background:#fff;}
+.pay-tag{position:absolute;top:-.7rem;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;padding:.2rem .7rem;border-radius:10px;white-space:nowrap;letter-spacing:.06em;text-transform:uppercase;}
+.pay-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;}
+.pay-pct{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:var(--green);line-height:1;}
+.pay-detail{font-size:.78rem;color:var(--gray);margin-top:.5rem;line-height:1.55;}
+/* STICKY CARD */
+.prod-sticky{position:sticky;top:120px;}
+.sticky-card{background:var(--white);border:2px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);}
+.sticky-top{background:var(--green);padding:1.4rem 1.6rem;}
+.sticky-price{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;color:#fff;line-height:1;}
+.sticky-sub{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.3rem;}
+.sticky-badge{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;padding:.25rem .7rem;border-radius:10px;margin-top:.6rem;letter-spacing:.06em;}
+.sticky-body{padding:1.4rem 1.6rem;}
+.sticky-specs{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1.2rem;}
+.ss-card{background:var(--gray-light);border-radius:4px;padding:.6rem .8rem;}
+.ss-val{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:900;color:var(--black);}
+.ss-key{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray);}
+.sticky-form .sf-label{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:.35rem;display:block;}
+.sticky-form input,.sticky-form select{width:100%;padding:.72rem .95rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Open Sans',sans-serif;font-size:.88rem;color:var(--black);outline:none;margin-bottom:.75rem;appearance:none;background:var(--white);}
+.sticky-form input:focus,.sticky-form select:focus{border-color:var(--orange);}
+.sticky-wa{display:flex;align-items:center;justify-content:center;gap:.6rem;background:#25D366;color:#fff;border:none;width:100%;padding:1rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:background .2s;margin-bottom:.6rem;}
+.sticky-wa:hover{background:#1ebe5d;}
+.sticky-call{display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--orange);color:#fff;border:none;width:100%;padding:.85rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s;}
+.sticky-call:hover{background:var(--orange-dark);}
+/* SIMILAR */
+.similar-section{padding:3rem 5rem;background:var(--gray-light);}
+.similar-title{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:1.5rem;}
+.similar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.sim-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--border);display:flex;transition:transform .3s,box-shadow .3s;cursor:pointer;}
+.sim-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1);}
+.sim-img{width:140px;flex-shrink:0;overflow:hidden;}
+.sim-img img{width:100%;height:100%;object-fit:cover;}
+.sim-body{padding:1.2rem;display:flex;flex-direction:column;justify-content:center;}
+.sim-loc{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;}
+.sim-name{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:800;color:var(--black);margin-bottom:.4rem;}
+.sim-price{font-size:.82rem;color:var(--gray);margin-bottom:.8rem;}
+.sim-cta{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;padding:.4rem .9rem;border-radius:3px;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;transition:background .2s;}
+.sim-cta:hover{background:var(--orange-dark);}
+/* FOOTER */
+footer{background:var(--black);padding:3.5rem 5rem 2rem;}
+.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1.5rem;}
+.f-logo-text{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;}
+.f-logo-text .ardhi{color:var(--white);}.f-logo-text .soko{color:var(--orange);}
+.f-about{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.75;margin-bottom:1rem;}
+.f-col h5{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;}
+.f-links{list-style:none;}.f-links li{margin-bottom:.5rem;}
+.f-links a{font-size:.82rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.f-links a:hover{color:var(--white);}
+.f-bottom{display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.2);font-family:'Montserrat',sans-serif;}
+.wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;}
+.wa-btn:hover{transform:scale(1.1);}
+/* MOBILE */
+@media(max-width:680px){
+  html,body{overflow-x:hidden;max-width:100vw;}
+  *{box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;}
+  img,iframe{max-width:100%!important;}
+  nav{padding:.6rem 1rem;}
+  .top-bar{padding:.4rem 1rem;}
+  .page-hero{padding:1.5rem 1rem;}
+  .pm-desktop{display:none;}
+  .pm-mobile{display:grid;}
+  .gallery-main{height:220px;}
+  .g-thumb{width:60px;height:42px;}
+  .product-layout{display:block;padding:1.2rem;width:100%;}
+  .price-bar{flex-direction:column;align-items:flex-start;gap:.5rem;padding:1rem;}
+  .specs-grid{grid-template-columns:1fr 1fr;}
+  .features-grid{grid-template-columns:1fr;}
+  .payment-grid{grid-template-columns:1fr;}
+  .prod-sticky{position:static;}
+  .similar-section{padding:1.5rem 1rem;}
+  .similar-grid{grid-template-columns:1fr;}
+  .sim-card{flex-direction:column;}
+  .sim-img{width:100%;height:160px;}
+  footer{padding:2rem 1rem 1.5rem;}
+  .f-grid{grid-template-columns:1fr;}
+  .f-bottom{flex-direction:column;gap:.4rem;}
+}
+@media(max-width:1100px){
+  nav,.top-bar,footer{padding-left:2rem;padding-right:2rem;}
+  .page-hero{padding:2rem 2rem;}
+  .product-layout{grid-template-columns:1fr;padding:2.5rem 2rem;}
+  .prod-sticky{position:static;}
+  .similar-section{padding:2.5rem 2rem;}
+  .similar-grid{grid-template-columns:1fr;}
+  .sim-card{flex-direction:column;}
+  .sim-img{width:100%;height:200px;}
+}
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <a href="tel:${d.phone}">${d.phone}</a>
+  <span>${d.brand1}${d.brand2}</span>
+</div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-triangle"></div>
+    <div>
+      <div class="logo-text"><span class="ardhi">${d.brand1}</span><span class="soko">${d.brand2}</span></div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="properties.html">Properties</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#enquiry" class="nav-cta">Enquire Now</a></li>
+  </ul>
+</nav>
+<div class="page-menu">
+  <div class="pm-desktop">
+    <a class="pm-link active" onclick="scrollTo('#overview')">Overview</a>
+    <a class="pm-link" onclick="scrollTo('#specs')">Key Details</a>
+    <a class="pm-link" onclick="scrollTo('#features')">Features</a>
+    <a class="pm-link" onclick="scrollTo('#payment')">Payment Plans</a>
+    <a class="pm-link" onclick="scrollTo('#location')">Location</a>
+    <a class="pm-link" onclick="scrollTo('#enquire')">Enquire</a>
+  </div>
+  <div class="pm-mobile">
+    <button class="pm-mob-btn" onclick="scrollTo('#overview')">Overview</button>
+    <button class="pm-mob-btn" onclick="scrollTo('#specs')">Details</button>
+    <button class="pm-mob-btn" onclick="scrollTo('#payment')">Payment</button>
+    <button class="pm-mob-btn" onclick="scrollTo('#enquire')">Enquire</button>
+  </div>
+</div>
+<div class="page-hero" id="overview">
+  <div class="page-hero-eyebrow">${d.tagText} &mdash; ${d.location}</div>
+  <h1>${d.name}</h1>
+  <p>${d.priceSub ? d.price + ' ' + d.priceSub : d.price}</p>
+</div>
+<div class="gallery-wrap">
+  <div class="gallery-main" id="gallery-main">
+    ${d.imgSlides}
+    <button class="gallery-arrow g-prev" onclick="gPrev()">&#8592;</button>
+    <button class="gallery-arrow g-next" onclick="gNext()">&#8594;</button>
+    <div class="gallery-counter" id="gcounter">&#128247; 1 / ${d.imgCount}</div>
+  </div>
+  <div class="gallery-thumbs">${d.thumbs}</div>
+</div>
+<div class="product-layout">
+  <div class="prod-left">
+    <div class="price-bar">
+      <div>
+        <div class="price-main">${d.price}</div>
+        <div class="price-meta">${d.priceSub}</div>
+        <div class="price-badge">${d.avBadge}</div>
+        <div class="price-note">${d.avNote}</div>
+      </div>
+    </div>
+    <div class="prod-section" id="about">
+      <div class="prod-section-title">About This Property</div>
+      <div class="prod-desc"><p>${d.fullDesc}</p></div>
+    </div>
+    <div class="prod-section" id="specs">
+      <div class="prod-section-title">Key Details</div>
+      <div class="specs-grid">${d.specsHtml}</div>
+    </div>
+    <div class="prod-section" id="features">
+      <div class="prod-section-title">Features &amp; Amenities</div>
+      <div class="features-grid">${d.featHtml}</div>
+    </div>
+    <div class="prod-section" id="payment">
+      <div class="prod-section-title">Flexible Payment Plans</div>
+      <div class="payment-grid">${d.payHtml}</div>
+    </div>
+  </div>
+  <div class="prod-sticky" id="enquire">
+    <div class="sticky-card">
+      <div class="sticky-top">
+        <div class="sticky-price">${d.price}</div>
+        <div class="sticky-sub">${d.priceSub}</div>
+        <div class="sticky-badge">${d.badge}</div>
+      </div>
+      <div class="sticky-body">
+        <div class="sticky-specs">
+          ${d.specsHtml ? d.specsHtml.split('</div>').slice(0,4).join('</div>')+'</div>' : ''}
+        </div>
+        <div class="sticky-form">
+          <label class="sf-label">Your Name</label>
+          <input type="text" id="enq-name" placeholder="John Kamau">
+          <label class="sf-label">Phone / WhatsApp</label>
+          <input type="tel" id="enq-phone" placeholder="+254 7XX XXX XXX">
+          <label class="sf-label">Intent</label>
+          <select id="enq-intent">
+            <option>I want to buy</option>
+            <option>I want more information</option>
+            <option>I want a site visit</option>
+          </select>
+        </div>
+        <button class="sticky-wa" onclick="sendWA()">&#128172; WhatsApp Enquiry</button>
+        <button class="sticky-call" onclick="window.location='tel:${d.phone}'">&#128222; Call Us Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="similar-section">
+  <div class="similar-title">Similar Properties</div>
+  <div class="similar-grid">${d.simHtml}</div>
+</section>
+<footer>
+  <div class="f-grid">
+    <div>
+      <div class="f-logo-text"><span class="ardhi">${d.brand1}</span><span class="soko">${d.brand2}</span></div>
+      <p class="f-about">${d.brand1}${d.brand2} offers premium property investments across Kenya — title-deed verified, flexible payment plans available.</p>
+    </div>
+    <div class="f-col"><h5>Properties</h5><ul class="f-links"><li><a href="malindi.html">Malindi Plots</a></li><li><a href="konza.html">Konza Plots</a></li><li><a href="kamakis.html">Kamakis Apts</a></li></ul></div>
+    <div class="f-col"><h5>Company</h5><ul class="f-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#enquiry">Contact</a></li></ul></div>
+    <div class="f-col"><h5>Contact</h5><ul class="f-links"><li>${d.phone}</li></ul></div>
+  </div>
+  <div class="f-bottom"><span>&copy; 2025 ${d.brand1}${d.brand2} Ltd. All rights reserved.</span><span>Privacy &middot; Terms</span></div>
+</footer>
+<a href="https://wa.me/${d.waNum}?text=${d.waMsg || ''}" class="wa-btn" target="_blank">&#128172;</a>
+<script>
+var gIdx=0,gTotal=${d.imgCount};
+function gTo(i){
+  document.querySelectorAll('.gslide').forEach(function(s,j){s.style.opacity=j===i?'1':'0';});
+  document.querySelectorAll('.g-thumb').forEach(function(t,j){t.classList.toggle('active',j===i);});
+  document.getElementById('gcounter').textContent='\\u{1F4F7} '+(i+1)+' / '+gTotal;
+  gIdx=i;
+}
+function gNext(){gTo((gIdx+1)%gTotal);}
+function gPrev(){gTo((gIdx-1+gTotal)%gTotal);}
+setInterval(gNext,5000);
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')gNext();if(e.key==='ArrowLeft')gPrev();});
+function scrollTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'});}
+function sendWA(){
+  var name=document.getElementById('enq-name').value||'';
+  var phone=document.getElementById('enq-phone').value||'';
+  var intent=document.getElementById('enq-intent').value||'';
+  var msg=encodeURIComponent('Hi, I am '+name+' ('+phone+'). '+intent+' — ${d.name}.');
+  window.open('https://wa.me/${d.waNum}?text='+msg,'_blank');
+}
+</script>
+</body>
+</html>`;
 }
 
 // ── GENERATE HTML (shared by export and github push) ──
