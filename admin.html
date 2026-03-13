@@ -1761,315 +1761,83 @@ function generateProductPageHTML(p){
 }
 
 function buildProductPageHTML(d){
-  var og=d.og,gr=d.gr;
-  return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${d.title}</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-<style>
-:root{--orange:${og};--orange-dark:#D97A10;--green:${gr};--green-dark:#1E5A12;--black:#1A1A1A;--gray:#666;--gray-light:#F5F5F5;--border:#E0E0E0;--white:#fff;}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;overflow-x:hidden;}
-body{font-family:'Open Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
-/* NAV */
-.top-bar{background:var(--green);display:flex;justify-content:space-between;align-items:center;padding:.5rem 5rem;font-size:.78rem;color:rgba(255,255,255,.9);}
-.top-bar a{color:rgba(255,255,255,.9);text-decoration:none;}
-nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.9rem 5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
-.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;}
-.logo-triangle{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid var(--green);}
-.logo-text{font-family:'Montserrat',sans-serif;font-size:1.55rem;font-weight:800;}.logo-text .ardhi{color:var(--black);}.logo-text .soko{color:var(--orange);}
-.logo-tagline{font-size:.62rem;color:var(--gray);margin-top:2px;}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}
-.nav-links a{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--orange);}
-.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:.6rem 1.5rem;border-radius:3px;}
-/* PAGE HERO */
-.page-hero{background:var(--green);padding:2.5rem 5rem;}
-.page-hero-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.6rem;font-family:'Montserrat',sans-serif;}
-.page-hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#fff;line-height:1.2;}
-.page-hero h1 span{color:var(--orange);}
-.page-hero p{font-size:.9rem;color:rgba(255,255,255,.7);margin-top:.8rem;max-width:560px;line-height:1.7;}
-/* PAGE MENU */
-.page-menu{background:var(--orange);border-bottom:1px solid rgba(255,255,255,.15);position:sticky;top:62px;z-index:199;}
-.pm-desktop{display:flex;}
-.pm-link{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);padding:.85rem 1.4rem;text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;cursor:pointer;background:none;border:none;border-bottom:2px solid transparent;}
-.pm-link:hover,.pm-link.active{color:#fff;border-bottom-color:#fff;}
-.pm-mobile{display:none;grid-template-columns:repeat(2,1fr);}
-.pm-mob-btn{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.85);font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.7rem .5rem;cursor:pointer;text-align:center;}
-.pm-mob-btn:hover{background:rgba(255,255,255,.2);}
-/* GALLERY */
-.gallery-wrap{background:#111;position:relative;}
-.gallery-main{position:relative;height:520px;overflow:hidden;cursor:zoom-in;}
-.gallery-main img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
-.gallery-main:hover img.active{transform:scale(1.03);}
-.gallery-counter{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.6);color:#fff;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;padding:.4rem .9rem;border-radius:4px;z-index:2;}
-.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:3;transition:background .2s;display:flex;align-items:center;justify-content:center;}
-.gallery-arrow:hover{background:rgba(0,0,0,.75);}
-.g-prev{left:1rem;}.g-next{right:1rem;}
-.gallery-thumbs{display:flex;gap:6px;padding:6px;background:#111;overflow-x:auto;scrollbar-width:none;}
-.gallery-thumbs::-webkit-scrollbar{display:none;}
-.g-thumb{width:90px;height:64px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border-color .2s;}
-.g-thumb.active{border-color:var(--orange);}
-.g-thumb img{width:100%;height:100%;object-fit:cover;}
-/* PRODUCT LAYOUT */
-.product-layout{display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start;padding:3.5rem 5rem;}
-.price-bar{display:flex;align-items:center;justify-content:space-between;background:var(--gray-light);border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:2rem;border-left:4px solid var(--green);}
-.price-main{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--green);line-height:1;}
-.price-meta{font-size:.85rem;color:var(--gray);margin-top:.3rem;}
-.price-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(245,146,30,.12);color:var(--orange);font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:800;padding:.35rem .9rem;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;}
-.price-note{font-size:.8rem;color:var(--gray);margin-top:.4rem;}
-.prod-section{margin-bottom:2.5rem;}
-.prod-section-title{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}
-.prod-section-title::before{content:'';width:22px;height:2px;background:var(--orange);display:inline-block;}
-.prod-desc{font-size:.93rem;color:#444;line-height:1.82;}
-.prod-desc p{margin-bottom:1rem;}
-.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.spec-card{background:var(--gray-light);border-radius:6px;padding:1rem 1.2rem;border-bottom:3px solid var(--orange);}
-.spec-val{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:900;color:var(--black);}
-.spec-key{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:.2rem;}
-.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
-.feat-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:#444;}
-.feat-icon{background:var(--green);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:900;flex-shrink:0;margin-top:.1rem;}
-.payment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.pay-card{background:var(--gray-light);border-radius:8px;padding:1.4rem;text-align:center;border:2px solid transparent;position:relative;}
-.pay-card.featured{border-color:var(--orange);background:#fff;}
-.pay-tag{position:absolute;top:-.7rem;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;padding:.2rem .7rem;border-radius:10px;white-space:nowrap;letter-spacing:.06em;text-transform:uppercase;}
-.pay-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;}
-.pay-pct{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:var(--green);line-height:1;}
-.pay-detail{font-size:.78rem;color:var(--gray);margin-top:.5rem;line-height:1.55;}
-/* STICKY CARD */
-.prod-sticky{position:sticky;top:120px;}
-.sticky-card{background:var(--white);border:2px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);}
-.sticky-top{background:var(--green);padding:1.4rem 1.6rem;}
-.sticky-price{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;color:#fff;line-height:1;}
-.sticky-sub{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.3rem;}
-.sticky-badge{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;padding:.25rem .7rem;border-radius:10px;margin-top:.6rem;letter-spacing:.06em;}
-.sticky-body{padding:1.4rem 1.6rem;}
-.sticky-specs{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1.2rem;}
-.ss-card{background:var(--gray-light);border-radius:4px;padding:.6rem .8rem;}
-.ss-val{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:900;color:var(--black);}
-.ss-key{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray);}
-.sticky-form .sf-label{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:.35rem;display:block;}
-.sticky-form input,.sticky-form select{width:100%;padding:.72rem .95rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Open Sans',sans-serif;font-size:.88rem;color:var(--black);outline:none;margin-bottom:.75rem;appearance:none;background:var(--white);}
-.sticky-form input:focus,.sticky-form select:focus{border-color:var(--orange);}
-.sticky-wa{display:flex;align-items:center;justify-content:center;gap:.6rem;background:#25D366;color:#fff;border:none;width:100%;padding:1rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:background .2s;margin-bottom:.6rem;}
-.sticky-wa:hover{background:#1ebe5d;}
-.sticky-call{display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--orange);color:#fff;border:none;width:100%;padding:.85rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .2s;}
-.sticky-call:hover{background:var(--orange-dark);}
-/* SIMILAR */
-.similar-section{padding:3rem 5rem;background:var(--gray-light);}
-.similar-title{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:1.5rem;}
-.similar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
-.sim-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--border);display:flex;transition:transform .3s,box-shadow .3s;cursor:pointer;}
-.sim-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1);}
-.sim-img{width:140px;flex-shrink:0;overflow:hidden;}
-.sim-img img{width:100%;height:100%;object-fit:cover;}
-.sim-body{padding:1.2rem;display:flex;flex-direction:column;justify-content:center;}
-.sim-loc{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;}
-.sim-name{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:800;color:var(--black);margin-bottom:.4rem;}
-.sim-price{font-size:.82rem;color:var(--gray);margin-bottom:.8rem;}
-.sim-cta{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;padding:.4rem .9rem;border-radius:3px;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;transition:background .2s;}
-.sim-cta:hover{background:var(--orange-dark);}
-/* FOOTER */
-footer{background:var(--black);padding:3.5rem 5rem 2rem;}
-.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1.5rem;}
-.f-logo-text{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;}
-.f-logo-text .ardhi{color:var(--white);}.f-logo-text .soko{color:var(--orange);}
-.f-about{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.75;margin-bottom:1rem;}
-.f-col h5{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;}
-.f-links{list-style:none;}.f-links li{margin-bottom:.5rem;}
-.f-links a{font-size:.82rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
-.f-links a:hover{color:var(--white);}
-.f-bottom{display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.2);font-family:'Montserrat',sans-serif;}
-.wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;}
-.wa-btn:hover{transform:scale(1.1);}
-/* MOBILE */
-@media(max-width:680px){
-  html,body{overflow-x:hidden;max-width:100vw;}
-  *{box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;}
-  img,iframe{max-width:100%!important;}
-  nav{padding:.6rem 1rem;}
-  .top-bar{padding:.4rem 1rem;}
-  .page-hero{padding:1.5rem 1rem;}
-  .pm-desktop{display:none;}
-  .pm-mobile{display:grid;}
-  .gallery-main{height:220px;}
-  .g-thumb{width:60px;height:42px;}
-  .product-layout{display:block;padding:1.2rem;width:100%;}
-  .price-bar{flex-direction:column;align-items:flex-start;gap:.5rem;padding:1rem;}
-  .specs-grid{grid-template-columns:1fr 1fr;}
-  .features-grid{grid-template-columns:1fr;}
-  .payment-grid{grid-template-columns:1fr;}
-  .prod-sticky{position:static;}
-  .similar-section{padding:1.5rem 1rem;}
-  .similar-grid{grid-template-columns:1fr;}
-  .sim-card{flex-direction:column;}
-  .sim-img{width:100%;height:160px;}
-  footer{padding:2rem 1rem 1.5rem;}
-  .f-grid{grid-template-columns:1fr;}
-  .f-bottom{flex-direction:column;gap:.4rem;}
-}
-@media(max-width:1100px){
-  nav,.top-bar,footer{padding-left:2rem;padding-right:2rem;}
-  .page-hero{padding:2rem 2rem;}
-  .product-layout{grid-template-columns:1fr;padding:2.5rem 2rem;}
-  .prod-sticky{position:static;}
-  .similar-section{padding:2.5rem 2rem;}
-  .similar-grid{grid-template-columns:1fr;}
-  .sim-card{flex-direction:column;}
-  .sim-img{width:100%;height:200px;}
-}
-</style>
-</head>
-<body>
-<div class="top-bar">
-  <a href="tel:${d.phone}">${d.phone}</a>
-  <span>${d.brand1}${d.brand2}</span>
-</div>
-<nav>
-  <a href="index.html" class="logo">
-    <div class="logo-triangle"></div>
-    <div>
-      <div class="logo-text"><span class="ardhi">${d.brand1}</span><span class="soko">${d.brand2}</span></div>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="properties.html">Properties</a></li>
-    <li><a href="about.html">About Us</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="index.html#enquiry" class="nav-cta">Enquire Now</a></li>
-  </ul>
-</nav>
-<div class="page-menu">
-  <div class="pm-desktop">
-    <a class="pm-link active" onclick="scrollTo('#overview')">Overview</a>
-    <a class="pm-link" onclick="scrollTo('#specs')">Key Details</a>
-    <a class="pm-link" onclick="scrollTo('#features')">Features</a>
-    <a class="pm-link" onclick="scrollTo('#payment')">Payment Plans</a>
-    <a class="pm-link" onclick="scrollTo('#location')">Location</a>
-    <a class="pm-link" onclick="scrollTo('#enquire')">Enquire</a>
-  </div>
-  <div class="pm-mobile">
-    <button class="pm-mob-btn" onclick="scrollTo('#overview')">Overview</button>
-    <button class="pm-mob-btn" onclick="scrollTo('#specs')">Details</button>
-    <button class="pm-mob-btn" onclick="scrollTo('#payment')">Payment</button>
-    <button class="pm-mob-btn" onclick="scrollTo('#enquire')">Enquire</button>
-  </div>
-</div>
-<div class="page-hero" id="overview">
-  <div class="page-hero-eyebrow">${d.tagText} &mdash; ${d.location}</div>
-  <h1>${d.name}</h1>
-  <p>${d.priceSub ? d.price + ' ' + d.priceSub : d.price}</p>
-</div>
-<div class="gallery-wrap">
-  <div class="gallery-main" id="gallery-main">
-    ${d.imgSlides}
-    <button class="gallery-arrow g-prev" onclick="gPrev()">&#8592;</button>
-    <button class="gallery-arrow g-next" onclick="gNext()">&#8594;</button>
-    <div class="gallery-counter" id="gcounter">&#128247; 1 / ${d.imgCount}</div>
-  </div>
-  <div class="gallery-thumbs">${d.thumbs}</div>
-</div>
-<div class="product-layout">
-  <div class="prod-left">
-    <div class="price-bar">
-      <div>
-        <div class="price-main">${d.price}</div>
-        <div class="price-meta">${d.priceSub}</div>
-        <div class="price-badge">${d.avBadge}</div>
-        <div class="price-note">${d.avNote}</div>
-      </div>
-    </div>
-    <div class="prod-section" id="about">
-      <div class="prod-section-title">About This Property</div>
-      <div class="prod-desc"><p>${d.fullDesc}</p></div>
-    </div>
-    <div class="prod-section" id="specs">
-      <div class="prod-section-title">Key Details</div>
-      <div class="specs-grid">${d.specsHtml}</div>
-    </div>
-    <div class="prod-section" id="features">
-      <div class="prod-section-title">Features &amp; Amenities</div>
-      <div class="features-grid">${d.featHtml}</div>
-    </div>
-    <div class="prod-section" id="payment">
-      <div class="prod-section-title">Flexible Payment Plans</div>
-      <div class="payment-grid">${d.payHtml}</div>
-    </div>
-  </div>
-  <div class="prod-sticky" id="enquire">
-    <div class="sticky-card">
-      <div class="sticky-top">
-        <div class="sticky-price">${d.price}</div>
-        <div class="sticky-sub">${d.priceSub}</div>
-        <div class="sticky-badge">${d.badge}</div>
-      </div>
-      <div class="sticky-body">
-        <div class="sticky-specs">
-          ${d.specsHtml ? d.specsHtml.split('</div>').slice(0,4).join('</div>')+'</div>' : ''}
-        </div>
-        <div class="sticky-form">
-          <label class="sf-label">Your Name</label>
-          <input type="text" id="enq-name" placeholder="John Kamau">
-          <label class="sf-label">Phone / WhatsApp</label>
-          <input type="tel" id="enq-phone" placeholder="+254 7XX XXX XXX">
-          <label class="sf-label">Intent</label>
-          <select id="enq-intent">
-            <option>I want to buy</option>
-            <option>I want more information</option>
-            <option>I want a site visit</option>
-          </select>
-        </div>
-        <button class="sticky-wa" onclick="sendWA()">&#128172; WhatsApp Enquiry</button>
-        <button class="sticky-call" onclick="window.location='tel:${d.phone}'">&#128222; Call Us Now</button>
-      </div>
-    </div>
-  </div>
-</div>
-<section class="similar-section">
-  <div class="similar-title">Similar Properties</div>
-  <div class="similar-grid">${d.simHtml}</div>
-</section>
-<footer>
-  <div class="f-grid">
-    <div>
-      <div class="f-logo-text"><span class="ardhi">${d.brand1}</span><span class="soko">${d.brand2}</span></div>
-      <p class="f-about">${d.brand1}${d.brand2} offers premium property investments across Kenya — title-deed verified, flexible payment plans available.</p>
-    </div>
-    <div class="f-col"><h5>Properties</h5><ul class="f-links"><li><a href="malindi.html">Malindi Plots</a></li><li><a href="konza.html">Konza Plots</a></li><li><a href="kamakis.html">Kamakis Apts</a></li></ul></div>
-    <div class="f-col"><h5>Company</h5><ul class="f-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#enquiry">Contact</a></li></ul></div>
-    <div class="f-col"><h5>Contact</h5><ul class="f-links"><li>${d.phone}</li></ul></div>
-  </div>
-  <div class="f-bottom"><span>&copy; 2025 ${d.brand1}${d.brand2} Ltd. All rights reserved.</span><span>Privacy &middot; Terms</span></div>
-</footer>
-<a href="https://wa.me/${d.waNum}?text=${d.waMsg || ''}" class="wa-btn" target="_blank">&#128172;</a>
-<script>
-var gIdx=0,gTotal=${d.imgCount};
-function gTo(i){
-  document.querySelectorAll('.gslide').forEach(function(s,j){s.style.opacity=j===i?'1':'0';});
-  document.querySelectorAll('.g-thumb').forEach(function(t,j){t.classList.toggle('active',j===i);});
-  document.getElementById('gcounter').textContent='\\u{1F4F7} '+(i+1)+' / '+gTotal;
-  gIdx=i;
-}
-function gNext(){gTo((gIdx+1)%gTotal);}
-function gPrev(){gTo((gIdx-1+gTotal)%gTotal);}
-setInterval(gNext,5000);
-document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')gNext();if(e.key==='ArrowLeft')gPrev();});
-function scrollTo(sel){var el=document.querySelector(sel);if(el)el.scrollIntoView({behavior:'smooth'});}
-function sendWA(){
-  var name=document.getElementById('enq-name').value||'';
-  var phone=document.getElementById('enq-phone').value||'';
-  var intent=document.getElementById('enq-intent').value||'';
-  var msg=encodeURIComponent('Hi, I am '+name+' ('+phone+'). '+intent+' — ${d.name}.');
-  window.open('https://wa.me/${d.waNum}?text='+msg,'_blank');
-}
-</script>
-</body>
-</html>`;
+  var og=d.og, gr2=d.gr;
+  function dk(h){var r=parseInt(h.slice(1,3),16),g2=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);r=Math.max(0,Math.round(r*.8));g2=Math.max(0,Math.round(g2*.8));b=Math.max(0,Math.round(b*.8));return '#'+[r,g2,b].map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
+  var orangeDark = dk(og), greenDark = dk(gr2);
+  var h = '';
+  h += '<!DOCTYPE html>\n<html lang="en">\n<head>\n';
+  h += '<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n';
+  h += '<title>' + d.title + '</title>\n';
+  h += '<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">\n';
+  h += '<style>\n';
+  h += ':root{--orange:' + og + ';--orange-dark:' + orangeDark + ';--green:' + gr2 + ';--green-dark:' + greenDark + ';--black:#1A1A1A;--gray:#666;--gray-light:#F5F5F5;--border:#E0E0E0;--white:#fff;}\n';
+  h += '*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}body{font-family:\'Open Sans\',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}\n';
+  h += '.top-bar{background:var(--green);display:flex;justify-content:space-between;align-items:center;padding:.5rem 5rem;font-size:.78rem;color:rgba(255,255,255,.9);}.top-bar a{color:rgba(255,255,255,.9);text-decoration:none;}\n';
+  h += 'nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.9rem 5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}\n';
+  h += '.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;}.logo-triangle{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid var(--green);}\n';
+  h += '.logo-text{font-family:\'Montserrat\',sans-serif;font-size:1.55rem;font-weight:800;}.logo-text .ardhi{color:var(--black);}.logo-text .soko{color:var(--orange);}\n';
+  h += '.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}.nav-links a{font-family:\'Montserrat\',sans-serif;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:color .2s;}.nav-links a:hover{color:var(--orange);}.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:.6rem 1.5rem;border-radius:3px;}\n';
+  h += '.page-hero{background:var(--green);padding:2.5rem 5rem;}.page-hero h1{font-family:\'Montserrat\',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#fff;line-height:1.2;}.page-hero h1 span{color:var(--orange);}.page-hero p{font-size:.9rem;color:rgba(255,255,255,.7);margin-top:.8rem;max-width:560px;line-height:1.7;}.page-hero-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.6rem;font-family:\'Montserrat\',sans-serif;}\n';
+  h += '.page-menu{background:var(--orange);position:sticky;top:62px;z-index:199;}.pm-desktop{display:flex;}.pm-link{font-family:\'Montserrat\',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);padding:.85rem 1.4rem;text-decoration:none;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;transition:all .2s;}.pm-link:hover{color:#fff;border-bottom-color:#fff;}.pm-mobile{display:none;grid-template-columns:repeat(2,1fr);}.pm-mob-btn{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.85);font-family:\'Montserrat\',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.7rem .5rem;cursor:pointer;text-align:center;}\n';
+  h += '.gallery-wrap{background:#111;}.gallery-main{position:relative;height:520px;overflow:hidden;}.gallery-counter{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.6);color:#fff;font-family:\'Montserrat\',sans-serif;font-size:.75rem;font-weight:700;padding:.4rem .9rem;border-radius:4px;z-index:2;}.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;}.gallery-arrow:hover{background:rgba(0,0,0,.75);}.g-prev{left:1rem;}.g-next{right:1rem;}.gallery-thumbs{display:flex;gap:6px;padding:6px;background:#111;overflow-x:auto;scrollbar-width:none;}.gallery-thumbs::-webkit-scrollbar{display:none;}.g-thumb{width:90px;height:64px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border-color .2s;}.g-thumb.active{border-color:var(--orange);}.g-thumb img{width:100%;height:100%;object-fit:cover;}\n';
+  h += '.product-layout{display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start;padding:3.5rem 5rem;}\n';
+  h += '.price-bar{display:flex;align-items:center;justify-content:space-between;background:var(--gray-light);border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:2rem;border-left:4px solid var(--green);}\n';
+  h += '.price-main{font-family:\'Montserrat\',sans-serif;font-size:2.2rem;font-weight:900;color:var(--green);line-height:1;}.price-meta{font-size:.85rem;color:var(--gray);margin-top:.3rem;}.price-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(245,146,30,.12);color:var(--orange);font-family:\'Montserrat\',sans-serif;font-size:.72rem;font-weight:800;padding:.35rem .9rem;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;}.price-note{font-size:.8rem;color:var(--gray);margin-top:.4rem;}\n';
+  h += '.prod-section{margin-bottom:2.5rem;}.prod-section-title{font-family:\'Montserrat\',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}.prod-section-title::before{content:\'\';width:22px;height:2px;background:var(--orange);display:inline-block;}\n';
+  h += '.prod-desc{font-size:.93rem;color:#444;line-height:1.82;}.prod-desc p{margin-bottom:1rem;}\n';
+  h += '.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}.spec-card{background:var(--gray-light);border-radius:6px;padding:1rem 1.2rem;border-bottom:3px solid var(--orange);}.spec-val{font-family:\'Montserrat\',sans-serif;font-size:1.15rem;font-weight:900;color:var(--black);}.spec-key{font-family:\'Montserrat\',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:.2rem;}\n';
+  h += '.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}.feat-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:#444;}.feat-icon{background:var(--green);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:900;flex-shrink:0;margin-top:.1rem;}\n';
+  h += '.payment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}.pay-card{background:var(--gray-light);border-radius:8px;padding:1.4rem;text-align:center;border:2px solid transparent;position:relative;}.pay-card.featured{border-color:var(--orange);background:#fff;}.pay-tag{position:absolute;top:-.7rem;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-family:\'Montserrat\',sans-serif;font-size:.58rem;font-weight:800;padding:.2rem .7rem;border-radius:10px;white-space:nowrap;letter-spacing:.06em;text-transform:uppercase;}.pay-label{font-family:\'Montserrat\',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;}.pay-pct{font-family:\'Montserrat\',sans-serif;font-size:2rem;font-weight:900;color:var(--green);line-height:1;}.pay-detail{font-size:.78rem;color:var(--gray);margin-top:.5rem;line-height:1.55;}\n';
+  h += '.prod-sticky{position:sticky;top:120px;}.sticky-card{background:var(--white);border:2px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);}.sticky-top{background:var(--green);padding:1.4rem 1.6rem;}.sticky-price{font-family:\'Montserrat\',sans-serif;font-size:1.8rem;font-weight:900;color:#fff;line-height:1;}.sticky-sub{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.3rem;}.sticky-badge{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-family:\'Montserrat\',sans-serif;font-size:.65rem;font-weight:700;padding:.25rem .7rem;border-radius:10px;margin-top:.6rem;}.sticky-body{padding:1.4rem 1.6rem;}.sticky-specs{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1.2rem;}.ss-card{background:var(--gray-light);border-radius:4px;padding:.6rem .8rem;}.ss-val{font-family:\'Montserrat\',sans-serif;font-size:.92rem;font-weight:900;color:var(--black);}.ss-key{font-family:\'Montserrat\',sans-serif;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray);}\n';
+  h += '.sticky-form .sf-label{font-family:\'Montserrat\',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:.35rem;display:block;}.sticky-form input,.sticky-form select{width:100%;padding:.72rem .95rem;border:1.5px solid var(--border);border-radius:4px;font-family:\'Open Sans\',sans-serif;font-size:.88rem;color:var(--black);outline:none;margin-bottom:.75rem;appearance:none;background:var(--white);}.sticky-form input:focus,.sticky-form select:focus{border-color:var(--orange);}\n';
+  h += '.sticky-wa{display:flex;align-items:center;justify-content:center;gap:.6rem;background:#25D366;color:#fff;border:none;width:100%;padding:1rem;border-radius:4px;font-family:\'Montserrat\',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-bottom:.6rem;}.sticky-wa:hover{background:#1ebe5d;}.sticky-call{display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--orange);color:#fff;border:none;width:100%;padding:.85rem;border-radius:4px;font-family:\'Montserrat\',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;}.sticky-call:hover{background:var(--orange-dark);}\n';
+  h += '.similar-section{padding:3rem 5rem;background:var(--gray-light);}.similar-title{font-family:\'Montserrat\',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:1.5rem;}.similar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}.sim-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--border);display:flex;transition:transform .3s,box-shadow .3s;cursor:pointer;}.sim-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1);}.sim-img{width:140px;flex-shrink:0;overflow:hidden;}.sim-img img{width:100%;height:100%;object-fit:cover;}.sim-body{padding:1.2rem;display:flex;flex-direction:column;justify-content:center;}.sim-loc{font-family:\'Montserrat\',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;}.sim-name{font-family:\'Montserrat\',sans-serif;font-size:.92rem;font-weight:800;color:var(--black);margin-bottom:.4rem;}.sim-price{font-size:.82rem;color:var(--gray);margin-bottom:.8rem;}.sim-cta{display:inline-block;background:var(--orange);color:#fff;font-family:\'Montserrat\',sans-serif;font-size:.68rem;font-weight:700;padding:.4rem .9rem;border-radius:3px;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;}.sim-cta:hover{background:var(--orange-dark);}\n';
+  h += 'footer{background:var(--black);padding:3.5rem 5rem 2rem;}.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1.5rem;}.f-logo-text{font-family:\'Montserrat\',sans-serif;font-size:1.2rem;font-weight:900;}.f-logo-text .ardhi{color:var(--white);}.f-logo-text .soko{color:var(--orange);}.f-about{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.75;margin-bottom:1rem;}.f-col h5{font-family:\'Montserrat\',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;}.f-links{list-style:none;}.f-links li{margin-bottom:.5rem;}.f-links a{font-size:.82rem;color:rgba(255,255,255,.35);text-decoration:none;}.f-links a:hover{color:var(--white);}.f-bottom{display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.2);font-family:\'Montserrat\',sans-serif;}\n';
+  h += '.wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;}.wa-btn:hover{transform:scale(1.1);}\n';
+  h += '@media(max-width:680px){html,body{overflow-x:hidden;max-width:100vw;}*{box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;}img,iframe{max-width:100%!important;}nav{padding:.6rem 1rem;}.top-bar{padding:.4rem 1rem;}.page-hero{padding:1.5rem 1rem;}.pm-desktop{display:none;}.pm-mobile{display:grid;}.gallery-main{height:220px;}.g-thumb{width:60px;height:42px;}.product-layout{display:block;padding:1.2rem;width:100%;}.price-bar{flex-direction:column;align-items:flex-start;gap:.5rem;padding:1rem;}.specs-grid{grid-template-columns:1fr 1fr;}.features-grid{grid-template-columns:1fr;}.payment-grid{grid-template-columns:1fr;}.prod-sticky{position:static;}.similar-section{padding:1.5rem 1rem;}.similar-grid{grid-template-columns:1fr;}.sim-card{flex-direction:column;}.sim-img{width:100%;height:160px;}footer{padding:2rem 1rem 1.5rem;}.f-grid{grid-template-columns:1fr;}.f-bottom{flex-direction:column;gap:.4rem;}}\n';
+  h += '@media(max-width:1100px){nav,.top-bar,footer{padding-left:2rem;padding-right:2rem;}.page-hero{padding:2rem 2rem;}.product-layout{grid-template-columns:1fr;padding:2.5rem 2rem;}.prod-sticky{position:static;}.similar-section{padding:2.5rem 2rem;}.similar-grid{grid-template-columns:1fr;}.sim-card{flex-direction:column;}.sim-img{width:100%;height:200px;}}\n';
+  h += '</style>\n</head>\n<body>\n';
+  h += '<div class="top-bar"><a href="tel:' + d.phone + '">' + d.phone + '</a><span>' + d.brand1 + d.brand2 + '</span></div>\n';
+  h += '<nav><a href="index.html" class="logo"><div class="logo-triangle"></div><div><div class="logo-text"><span class="ardhi">' + d.brand1 + '</span><span class="soko">' + d.brand2 + '</span></div></div></a>';
+  h += '<ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#enquiry" class="nav-cta">Enquire Now</a></li></ul></nav>\n';
+  h += '<div class="page-menu"><div class="pm-desktop"><button class="pm-link" onclick="document.getElementById(\'overview\').scrollIntoView({behavior:\'smooth\'})">Overview</button><button class="pm-link" onclick="document.getElementById(\'specs\').scrollIntoView({behavior:\'smooth\'})">Key Details</button><button class="pm-link" onclick="document.getElementById(\'features\').scrollIntoView({behavior:\'smooth\'})">Features</button><button class="pm-link" onclick="document.getElementById(\'payment\').scrollIntoView({behavior:\'smooth\'})">Payment Plans</button><button class="pm-link" onclick="document.getElementById(\'enquire\').scrollIntoView({behavior:\'smooth\'})">Enquire</button></div>';
+  h += '<div class="pm-mobile"><button class="pm-mob-btn" onclick="document.getElementById(\'overview\').scrollIntoView({behavior:\'smooth\'})">Overview</button><button class="pm-mob-btn" onclick="document.getElementById(\'specs\').scrollIntoView({behavior:\'smooth\'})">Details</button><button class="pm-mob-btn" onclick="document.getElementById(\'payment\').scrollIntoView({behavior:\'smooth\'})">Payment</button><button class="pm-mob-btn" onclick="document.getElementById(\'enquire\').scrollIntoView({behavior:\'smooth\'})">Enquire</button></div></div>\n';
+  h += '<div class="page-hero" id="overview"><div class="page-hero-eyebrow">' + d.tagText + ' &mdash; ' + d.location + '</div><h1>' + d.name + '</h1><p>' + d.price + ' ' + d.priceSub + '</p></div>\n';
+  h += '<div class="gallery-wrap"><div class="gallery-main" id="gallery-main">' + d.imgSlides;
+  h += '<button class="gallery-arrow g-prev" onclick="gPrev()">&#8592;</button><button class="gallery-arrow g-next" onclick="gNext()">&#8594;</button>';
+  h += '<div class="gallery-counter" id="gcounter">&#128247; 1 / ' + d.imgCount + '</div></div>';
+  h += '<div class="gallery-thumbs">' + d.thumbs + '</div></div>\n';
+  h += '<div class="product-layout"><div class="prod-left">';
+  h += '<div class="price-bar"><div><div class="price-main">' + d.price + '</div><div class="price-meta">' + d.priceSub + '</div><div class="price-badge">' + d.avBadge + '</div><div class="price-note">' + d.avNote + '</div></div></div>';
+  h += '<div class="prod-section" id="about"><div class="prod-section-title">About This Property</div><div class="prod-desc"><p>' + d.fullDesc + '</p></div></div>';
+  h += '<div class="prod-section" id="specs"><div class="prod-section-title">Key Details</div><div class="specs-grid">' + d.specsHtml + '</div></div>';
+  h += '<div class="prod-section" id="features"><div class="prod-section-title">Features &amp; Amenities</div><div class="features-grid">' + d.featHtml + '</div></div>';
+  h += '<div class="prod-section" id="payment"><div class="prod-section-title">Flexible Payment Plans</div><div class="payment-grid">' + d.payHtml + '</div></div>';
+  h += '</div>';
+  // Sticky card
+  h += '<div class="prod-sticky" id="enquire"><div class="sticky-card"><div class="sticky-top"><div class="sticky-price">' + d.price + '</div><div class="sticky-sub">' + d.priceSub + '</div><div class="sticky-badge">' + d.badge + '</div></div>';
+  h += '<div class="sticky-body"><div class="sticky-specs">' + d.specsHtml + '</div>';
+  h += '<div class="sticky-form"><label class="sf-label">Your Name</label><input type="text" id="enq-name" placeholder="John Kamau"><label class="sf-label">Phone / WhatsApp</label><input type="tel" id="enq-phone" placeholder="+254 7XX XXX XXX"><label class="sf-label">Intent</label><select id="enq-intent"><option>I want to buy</option><option>I want more information</option><option>I want a site visit</option></select></div>';
+  h += '<button class="sticky-wa" onclick="sendWA()">&#128172; WhatsApp Enquiry</button>';
+  h += '<button class="sticky-call" onclick="window.location=\'tel:' + d.phone + '\'">&#128222; Call Us Now</button>';
+  h += '</div></div></div></div>\n';
+  h += '<section class="similar-section"><div class="similar-title">Similar Properties</div><div class="similar-grid">' + d.simHtml + '</div></section>\n';
+  h += '<footer><div class="f-grid"><div><div class="f-logo-text"><span class="ardhi">' + d.brand1 + '</span><span class="soko">' + d.brand2 + '</span></div>';
+  h += '<p class="f-about">' + d.brand1 + d.brand2 + ' offers premium property investments across Kenya.</p></div>';
+  h += '<div class="f-col"><h5>Properties</h5><ul class="f-links"><li><a href="malindi.html">Malindi Plots</a></li><li><a href="konza.html">Konza Plots</a></li><li><a href="kamakis.html">Kamakis Apts</a></li></ul></div>';
+  h += '<div class="f-col"><h5>Company</h5><ul class="f-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#enquiry">Contact</a></li></ul></div>';
+  h += '<div class="f-col"><h5>Contact</h5><ul class="f-links"><li>' + d.phone + '</li></ul></div></div>';
+  h += '<div class="f-bottom"><span>&copy; 2025 ' + d.brand1 + d.brand2 + ' Ltd. All rights reserved.</span><span>Privacy &middot; Terms</span></div></footer>\n';
+  h += '<a href="https://wa.me/' + d.waNum + '?text=' + encodeURIComponent('Hi, I am interested in ' + d.name + '.') + '" class="wa-btn" target="_blank">&#128172;</a>\n';
+  h += '<script>\n';
+  h += 'var gIdx=0,gTotal=' + d.imgCount + ';\n';
+  h += 'function gTo(i){document.querySelectorAll(".gslide").forEach(function(s,j){s.style.opacity=j===i?"1":"0";});document.querySelectorAll(".g-thumb").forEach(function(t,j){t.classList.toggle("active",j===i);});document.getElementById("gcounter").textContent="\\u{1F4F7} "+(i+1)+" / "+gTotal;gIdx=i;}\n';
+  h += 'function gNext(){gTo((gIdx+1)%gTotal);}function gPrev(){gTo((gIdx-1+gTotal)%gTotal);}\n';
+  h += 'setInterval(gNext,5000);\n';
+  h += 'document.addEventListener("keydown",function(e){if(e.key==="ArrowRight")gNext();if(e.key==="ArrowLeft")gPrev();});\n';
+  h += 'function sendWA(){var name=document.getElementById("enq-name").value||"";var phone=document.getElementById("enq-phone").value||"";var intent=document.getElementById("enq-intent").value||"";var msg=encodeURIComponent("Hi, I am "+name+" ("+phone+"). "+intent+" - ' + d.name.replace(/'/g, "\\'") + '.");window.open("https://wa.me/' + d.waNum + '?text="+msg,"_blank");}\n';
+  h += '<\/script>\n</body>\n</html>';
+  return h;
 }
 
 // ── GENERATE HTML (shared by export and github push) ──
