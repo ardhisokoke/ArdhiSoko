@@ -1893,6 +1893,31 @@ function generateHTML(){
   return buildHTML(og,gr2,p1,p2,tg,ph,em,ad,wa,heroImg,mf,kf2,kaf,banners,testis,blogs);
 }
 
+// ── IMGBB IMAGE HOSTING ──
+// Images are uploaded to ImgBB (free hosting) so only the URL is stored,
+// keeping exported HTML files small and fast.
+var IMGBB_KEY = 'a0e446e5a0a11cce3a5527bfd5db5754'; // free API key
+function uploadToImgBB(file, callback) {
+  var formData = new FormData();
+  formData.append('image', file);
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://api.imgbb.com/1/upload?key=' + IMGBB_KEY);
+  xhr.onload = function() {
+    try {
+      var res = JSON.parse(xhr.responseText);
+      if (res.success && res.data && res.data.url) {
+        callback(res.data.url, null);
+      } else {
+        callback(null, res.error && res.error.message ? res.error.message : 'Upload error');
+      }
+    } catch(e) {
+      callback(null, 'Could not parse response');
+    }
+  };
+  xhr.onerror = function() { callback(null, 'Network error — check your internet connection'); };
+  xhr.send(formData);
+}
+
 // ── IMAGE UPLOAD FROM FILE ──
 function handleFile(input, prefix) {
   var file = input.files[0];
@@ -1901,17 +1926,16 @@ function handleFile(input, prefix) {
     showStatus(prefix, 'Please select an image file (JPG, PNG, WEBP)', 'er');
     return;
   }
-  var maxSize = 10 * 1024 * 1024; // 10MB
+  var maxSize = 32 * 1024 * 1024; // 32MB ImgBB limit
   if (file.size > maxSize) {
-    showStatus(prefix, 'Image too large. Please use an image under 10MB.', 'er');
+    showStatus(prefix, 'Image too large. Maximum size is 32MB.', 'er');
     return;
   }
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    var dataUrl = e.target.result;
-    applyImage(prefix, dataUrl, file.name);
-  };
-  reader.readAsDataURL(file);
+  showStatus(prefix, '⏳ Uploading image...', 'ok');
+  uploadToImgBB(file, function(url, err) {
+    if (err) { showStatus(prefix, '❌ Upload failed: ' + err, 'er'); return; }
+    applyImage(prefix, url, file.name);
+  });
 }
 
 function handleDrop(event, prefix) {
@@ -1923,11 +1947,11 @@ function handleDrop(event, prefix) {
     showStatus(prefix, 'Please drop an image file (JPG, PNG, WEBP)', 'er');
     return;
   }
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    applyImage(prefix, e.target.result, file.name);
-  };
-  reader.readAsDataURL(file);
+  showStatus(prefix, '⏳ Uploading image...', 'ok');
+  uploadToImgBB(file, function(url, err) {
+    if (err) { showStatus(prefix, '❌ Upload failed: ' + err, 'er'); return; }
+    applyImage(prefix, url, file.name);
+  });
 }
 
 function applyImage(prefix, dataUrl, fileName) {
@@ -1993,11 +2017,11 @@ function switchProjTab(prefix, tab, btn) {
 function handleGalleryFile(input, prefix, idx) {
   var file = input.files[0];
   if (!file) return;
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    setGallerySlot(prefix, idx, e.target.result, file.name);
-  };
-  reader.readAsDataURL(file);
+  toast('Uploading photo ' + (idx+1) + '...', 'ok');
+  uploadToImgBB(file, function(url, err) {
+    if (err) { toast('Upload failed: ' + err, 'er'); return; }
+    setGallerySlot(prefix, idx, url, file.name);
+  });
 }
 
 function setGallerySlot(prefix, idx, url, name) {
