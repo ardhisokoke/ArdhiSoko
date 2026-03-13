@@ -1,55 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kamakis Urban Residences — ArdhiSoko</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Dolce Residense — ArdhiSoko</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--orange:#F5921E;--orange-dark:#c47518;--green:#2E7D1F;--green-dark:#256419;--black:#1A1A1A;--gray:#666;--gray-light:#F5F5F5;--border:#E0E0E0;--white:#fff;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;overflow-x:hidden;}body{font-family:'Open Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden;}
-.top-bar{background:var(--green);display:flex;justify-content:space-between;align-items:center;padding:.5rem 5rem;font-size:.78rem;color:rgba(255,255,255,.9);}.top-bar a{color:rgba(255,255,255,.9);text-decoration:none;}
-nav{position:sticky;top:0;z-index:200;background:var(--white);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:.9rem 5rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
-.logo{display:flex;align-items:center;gap:.55rem;text-decoration:none;}.logo-triangle{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid var(--green);}
-.logo-text{font-family:'Montserrat',sans-serif;font-size:1.55rem;font-weight:800;}.logo-text .ardhi{color:var(--black);}.logo-text .soko{color:var(--orange);}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center;}.nav-links a{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:600;color:#333;text-decoration:none;transition:color .2s;}.nav-links a:hover{color:var(--orange);}.nav-cta{background:var(--orange)!important;color:var(--white)!important;padding:.6rem 1.5rem;border-radius:3px;}
-.page-hero{background:var(--green);padding:2.5rem 5rem;}.page-hero h1{font-family:'Montserrat',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#fff;line-height:1.2;}.page-hero h1 span{color:var(--orange);}.page-hero p{font-size:.9rem;color:rgba(255,255,255,.7);margin-top:.8rem;max-width:560px;line-height:1.7;}.page-hero-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.6rem;font-family:'Montserrat',sans-serif;}
-.page-menu{background:var(--orange);position:sticky;top:62px;z-index:199;}.pm-desktop{display:flex;}.pm-link{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.75);padding:.85rem 1.4rem;text-decoration:none;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;transition:all .2s;}.pm-link:hover{color:#fff;border-bottom-color:#fff;}.pm-mobile{display:none;grid-template-columns:repeat(2,1fr);}.pm-mob-btn{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.85);font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.7rem .5rem;cursor:pointer;text-align:center;}
-.gallery-wrap{background:#111;}.gallery-main{position:relative;height:520px;overflow:hidden;}.gallery-counter{position:absolute;bottom:1rem;right:1rem;background:rgba(0,0,0,.6);color:#fff;font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;padding:.4rem .9rem;border-radius:4px;z-index:2;}.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.45);color:#fff;border:none;width:42px;height:42px;border-radius:50%;font-size:1.1rem;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center;}.gallery-arrow:hover{background:rgba(0,0,0,.75);}.g-prev{left:1rem;}.g-next{right:1rem;}.gallery-thumbs{display:flex;gap:6px;padding:6px;background:#111;overflow-x:auto;scrollbar-width:none;}.gallery-thumbs::-webkit-scrollbar{display:none;}.g-thumb{width:90px;height:64px;border-radius:4px;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;transition:border-color .2s;}.g-thumb.active{border-color:var(--orange);}.g-thumb img{width:100%;height:100%;object-fit:cover;}
-.product-layout{display:grid;grid-template-columns:1fr 380px;gap:3rem;align-items:start;padding:3.5rem 5rem;}
-.price-bar{display:flex;align-items:center;justify-content:space-between;background:var(--gray-light);border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:2rem;border-left:4px solid var(--green);}
-.price-main{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--green);line-height:1;}.price-meta{font-size:.85rem;color:var(--gray);margin-top:.3rem;}.price-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(245,146,30,.12);color:var(--orange);font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:800;padding:.35rem .9rem;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;margin-top:.6rem;}.price-note{font-size:.8rem;color:var(--gray);margin-top:.4rem;}
-.prod-section{margin-bottom:2.5rem;}.prod-section-title{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}.prod-section-title::before{content:'';width:22px;height:2px;background:var(--orange);display:inline-block;}
-.prod-desc{font-size:.93rem;color:#444;line-height:1.82;}.prod-desc p{margin-bottom:1rem;}
-.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}.spec-card{background:var(--gray-light);border-radius:6px;padding:1rem 1.2rem;border-bottom:3px solid var(--orange);}.spec-val{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:900;color:var(--black);}.spec-key{font-family:'Montserrat',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:.2rem;}
-.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}.feat-item{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:#444;}.feat-icon{background:var(--green);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:900;flex-shrink:0;margin-top:.1rem;}
-.payment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}.pay-card{background:var(--gray-light);border-radius:8px;padding:1.4rem;text-align:center;border:2px solid transparent;position:relative;}.pay-card.featured{border-color:var(--orange);background:#fff;}.pay-tag{position:absolute;top:-.7rem;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:800;padding:.2rem .7rem;border-radius:10px;white-space:nowrap;letter-spacing:.06em;text-transform:uppercase;}.pay-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);margin-bottom:.5rem;}.pay-pct{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:var(--green);line-height:1;}.pay-detail{font-size:.78rem;color:var(--gray);margin-top:.5rem;line-height:1.55;}
-.prod-sticky{position:sticky;top:120px;}.sticky-card{background:var(--white);border:2px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);}.sticky-top{background:var(--green);padding:1.4rem 1.6rem;}.sticky-price{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;color:#fff;line-height:1;}.sticky-sub{font-size:.78rem;color:rgba(255,255,255,.7);margin-top:.3rem;}.sticky-badge{display:inline-block;background:rgba(255,255,255,.15);color:#fff;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;padding:.25rem .7rem;border-radius:10px;margin-top:.6rem;}.sticky-body{padding:1.4rem 1.6rem;}.sticky-specs{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1.2rem;}.ss-card{background:var(--gray-light);border-radius:4px;padding:.6rem .8rem;}.ss-val{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:900;color:var(--black);}.ss-key{font-family:'Montserrat',sans-serif;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray);}
-.sticky-form .sf-label{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:.35rem;display:block;}.sticky-form input,.sticky-form select{width:100%;padding:.72rem .95rem;border:1.5px solid var(--border);border-radius:4px;font-family:'Open Sans',sans-serif;font-size:.88rem;color:var(--black);outline:none;margin-bottom:.75rem;appearance:none;background:var(--white);}.sticky-form input:focus,.sticky-form select:focus{border-color:var(--orange);}
-.sticky-wa{display:flex;align-items:center;justify-content:center;gap:.6rem;background:#25D366;color:#fff;border:none;width:100%;padding:1rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-bottom:.6rem;}.sticky-wa:hover{background:#1ebe5d;}.sticky-call{display:flex;align-items:center;justify-content:center;gap:.6rem;background:var(--orange);color:#fff;border:none;width:100%;padding:.85rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;}.sticky-call:hover{background:var(--orange-dark);}
-.similar-section{padding:3rem 5rem;background:var(--gray-light);}.similar-title{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:1.5rem;}.similar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}.sim-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid var(--border);display:flex;transition:transform .3s,box-shadow .3s;cursor:pointer;}.sim-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.1);}.sim-img{width:140px;flex-shrink:0;overflow:hidden;}.sim-img img{width:100%;height:100%;object-fit:cover;}.sim-body{padding:1.2rem;display:flex;flex-direction:column;justify-content:center;}.sim-loc{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;}.sim-name{font-family:'Montserrat',sans-serif;font-size:.92rem;font-weight:800;color:var(--black);margin-bottom:.4rem;}.sim-price{font-size:.82rem;color:var(--gray);margin-bottom:.8rem;}.sim-cta{display:inline-block;background:var(--orange);color:#fff;font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;padding:.4rem .9rem;border-radius:3px;text-decoration:none;text-transform:uppercase;letter-spacing:.05em;}.sim-cta:hover{background:var(--orange-dark);}
-footer{background:var(--black);padding:3.5rem 5rem 2rem;}.f-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1.5rem;}.f-logo-text{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:900;}.f-logo-text .ardhi{color:var(--white);}.f-logo-text .soko{color:var(--orange);}.f-about{font-size:.82rem;color:rgba(255,255,255,.35);line-height:1.75;margin-bottom:1rem;}.f-col h5{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:1rem;}.f-links{list-style:none;}.f-links li{margin-bottom:.5rem;}.f-links a{font-size:.82rem;color:rgba(255,255,255,.35);text-decoration:none;}.f-links a:hover{color:var(--white);}.f-bottom{display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.2);font-family:'Montserrat',sans-serif;}
-.wa-btn{position:fixed;bottom:1.8rem;right:1.8rem;z-index:999;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.5);transition:transform .2s;}.wa-btn:hover{transform:scale(1.1);}
-@media(max-width:680px){html,body{overflow-x:hidden;max-width:100vw;}*{box-sizing:border-box;word-wrap:break-word;overflow-wrap:break-word;}img,iframe{max-width:100%!important;}nav{padding:.6rem 1rem;}.top-bar{padding:.4rem 1rem;}.page-hero{padding:1.5rem 1rem;}.pm-desktop{display:none;}.pm-mobile{display:grid;}.gallery-main{height:220px;}.g-thumb{width:60px;height:42px;}.product-layout{display:block;padding:1.2rem;width:100%;}.price-bar{flex-direction:column;align-items:flex-start;gap:.5rem;padding:1rem;}.specs-grid{grid-template-columns:1fr 1fr;}.features-grid{grid-template-columns:1fr;}.payment-grid{grid-template-columns:1fr;}.prod-sticky{position:static;}.similar-section{padding:1.5rem 1rem;}.similar-grid{grid-template-columns:1fr;}.sim-card{flex-direction:column;}.sim-img{width:100%;height:160px;}footer{padding:2rem 1rem 1.5rem;}.f-grid{grid-template-columns:1fr;}.f-bottom{flex-direction:column;gap:.4rem;}}
-@media(max-width:1100px){nav,.top-bar,footer{padding-left:2rem;padding-right:2rem;}.page-hero{padding:2rem 2rem;}.product-layout{grid-template-columns:1fr;padding:2.5rem 2rem;}.prod-sticky{position:static;}.similar-section{padding:2.5rem 2rem;}.similar-grid{grid-template-columns:1fr;}.sim-card{flex-direction:column;}.sim-img{width:100%;height:200px;}}
+:root{--o:#F5921E;--g:#2E7D1F;--bk:#1A1A1A;--w:#fff;--gl:#F5F5F5;--gm:#E0E0E0;--gr:#666;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Open Sans',sans-serif;color:var(--bk);}
+nav{background:var(--w);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--gm);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
+.logo-t{width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:16px solid var(--g);}
+.logo-n{font-family:'Montserrat',sans-serif;font-size:1.2rem;font-weight:800;}
+.logo-n .a{color:var(--bk)}.logo-n .s{color:var(--o)}
+.back-btn{background:var(--gl);border:1.5px solid var(--gm);color:var(--bk);font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:700;padding:.5rem 1.2rem;border-radius:4px;cursor:pointer;text-decoration:none;}
+.hero-strip{background:var(--bk);padding:2.5rem 8%;display:flex;align-items:center;justify-content:space-between;}
+.hs-tag{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin-bottom:.5rem;}
+.hs-name{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:#fff;line-height:1.2;}
+.hs-loc{font-size:.85rem;color:rgba(255,255,255,.55);margin-top:.4rem;}
+.price-bar{background:var(--o);padding:1rem 8%;display:flex;align-items:center;justify-content:space-between;}
+.pb-price{font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:900;color:#fff;}
+.pb-sub{font-size:.8rem;color:rgba(255,255,255,.8);margin-top:.1rem;}
+.pb-badge{background:rgba(255,255,255,.2);color:#fff;font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;padding:.4rem 1rem;border-radius:20px;}
+.pb-actions{display:flex;gap:.8rem;}
+.pb-btn{padding:.7rem 1.5rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;border:none;}
+.pb-wa{background:#25D366;color:#fff}.pb-call{background:#fff;color:var(--o)}
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:.5rem;height:420px;padding:2rem 8%;}
+.gslide{overflow:hidden;border-radius:4px;cursor:pointer;}
+.gslide:first-child{grid-row:1/-1;border-radius:6px;}
+.gslide img{width:100%;height:100%;object-fit:cover;transition:transform .3s;}
+.gslide:hover img{transform:scale(1.04);}
+.content{padding:3rem 8%;display:grid;grid-template-columns:1fr 380px;gap:2.5rem;}
+.about h2{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:1rem;}
+.about p{font-size:.9rem;color:var(--gr);line-height:1.8;margin-bottom:2rem;}
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2.5rem;}
+.spec-item{background:var(--gl);padding:1rem;border-radius:6px;border-left:3px solid var(--o);}
+.spec-val{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:900;color:var(--bk);}
+.spec-lbl{font-size:.68rem;color:var(--gr);text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem;}
+.features-list{columns:2;gap:1.5rem;margin-bottom:2.5rem;}
+.features-list li{font-size:.88rem;color:var(--bk);margin-bottom:.5rem;list-style:none;font-family:'Montserrat',sans-serif;font-weight:600;}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;}
+.plan-card{background:var(--gl);border-radius:8px;padding:1.5rem;border-top:3px solid var(--o);text-align:center;}
+.plan-card.featured{border-top-color:var(--g);background:var(--g);color:#fff;}
+.plan-popular{font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;color:var(--o);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;}
+.plan-card.featured .plan-popular{color:#fff;}
+.plan-label{font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:800;}
+.plan-deposit{font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:900;color:var(--o);margin:.4rem 0;}
+.plan-card.featured .plan-deposit{color:#fff;}
+.plan-detail{font-size:.8rem;color:var(--gr);line-height:1.6;}
+.plan-card.featured .plan-detail{color:rgba(255,255,255,.8);}
+.sticky-cta{position:sticky;top:76px;background:var(--w);border-radius:8px;border:1px solid var(--gm);padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,.08);height:fit-content;}
+.cta-price{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:900;color:var(--g);}
+.cta-sub{font-size:.75rem;color:var(--gr);margin-bottom:1.2rem;}
+.cta-btn{width:100%;padding:.9rem;border-radius:4px;font-family:'Montserrat',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;border:none;margin-bottom:.6rem;transition:background .2s;}
+.cta-wa{background:#25D366;color:#fff}
+.cta-call{background:var(--g);color:#fff}
+.cta-wa:hover{background:#1ea852}.cta-call:hover{background:#1E5A12}
+footer{background:var(--bk);color:rgba(255,255,255,.5);padding:2rem 8%;text-align:center;font-size:.8rem;margin-top:3rem;}
 </style>
 </head>
 <body>
-<div class="top-bar"><a href="tel:+254 700 000 000">+254 700 000 000</a><span>ArdhiSoko</span></div>
-<nav><a href="index.html" class="logo"><div class="logo-triangle"></div><div><div class="logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div></div></a><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="properties.html">Properties</a></li><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#enquiry" class="nav-cta">Enquire Now</a></li></ul></nav>
-<div class="page-menu"><div class="pm-desktop"><button class="pm-link" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">Overview</button><button class="pm-link" onclick="document.getElementById('specs').scrollIntoView({behavior:'smooth'})">Key Details</button><button class="pm-link" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</button><button class="pm-link" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">Payment Plans</button><button class="pm-link" onclick="document.getElementById('enquire').scrollIntoView({behavior:'smooth'})">Enquire</button></div><div class="pm-mobile"><button class="pm-mob-btn" onclick="document.getElementById('overview').scrollIntoView({behavior:'smooth'})">Overview</button><button class="pm-mob-btn" onclick="document.getElementById('specs').scrollIntoView({behavior:'smooth'})">Details</button><button class="pm-mob-btn" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">Payment</button><button class="pm-mob-btn" onclick="document.getElementById('enquire').scrollIntoView({behavior:'smooth'})">Enquire</button></div></div>
-<div class="page-hero" id="overview"><div class="page-hero-eyebrow">Apartments &mdash; Kamakis, Ruiru - Kiambu County</div><h1>Kamakis Urban Residences</h1><p>From KES 3.2M off-plan pricing</p></div>
-<div class="gallery-wrap"><div class="gallery-main" id="gallery-main"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="Photo 1" class="gslide active" id="gs0" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;transition:opacity .5s;"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Photo 2" class="gslide" id="gs1" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80" alt="Photo 3" class="gslide" id="gs2" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80" alt="Photo 4" class="gslide" id="gs3" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=700&q=80" alt="Photo 5" class="gslide" id="gs4" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;"><button class="gallery-arrow g-prev" onclick="gPrev()">&#8592;</button><button class="gallery-arrow g-next" onclick="gNext()">&#8594;</button><div class="gallery-counter" id="gcounter">&#128247; 1 / 5</div></div><div class="gallery-thumbs"><div class="g-thumb active" onclick="gTo(0)" id="gt0"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&q=80" alt="Photo 1"></div><div class="g-thumb" onclick="gTo(1)" id="gt1"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Photo 2"></div><div class="g-thumb" onclick="gTo(2)" id="gt2"><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=700&q=80" alt="Photo 3"></div><div class="g-thumb" onclick="gTo(3)" id="gt3"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80" alt="Photo 4"></div><div class="g-thumb" onclick="gTo(4)" id="gt4"><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=700&q=80" alt="Photo 5"></div></div></div>
-<div class="product-layout"><div class="prod-left"><div class="price-bar"><div><div class="price-main">From KES 3.2M</div><div class="price-meta">off-plan pricing</div><div class="price-badge">🏗️ Off-Plan</div><div class="price-note">Limited units remaining</div></div></div><div class="prod-section" id="about"><div class="prod-section-title">About This Property</div><div class="prod-desc"><p>Kamakis Urban Residences brings contemporary apartment living to Kamakis, one of Nairobi's fastest-growing satellite corridors. Choose from 1, 2, or 3-bedroom units designed with modern finishes, functional layouts, and a full suite of lifestyle amenities. Located near the Kamakis–Eastern Bypass interchange, residents enjoy seamless access to Nairobi CBD, Thika Superhighway, and the Eastern Bypass.</p></div></div><div class="prod-section" id="specs"><div class="prod-section-title">Key Details</div><div class="specs-grid"><div class="spec-card"><div class="spec-val">1–3 Bed</div><div class="spec-key">Unit Types</div></div><div class="spec-card"><div class="spec-val">From 3.2M</div><div class="spec-key">Off-Plan Price</div></div><div class="spec-card"><div class="spec-val">Q3 2026</div><div class="spec-key">Completion</div></div><div class="spec-card"><div class="spec-val">NWSC</div><div class="spec-key">Water Supply</div></div><div class="spec-card"><div class="spec-val">18 km</div><div class="spec-key">From Nairobi</div></div><div class="spec-card"><div class="spec-val">36</div><div class="spec-key">Total Units</div></div></div></div><div class="prod-section" id="features"><div class="prod-section-title">Features &amp; Amenities</div><div class="features-grid"><div class="feat-item"><div class="feat-icon">✓</div> Modern 1, 2 & 3 bed units</div><div class="feat-item"><div class="feat-icon">✓</div> Ample parking per unit</div><div class="feat-item"><div class="feat-icon">✓</div> Fully equipped gym</div><div class="feat-item"><div class="feat-icon">✓</div> Rooftop lounge & terrace</div><div class="feat-item"><div class="feat-icon">✓</div> 24/7 security & CCTV</div><div class="feat-item"><div class="feat-icon">✓</div> Borehole + NWSC water supply</div><div class="feat-item"><div class="feat-icon">✓</div> Backup generator</div><div class="feat-item"><div class="feat-icon">✓</div> Near Eastern Bypass</div><div class="feat-item"><div class="feat-icon">✓</div> High rental yield area</div><div class="feat-item"><div class="feat-icon">✓</div> Off-plan instalment plans</div></div></div><div class="prod-section" id="payment"><div class="prod-section-title">Flexible Payment Plans</div><div class="payment-grid"><div class="pay-card"><div class="pay-label">Option A</div><div class="pay-pct">100%</div><div class="pay-detail">Full off-plan cash<br>Best pricing & instant lock-in</div></div><div class="pay-card featured"><div class="pay-tag">Most Popular</div><div class="pay-label">Option B</div><div class="pay-pct">30%</div><div class="pay-detail">Deposit + balance<br>in 24 monthly instalments</div></div><div class="pay-card"><div class="pay-label">Option C</div><div class="pay-pct">15%</div><div class="pay-detail">Deposit + balance<br>over 36 months</div></div></div></div></div><div class="prod-sticky" id="enquire"><div class="sticky-card"><div class="sticky-top"><div class="sticky-price">From KES 3.2M</div><div class="sticky-sub">off-plan pricing</div><div class="sticky-badge">Coming Soon</div></div><div class="sticky-body"><div class="sticky-specs"><div class="spec-card"><div class="spec-val">1–3 Bed</div><div class="spec-key">Unit Types</div></div><div class="spec-card"><div class="spec-val">From 3.2M</div><div class="spec-key">Off-Plan Price</div></div><div class="spec-card"><div class="spec-val">Q3 2026</div><div class="spec-key">Completion</div></div><div class="spec-card"><div class="spec-val">NWSC</div><div class="spec-key">Water Supply</div></div><div class="spec-card"><div class="spec-val">18 km</div><div class="spec-key">From Nairobi</div></div><div class="spec-card"><div class="spec-val">36</div><div class="spec-key">Total Units</div></div></div><div class="sticky-form"><label class="sf-label">Your Name</label><input type="text" id="enq-name" placeholder="John Kamau"><label class="sf-label">Phone / WhatsApp</label><input type="tel" id="enq-phone" placeholder="+254 7XX XXX XXX"><label class="sf-label">Intent</label><select id="enq-intent"><option>I want to buy</option><option>I want more information</option><option>I want a site visit</option></select></div><button class="sticky-wa" onclick="sendWA()">&#128172; WhatsApp Enquiry</button><button class="sticky-call" onclick="window.location='tel:+254 700 000 000'">&#128222; Call Us Now</button></div></div></div></div>
-<section class="similar-section"><div class="similar-title">Similar Properties</div><div class="similar-grid"><div class="sim-card" onclick="window.location='malindi.html'"><div class="sim-img"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80" alt="Malindi Ocean View Acres"></div><div class="sim-body"><div class="sim-loc">📍 Malindi, Kilifi County</div><div class="sim-name">Malindi Ocean View Acres</div><div class="sim-price">KES 1.5M / plot</div><a href="malindi.html" class="sim-cta">View Details</a></div></div><div class="sim-card" onclick="window.location='konza.html'"><div class="sim-img"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=700&q=80" alt="Konza Technopolis Plots"></div><div class="sim-body"><div class="sim-loc">📍 Konza, Machakos County</div><div class="sim-name">Konza Technopolis Plots</div><div class="sim-price">KES 450K / plot</div><a href="konza.html" class="sim-cta">View Details</a></div></div></div></section>
-<footer><div class="f-grid"><div><div class="f-logo-text"><span class="ardhi">Ardhi</span><span class="soko">Soko</span></div><p class="f-about">ArdhiSoko offers premium property investments across Kenya.</p></div><div class="f-col"><h5>Properties</h5><ul class="f-links"><li><a href="malindi.html">Malindi Plots</a></li><li><a href="konza.html">Konza Plots</a></li><li><a href="kamakis.html">Kamakis Apts</a></li></ul></div><div class="f-col"><h5>Company</h5><ul class="f-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="index.html#enquiry">Contact</a></li></ul></div><div class="f-col"><h5>Contact</h5><ul class="f-links"><li>+254 700 000 000</li></ul></div></div><div class="f-bottom"><span>&copy; 2025 ArdhiSoko Ltd. All rights reserved.</span><span>Privacy &middot; Terms</span></div></footer>
-<a href="https://wa.me/254700000000?text=Hi%2C%20I%20am%20interested%20in%20Kamakis%20Urban%20Residences." class="wa-btn" target="_blank">&#128172;</a>
-<script>
-var gIdx=0,gTotal=5;
-function gTo(i){document.querySelectorAll(".gslide").forEach(function(s,j){s.style.opacity=j===i?"1":"0";});document.querySelectorAll(".g-thumb").forEach(function(t,j){t.classList.toggle("active",j===i);});document.getElementById("gcounter").textContent="\u{1F4F7} "+(i+1)+" / "+gTotal;gIdx=i;}
-function gNext(){gTo((gIdx+1)%gTotal);}function gPrev(){gTo((gIdx-1+gTotal)%gTotal);}
-setInterval(gNext,5000);
-document.addEventListener("keydown",function(e){if(e.key==="ArrowRight")gNext();if(e.key==="ArrowLeft")gPrev();});
-function sendWA(){var name=document.getElementById("enq-name").value||"";var phone=document.getElementById("enq-phone").value||"";var intent=document.getElementById("enq-intent").value||"";var msg=encodeURIComponent("Hi, I am "+name+" ("+phone+"). "+intent+" - Kamakis Urban Residences.");window.open("https://wa.me/254700000000?text="+msg,"_blank");}
-</script>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-t"></div>
+    <div class="logo-n"><span class="a">Ardhi</span><span class="s">Soko</span></div>
+  </a>
+  <a href="index.html" class="back-btn">← Back to All Projects</a>
+</nav>
+
+<div class="hero-strip">
+  <div>
+    <div class="hs-tag">Apartments</div>
+    <div class="hs-name">Casa Dolce Residense</div>
+    <div class="hs-loc">📍 Kamakis, Ruiru</div>
+  </div>
+</div>
+
+<div class="price-bar">
+  <div>
+    <div class="pb-price">From 3.2M</div>
+    <div class="pb-sub">per apartment</div>
+  </div>
+  <div class="pb-badge">🏗️ Coming Soon</div>
+  <div class="pb-actions">
+    <button class="pb-btn pb-wa" onclick="window.open('https://wa.me/+254712345678','_blank')">💬 WhatsApp</button>
+    <button class="pb-btn pb-call" onclick="window.location='tel:+254 712 345 678'">📞 Call Now</button>
+  </div>
+</div>
+
+<div class="gallery">
+  <div class="gslide active" onclick="goSlide(0)"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=700&amp;q=80" alt="Gallery 1"></div>
+<div class="gslide " onclick="goSlide(1)"><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&amp;q=80" alt="Gallery 2"></div>
+<div class="gslide " onclick="goSlide(2)"><img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&amp;q=80" alt="Gallery 3"></div>
+</div>
+
+<div class="content">
+  <div class="about">
+    <h2>About Casa Dolce Residense</h2>
+    <p>Kamakis Urban Residences brings contemporary living to one of Nairobi's fastest growing corridors. Located at the Kamakis roundabout junction, these apartments offer the perfect blend of urban convenience and suburban comfort.</p>
+    
+    <h2 style="margin-bottom:1rem">Key Details</h2>
+    <div class="specs-grid"><div class="spec-item"><div class="spec-val">1BR–3BR</div><div class="spec-lbl">Unit Types</div></div>
+<div class="spec-item"><div class="spec-val">From 3.2M</div><div class="spec-lbl">Starting Price</div></div>
+<div class="spec-item"><div class="spec-val">Q4 2026</div><div class="spec-lbl">Completion</div></div>
+<div class="spec-item"><div class="spec-val">Mains</div><div class="spec-lbl">Water Supply</div></div>
+<div class="spec-item"><div class="spec-val">Kamakis</div><div class="spec-lbl">Location</div></div>
+<div class="spec-item"><div class="spec-val">48</div><div class="spec-lbl">Total Units</div></div></div>
+
+    <h2 style="margin-bottom:.8rem">Features & Highlights</h2>
+    <ul class="features-list"><li>✓ Modern interior finishes</li>
+<li>✓ Ample parking space</li>
+<li>✓ 24/7 security</li>
+<li>✓ Backup generator</li>
+<li>✓ Rooftop terrace</li>
+<li>✓ Gym &amp; recreation</li>
+<li>✓ Near Eastern Bypass</li>
+<li>✓ Easy city access</li>
+<li>✓ Flexible payment plans</li>
+<li>✓ Pre-registration discount</li></ul>
+
+    <h2 style="margin-bottom:.5rem">Flexible Payment Plans</h2>
+    <p style="font-size:.85rem;color:var(--gr);margin-bottom:1rem">Choose the plan that works best for you.</p>
+    <div class="plans-grid">
+<div class="plan-card">
+  
+  <div class="plan-label">Option A</div>
+  <div class="plan-deposit">100%</div>
+  <div class="plan-detail">Full cash payment<br>Best pricing</div>
+</div>
+
+<div class="plan-card featured">
+  <div class="plan-popular">★ Most Popular</div>
+  <div class="plan-label">Option B</div>
+  <div class="plan-deposit">30%</div>
+  <div class="plan-detail">Deposit, then balance<br>over 12 months</div>
+</div>
+
+<div class="plan-card">
+  
+  <div class="plan-label">Option C</div>
+  <div class="plan-deposit">20%</div>
+  <div class="plan-detail">Deposit, then balance<br>over 24 months</div>
+</div></div>
+  </div>
+
+  <div>
+    <div class="sticky-cta">
+      <div class="cta-price">From 3.2M</div>
+      <div class="cta-sub">per apartment</div>
+      <button class="cta-btn cta-wa" onclick="window.open('https://wa.me/+254712345678?text=Hi, I am interested in Casa%20Dolce%20Residense','_blank')">
+        💬 WhatsApp Us Now
+      </button>
+      <button class="cta-btn cta-call" onclick="window.location='tel:+254 712 345 678'">
+        📞 Call +254 712 345 678
+      </button>
+      <div style="margin-top:.8rem;font-size:.72rem;color:var(--gr);text-align:center;line-height:1.5">
+        Pre-registration open
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;margin-bottom:.4rem">
+    <span style="color:#fff">Ardhi</span><span style="color:var(--o)">Soko</span>
+  </div>
+  +254 712 345 678 · info@ardhisoko.co.ke<br>
+  © 2026 ArdhiSoko. All rights reserved.
+</footer>
+
 </body>
 </html>
